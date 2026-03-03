@@ -54,7 +54,7 @@ export async function GET(request: NextRequest) {
       select: { full_name: true },
     });
 
-    const hasMember = allMembers.some(member => 
+    const hasMember = allMembers.some((member: { full_name: string }) => 
       member.full_name.toLowerCase().trim() === user.full_name.toLowerCase().trim()
     );
 

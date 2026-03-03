@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     });
 
     // Filter engagements by user email
-    const userEngagements = allEngagements.filter(engagement => {
+    const userEngagements = allEngagements.filter((engagement: { payload: string }) => {
       try {
         const payload = JSON.parse(engagement.payload);
         return payload.email === user.email;

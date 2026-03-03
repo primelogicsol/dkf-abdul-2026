@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
       console.log('[Engagement Check] First 5 users in DB:', allUsers);
       
       return NextResponse.json(
-        { error: 'User not found', receivedId: userId, availableUsers: allUsers.map(u => u.id) },
+        { error: 'User not found', receivedId: userId, availableUsers: allUsers.map((u: { id: string }) => u.id) },
         { status: 404 }
       );
     }
