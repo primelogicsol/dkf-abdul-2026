@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
     });
 
     // Check if any registration matches this user's full name (case-insensitive)
-    const hasRegistration = allRegistrations.some(reg => 
+    const hasRegistration = allRegistrations.some((reg: { full_name: string }) => 
       reg.full_name.toLowerCase().trim() === user.full_name.toLowerCase().trim()
     );
 
