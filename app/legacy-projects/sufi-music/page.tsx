@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import PremiumHeader from "../../components/PremiumHeader";
@@ -9,7 +10,40 @@ import FrameworkCard from "../../components/FrameworkCard";
 import ImpactDiagram from "../../components/ImpactDiagram";
 import ImpactMetric from "../../components/ImpactMetric";
 
+interface Video {
+  id?: string;
+  title?: string;
+  thumbnail?: string;
+  duration?: string;
+  views?: string;
+}
+
 export default function SufiMusicPage() {
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [isLoadingVideos, setIsLoadingVideos] = useState(true);
+  const [showAllVideos, setShowAllVideos] = useState(false);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch('https://api.sufipulse.com/youtube/videos');
+        if (response.ok) {
+          const data = await response.json();
+          setVideos(data.videos || data || []);
+        }
+      } catch (error) {
+        console.error('Failed to fetch videos:', error);
+      } finally {
+        setIsLoadingVideos(false);
+      }
+    };
+
+    fetchVideos();
+  }, []);
+
+  // Display either first 3 or all videos based on showAllVideos state
+  const displayedVideos = showAllVideos ? videos : videos.slice(0, 3);
+
   const frameworkItems = [
     {
       icon: (
@@ -260,6 +294,134 @@ export default function SufiMusicPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Featured Videos */}
+      <section className="section-spacing bg-[#151A30] relative">
+        <div className="container-premium">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+              Featured Videos
+            </h2>
+            <div className="gold-divider long mx-auto mb-6" />
+            <p className="text-[#AAB3CF] max-w-3xl mx-auto leading-relaxed">
+              Explore the teachings and legacy of Dr. Kumar through various media formats.
+            </p>
+          </motion.div>
+
+          {isLoadingVideos ? (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 border-4 border-[#C5A85C]/20 border-t-[#C5A85C] rounded-full animate-spin mx-auto mb-4" />
+              <p className="text-[#AAB3CF]">Loading videos...</p>
+            </div>
+          ) : videos.length > 0 ? (
+            <>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                {displayedVideos.map((video, index) => (
+                  <Link
+                  key={video.id || index}
+                  href={
+                    video.id
+                      ? `https://www.youtube.com/watch?v=${video.id}`
+                      : "#"
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <motion.div
+                    key={video.id || index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl overflow-hidden group hover:border-[#C5A85C]/30 transition-all duration-300"
+                  >
+                    {/* Thumbnail */}
+                    <div className="relative aspect-video overflow-hidden">
+                      <img
+                        src={video.thumbnail || 'https://via.placeholder.com/640x360/1C2340/C5A85C?text=Video+Thumbnail'}
+                        alt={video.title || 'Video thumbnail'}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      {/* Play Button Overlay */}
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-16 h-16 bg-[#C5A85C]/90 rounded-full flex items-center justify-center">
+                          <svg className="w-8 h-8 text-[#1C2340] ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                      {/* Duration Badge */}
+                      {video.duration && (
+                        <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
+                          {video.duration}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Video Info */}
+                    <div className="p-6">
+                      <h3 className="font-serif text-lg text-white mb-3 line-clamp-2">
+                        {video.title || 'Untitled Video'}
+                      </h3>
+                      {video.views && (
+                        <div className="flex items-center gap-2 text-[#AAB3CF] text-sm">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                          <span>{video.views} views</span>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                </Link>
+                  
+                ))}
+              </div>
+
+              {/* See More Button */}
+              {videos.length > 3 && (
+                <div className="text-center">
+                  <button
+                    onClick={() => setShowAllVideos(!showAllVideos)}
+                    className="inline-flex items-center gap-2 px-8 py-4 border border-[#C5A85C]/40 text-[#C5A85C] font-medium rounded-lg transition-all duration-300 hover:bg-[#C5A85C]/10 hover:border-[#C5A85C]"
+                  >
+                    {showAllVideos ? (
+                      <>
+                        Show Less
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </>
+                    ) : (
+                      <>
+                        See More Videos
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="text-center py-12 bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl">
+              <svg className="w-16 h-16 text-[#C5A85C]/20 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <p className="text-[#AAB3CF]">No videos available at this time.</p>
+            </div>
+          )}
         </div>
       </section>
 
