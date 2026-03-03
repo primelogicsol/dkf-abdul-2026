@@ -1,0 +1,152 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import PremiumHeader from "../components/PremiumHeader";
+import PremiumFooter from "../components/PremiumFooter";
+
+export default function DashboardPage() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<{ email: string; full_name: string } | null>(null);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const response = await fetch("/api/auth/session");
+        if (!response.ok) {
+          router.push("/");
+          return;
+        }
+        const userData = await response.json();
+        setUser(userData);
+      } catch {
+        router.push("/");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    checkAuth();
+  }, [router]);
+
+  if (isLoading) {
+    return (
+      <div className="bg-[#1C2340] min-h-screen">
+        <PremiumHeader />
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-center">
+            <div className="w-16 h-16 border-4 border-[#C5A85C]/20 border-t-[#C5A85C] rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-[#AAB3CF]">Loading...</p>
+          </div>
+        </div>
+        <PremiumFooter />
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-[#1C2340] min-h-screen">
+      <PremiumHeader />
+
+      {/* Hero Section */}
+      <section className="relative min-h-[40vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1C2340] via-[#1C2340] to-[#151A30]" />
+        
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C5A85C]/10 rounded-full blur-[140px]"
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: "8rem" }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent mx-auto mb-8"
+          />
+
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="font-serif text-4xl md:text-5xl text-white mb-6"
+          >
+            Welcome to Your
+            <br />
+            <span className="gradient-gold">Dashboard</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="text-[#AAB3CF] text-xl leading-relaxed"
+          >
+            Manage your account and explore opportunities.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Dashboard Content */}
+      <section className="section-spacing bg-[#151A30]">
+        <div className="container-premium">
+          <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-8 mb-8">
+            <h2 className="font-serif text-2xl text-white mb-2">
+              Hello, {user?.full_name || 'User'}
+            </h2>
+            <p className="text-[#AAB3CF]">{user?.email}</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-[#C5A85C]/10 rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h3 className="font-serif text-lg text-white">Profile</h3>
+              </div>
+              <Link href="/profile" className="text-[#AAB3CF] hover:text-[#C5A85C] transition-colors text-sm">
+                Update Profile →
+              </Link>
+            </div>
+
+            <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-[#C5A85C]/10 rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 className="font-serif text-lg text-white">Security</h3>
+              </div>
+              <Link href="/security" className="text-[#AAB3CF] hover:text-[#C5A85C] transition-colors text-sm">
+                Security Settings →
+              </Link>
+            </div>
+
+            <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-[#C5A85C]/10 rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h3 className="font-serif text-lg text-white">Activity</h3>
+              </div>
+              <Link href="/activity" className="text-[#AAB3CF] hover:text-[#C5A85C] transition-colors text-sm">
+                View Activity →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <PremiumFooter />
+    </div>
+  );
+}

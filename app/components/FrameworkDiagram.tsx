@@ -1,0 +1,77 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+interface StepProps {
+  title: string;
+  description: string;
+  delay: number;
+  isLast?: boolean;
+}
+
+function Step({ title, description, delay, isLast }: StepProps) {
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay }}
+        className="relative"
+      >
+        <div className="bg-[#232B52] border border-[#C5A85C]/20 rounded-2xl p-6">
+          <h4 className="font-serif text-lg text-white mb-2">{title}</h4>
+          <p className="text-[#AAB3CF] text-sm leading-relaxed">{description}</p>
+        </div>
+      </motion.div>
+
+      {!isLast && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          whileInView={{ opacity: 1, height: "auto" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: delay + 0.2 }}
+          className="flex justify-center py-4"
+        >
+          <div className="w-[1px] h-12 bg-gradient-to-b from-[#C5A85C]/50 to-[#C5A85C]/20" />
+        </motion.div>
+      )}
+    </>
+  );
+}
+
+interface FrameworkDiagramProps {
+  steps: { title: string; description: string }[];
+  title?: string;
+}
+
+export default function FrameworkDiagram({ steps, title }: FrameworkDiagramProps) {
+  return (
+    <div className="max-w-2xl mx-auto">
+      {title && (
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h3 className="font-serif text-2xl text-white mb-4">{title}</h3>
+          <div className="gold-divider mx-auto" />
+        </motion.div>
+      )}
+
+      <div className="space-y-0">
+        {steps.map((step, index) => (
+          <Step
+            key={step.title}
+            title={step.title}
+            description={step.description}
+            delay={0.1 * (index + 1)}
+            isLast={index === steps.length - 1}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}

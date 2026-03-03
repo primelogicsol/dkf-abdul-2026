@@ -1,0 +1,39 @@
+import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/lib/prisma';
+
+// GET /api/admin/engagement - Get all engagement requests
+export async function GET(request: NextRequest) {
+  try {
+    const searchParams = request.nextUrl.searchParams;
+    const status = searchParams.get('status') || 'all';
+    const programType = searchParams.get('program_type');
+    const formType = searchParams.get('form_type');
+
+    const where: any = {};
+
+    if (status !== 'all') {
+      where.status = status;
+    }
+
+    if (programType) {
+      where.program_type = programType;
+    }
+
+    if (formType) {
+      where.form_type = formType;
+    }
+
+    const engagements = await prisma.engagementRequest.findMany({
+      where,
+      orderBy: { created_at: 'desc' },
+    });
+
+    return NextResponse.json(engagements);
+  } catch (error) {
+    console.error('Failed to fetch engagement requests:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch engagement requests' },
+      { status: 500 }
+    );
+  }
+}

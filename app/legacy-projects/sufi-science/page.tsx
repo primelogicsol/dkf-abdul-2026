@@ -1,0 +1,383 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import PremiumHeader from "../../components/PremiumHeader";
+import PremiumFooter from "../../components/PremiumFooter";
+import ProjectHero from "../../components/ProjectHero";
+import FrameworkCard from "../../components/FrameworkCard";
+import ImpactDiagram from "../../components/ImpactDiagram";
+import ImpactMetric from "../../components/ImpactMetric";
+
+export default function SufiSciencePage() {
+  const frameworkItems = [
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      ),
+      title: "Philosophical Analysis",
+      description: "Systematic examination of Sufi philosophical texts and their relevance to contemporary ethical questions.",
+      delay: 0.1,
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      title: "Environmental Research",
+      description: "Investigating ecological ethics from spiritual traditions and their application to contemporary sustainability challenges.",
+      delay: 0.2,
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      ),
+      title: "Social Ethics",
+      description: "Exploring frameworks for ethical social organization derived from spiritual philosophical traditions.",
+      delay: 0.3,
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+      title: "Consciousness Studies",
+      description: "Interdisciplinary research on states of awareness, self-observation, and their implications for human development.",
+      delay: 0.4,
+    },
+  ];
+
+  return (
+    <div className="bg-[#1C2340] min-h-screen">
+      <PremiumHeader />
+
+      {/* Hero Section */}
+      <ProjectHero
+        title={
+          <>
+            Sufi Science &
+            <br />
+            <span className="gradient-gold">Consciousness Research</span>
+          </>
+        }
+        subtitle="Interdisciplinary exploration connecting spiritual philosophy with structured inquiry and analytical documentation."
+        ctaLink="#framework"
+        ctaText="View Program Framework"
+      />
+
+      {/* Program Overview */}
+      <section className="section-spacing bg-[#1C2340] relative">
+        <div className="container-premium">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="font-serif text-3xl text-white mb-6">
+                Program Overview
+              </h2>
+              <div className="gold-divider mb-8" />
+
+              <div className="space-y-6 text-[#AAB3CF] leading-relaxed">
+                <p>
+                  Sufi Science initiatives address the need for rigorous interdisciplinary
+                  research connecting spiritual philosophical traditions with contemporary
+                  analytical frameworks. These programs integrate traditional wisdom with
+                  modern research methodologies.
+                </p>
+                <p>
+                  The approach emphasizes documentation and publication standards
+                  appropriate for academic discourse while maintaining fidelity to
+                  the depth and nuance of spiritual philosophical traditions.
+                </p>
+                <p>
+                  Programs are implemented through collaborations with researchers,
+                  institutions, and scholars committed to serious inquiry that
+                  transcends disciplinary boundaries.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="bg-[#232B52] border border-[#C5A85C]/20 rounded-2xl p-8 relative">
+                <div className="absolute top-0 left-0 w-24 h-24 border-t border-l border-[#C5A85C]/30 rounded-tl-2xl" />
+                <div className="absolute bottom-0 right-0 w-24 h-24 border-b border-r border-[#C5A85C]/30 rounded-br-2xl" />
+
+                <h3 className="font-serif text-xl text-white mb-6">
+                  Program Statement
+                </h3>
+                <blockquote className="font-serif text-lg text-white leading-relaxed mb-6">
+                  "Spiritual philosophy and scientific inquiry are not opposed.
+                  Both seek truth through disciplined observation and honest
+                  documentation."
+                </blockquote>
+                <div className="flex items-center gap-4">
+                  <div className="gold-divider" />
+                  <span className="text-[#C5A85C] uppercase tracking-widest text-sm">
+                    Foundational Principle
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Framework */}
+      <section id="framework" className="section-spacing bg-[#151A30] relative overflow-hidden">
+        <div className="absolute inset-0 pattern-subtle opacity-20" />
+
+        <div className="container-premium relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+              Strategic Framework
+            </h2>
+            <div className="gold-divider long mx-auto mb-6" />
+            <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
+              Four interconnected domains of research and inquiry, each contributing
+              to interdisciplinary understanding.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {frameworkItems.map((item) => (
+              <FrameworkCard
+                key={item.title}
+                icon={item.icon}
+                title={item.title}
+                description={item.description}
+                delay={item.delay}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Model */}
+      <section className="section-spacing bg-[#1C2340] relative">
+        <div className="container-premium">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+              Research Pathway
+            </h2>
+            <div className="gold-divider long mx-auto mb-6" />
+          </motion.div>
+
+          <ImpactDiagram
+            steps={[
+              {
+                title: "Inquiry",
+                description: "Formulating research questions that bridge spiritual philosophical traditions with contemporary analytical frameworks.",
+              },
+              {
+                title: "Documentation",
+                description: "Systematic recording and analysis of findings using methodologies appropriate for academic discourse.",
+              },
+              {
+                title: "Publication",
+                description: "Disseminating research through peer-reviewed channels and institutional partnerships.",
+              },
+              {
+                title: "Institutional Integration",
+                description: "Establishing ongoing research programs and educational initiatives based on findings.",
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* Implementation Structure */}
+      <section className="section-spacing bg-[#151A30] relative">
+        <div className="container-premium">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+              Implementation Structure
+            </h2>
+            <div className="gold-divider long mx-auto mb-6" />
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Research",
+                description: "Conducting systematic investigation using appropriate methodologies for each domain of inquiry.",
+              },
+              {
+                title: "Review",
+                description: "Peer review and scholarly validation of findings before publication and dissemination.",
+              },
+              {
+                title: "Publication",
+                description: "Publishing research through academic channels, conferences, and institutional partnerships.",
+              },
+              {
+                title: "Policy Interface",
+                description: "Translating research findings into recommendations for institutional and policy applications.",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-8 text-center"
+              >
+                <h3 className="font-serif text-xl text-[#C5A85C] mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-[#AAB3CF] leading-relaxed">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Metrics */}
+      <section className="section-spacing bg-[#1C2340] relative">
+        <div className="container-premium">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+              Research Impact
+            </h2>
+            <div className="gold-divider long mx-auto mb-6" />
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <ImpactMetric value={25} label="Research Papers" suffix="+" delay={0.1} />
+            <ImpactMetric value={10} label="Conferences" suffix="+" delay={0.2} />
+            <ImpactMetric value={15} label="Institutional Partners" suffix="+" delay={0.3} />
+            <ImpactMetric value={5000} label="Academic Citations" suffix="+" delay={0.4} />
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Engage */}
+      <section className="py-24 bg-[#151A30] relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1C2340] to-[#151A30]" />
+        <div className="container-premium relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+              Engage With This Program
+            </h2>
+            <div className="gold-divider long mx-auto mb-8" />
+            <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed mb-12">
+              Whether for collaboration, support, or inquiry, we welcome
+              structured engagement aligned with our mission and values.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link
+                href="/engage/sufi-science/collaboration"
+                className="px-8 py-4 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1"
+              >
+                Collaborate
+              </Link>
+              <Link
+                href="/engage/sufi-science/support"
+                className="px-8 py-4 border border-[#C5A85C]/40 text-[#C5A85C] font-medium rounded-lg transition-all duration-300 hover:bg-[#C5A85C]/10 hover:border-[#C5A85C]"
+              >
+                Support
+              </Link>
+              <Link
+                href="/engage/sufi-science/inquiry"
+                className="px-8 py-4 border border-white/20 text-[#F1F3F8] font-medium rounded-lg transition-all duration-300 hover:bg-white/5 hover:border-white/40"
+              >
+                Inquire
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Navigation CTA */}
+      <section className="py-16 bg-[#0F1326] border-t border-[#C5A85C]/10">
+        <div className="container-premium">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <Link
+              href="/legacy-projects"
+              className="text-[#AAB3CF] hover:text-white transition-colors flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              <span>Back to Legacy Projects</span>
+            </Link>
+
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link
+                href="/legacy-projects/sufi-music"
+                className="group inline-flex items-center px-6 py-3 border border-white/20 text-[#F1F3F8] font-medium rounded-lg transition-all duration-300 hover:bg-white/5 hover:border-white/40"
+              >
+                <span>Sufi Music</span>
+              </Link>
+              <Link
+                href="/legacy-projects/sufi-ecommerce"
+                className="group inline-flex items-center px-6 py-3 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1"
+              >
+                <span>Sufi Commerce</span>
+                <svg
+                  className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <PremiumFooter />
+    </div>
+  );
+}
