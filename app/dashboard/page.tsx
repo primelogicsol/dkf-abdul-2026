@@ -16,6 +16,20 @@ export default function DashboardPage() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
+        // First check localStorage for user session
+        const localSession = localStorage.getItem("user_session");
+        if (localSession) {
+          try {
+            const userData = JSON.parse(localSession);
+            setUser(userData);
+            setIsLoading(false);
+            return;
+          } catch {
+            localStorage.removeItem("user_session");
+          }
+        }
+        
+        // If no local session, try server session
         const response = await fetch("/api/auth/session");
         if (!response.ok) {
           router.push("/");
@@ -23,6 +37,7 @@ export default function DashboardPage() {
         }
         const userData = await response.json();
         setUser(userData);
+        localStorage.setItem("user_session", JSON.stringify(userData));
       } catch {
         router.push("/");
       } finally {
