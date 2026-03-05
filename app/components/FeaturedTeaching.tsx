@@ -21,7 +21,7 @@ export default function FeaturedTeaching() {
             className="text-center mb-12"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
-              Featured Teaching
+            Dr. Kumar's Quotes
             </h2>
             <div className="gold-divider long mx-auto" />
           </motion.div>

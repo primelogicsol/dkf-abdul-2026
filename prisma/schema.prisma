@@ -121,18 +121,19 @@ model FoundationSection {
 }
 
 model User {
-  id                String     @id @default(uuid())
-  email             String     @unique
+  id                String        @id @default(uuid())
+  email             String        @unique
   password_hash     String
   full_name         String
   avatar_url        String?
-  role              UserRole   @default(moderator)
-  is_active         Boolean    @default(false)
-  approval_status   String     @default("pending")
-  created_at        DateTime   @default(now())
-  updated_at        DateTime   @updatedAt
+  role              UserRole      @default(moderator)
+  is_active         Boolean       @default(false)
+  approval_status   String        @default("pending")
+  created_at        DateTime      @default(now())
+  updated_at        DateTime      @updatedAt
   assigned_programs String[]
   audit_logs        AuditLog[]
+  userPrograms      UserProgram[]
 
   @@index([email])
   @@index([role])
@@ -229,4 +230,113 @@ enum UserRole {
   program_director
   moderator
   contributor
+  healing_contributor
+  environmental_contributor
+  youth_contributor
+  music_contributor
+  ecommerce_contributor
+  science_contributor
+  interfaith_contributor
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TABLE 12: user_programs
+// Tracks which users are enrolled in which legacy programs
+// ─────────────────────────────────────────────────────────────────────────────
+
+model UserProgram {
+  id           String   @id @default(uuid())
+  user_id      String
+  program_type String
+  joined_at    DateTime @default(now())
+  is_active    Boolean  @default(true)
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  user         User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  contributions Contribution[]
+  tasks        Task[]
+
+  @@unique([user_id, program_type])
+  @@index([user_id])
+  @@index([program_type])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TABLE 13: contributions
+// Monthly activity reports from users in legacy programs
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Contribution {
+  id                 String   @id @default(uuid())
+  user_program_id    String
+  user_id            String
+  user_name          String
+  user_email         String
+  program_type       String
+  title              String
+  activity_date      DateTime
+  venue_city         String
+  venue_country      String
+  participant_count  Int
+  participant_phones String
+  task_conducted     String
+  results            String
+  status             String   @default("pending")
+  admin_comment      String?
+  submitted_at       DateTime @default(now())
+  reviewed_at        DateTime?
+  reviewed_by        String?
+
+  user_program       UserProgram @relation(fields: [user_program_id], references: [id])
+
+  @@index([user_id])
+  @@index([program_type])
+  @@index([status])
+  @@index([submitted_at])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TABLE 14: tasks
+// Admin-assigned tasks for contributors
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Task {
+  id            String   @id @default(uuid())
+  user_program_id String
+  user_id       String
+  user_name     String
+  user_email    String
+  program_type  String
+  title         String
+  message       String
+  status        String   @default("pending")
+  created_at    DateTime @default(now())
+  due_date      DateTime?
+  completed_at  DateTime?
+
+  user_program  UserProgram @relation(fields: [user_program_id], references: [id])
+
+  @@index([user_id])
+  @@index([program_type])
+  @@index([status])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TABLE 15: notifications
+// User notifications for tasks and updates
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Notification {
+  id         String   @id @default(uuid())
+  user_id    String
+  title      String
+  message    String
+  type       String   // task, contribution, general
+  is_read    Boolean  @default(false)
+  link       String?
+  created_at DateTime @default(now())
+
+  @@index([user_id])
+  @@index([is_read])
 }

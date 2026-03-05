@@ -107,18 +107,18 @@ export default function FoundationSnapshot() {
         {/* Metrics Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <MetricCard
-            value={50}
+            value={69}
             label="Years of Legacy"
             suffix="+"
             delay={0.1}
           />
           <MetricCard
-            value={5}
+            value={12}
             label="Core Teaching Themes"
             delay={0.2}
           />
           <MetricCard
-            value={12}
+            value={7}
             label="Active Cultural Initiatives"
             suffix="+"
             delay={0.3}

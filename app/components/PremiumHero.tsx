@@ -95,8 +95,15 @@ export default function PremiumHero() {
           transition={{ duration: 1, delay: 0.8 }}
           className="text-[#AAB3CF] text-lg md:text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto mb-12"
         >
-          The life, teachings, and enduring vision of Dr. Ghulam Mohammad Kumar
-          presented through research, documentation, and institutional stewardship.
+          The Dr. Kumar Foundation documents the life, teachings, and reflections of Dr. Ghulam Mohammad Kumar, a Sufi guide from Kashmir whose work brings together spirituality, knowledge, and ethical responsibility.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="text-[#AAB3CF] text-lg md:text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto mb-12"
+        >
+          This platform has been created as a living archive where seekers can explore his teachings and contribute to preserving a spiritual legacy through reflection, research, and shared participation.
         </motion.p>
 
         {/* CTA Buttons */}

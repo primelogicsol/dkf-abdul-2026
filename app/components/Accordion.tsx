@@ -4,15 +4,114 @@ import { useState } from "react"
 const regions = [
   {
     name: "South Asia",
-    countries: ["India", "Pakistan", "Bangladesh"]
+    countries: [
+      "India",
+      "Pakistan",
+      "Bangladesh",
+      "Sri Lanka",
+      "Nepal",
+      "Maldives",
+      "Afghanistan",
+      "Bhutan"
+    ]
   },
   {
     name: "Middle East",
-    countries: ["UAE", "Saudi Arabia"]
+    countries: [
+      "Saudi Arabia",
+      "United Arab Emirates",
+      "Qatar",
+      "Kuwait",
+      "Bahrain",
+      "Oman",
+      "Jordan",
+      "Lebanon",
+      "Turkey",
+      "Iran",
+      "Iraq"
+    ]
   },
   {
     name: "Europe",
-    countries: ["UK", "Germany"]
+    countries: [
+      "United Kingdom",
+      "France",
+      "Germany",
+      "Italy",
+      "Spain",
+      "Netherlands",
+      "Belgium",
+      "Sweden",
+      "Norway",
+      "Denmark",
+      "Bosnia and Herzegovina",
+      "Albania",
+      "Kosovo"
+    ]
+  },
+  {
+    name: "North America",
+    countries: [
+      "United States",
+      "Canada",
+      "Mexico"
+    ]
+  },
+  {
+    name: "Africa",
+    countries: [
+      "Morocco",
+      "Algeria",
+      "Tunisia",
+      "Egypt",
+      "Libya",
+      "Sudan",
+      "Ethiopia",
+      "Somalia",
+      "Kenya",
+      "Nigeria",
+      "Mali",
+      "Mauritania"
+    ]
+  },
+  {
+    name: "Southeast Asia",
+    countries: [
+      "Indonesia",
+      "Malaysia",
+      "Brunei",
+      "Singapore",
+      "Thailand",
+      "Philippines"
+    ]
+  },
+  {
+    name: "Central Asia",
+    countries: [
+      "Kazakhstan",
+      "Uzbekistan",
+      "Kyrgyzstan",
+      "Tajikistan",
+      "Turkmenistan",
+      "Azerbaijan"
+    ]
+  },
+  {
+    name: "South America",
+    countries: [
+      "Brazil",
+      "Argentina",
+      "Chile",
+      "Colombia",
+      "Peru"
+    ]
+  },
+  {
+    name: "Oceania",
+    countries: [
+      "Australia",
+      "New Zealand"
+    ]
   }
 ]
 

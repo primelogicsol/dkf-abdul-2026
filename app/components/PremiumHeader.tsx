@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import AuthModal from "./auth/AuthModal";
+import Image from "next/image";
 
 interface NavItem {
   label: string;
@@ -141,15 +142,17 @@ export default function PremiumHeader() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-4 group">
-              <div className="w-12 h-12 border border-[#C5A85C]/40 flex items-center justify-center transition-all duration-300 group-hover:border-[#C5A85C]">
+              {/* <div className="w-12 h-12 border border-[#C5A85C]/40 flex items-center justify-center transition-all duration-300 group-hover:border-[#C5A85C]">
                 <span className="text-[#C5A85C] font-serif text-2xl font-bold">D</span>
-              </div>
+                
+              </div> */}
+              <Image alt="LOGO" height={50} width={50} src="/dkf_logo_21.png" />
               <div className="hidden md:block">
                 <span className="text-white font-serif text-lg tracking-wide block">
-                  Dr. Ghulam Mohammad Kumar
+                Dr. Kumar Foundation
                 </span>
                 <span className="text-[#AAB3CF] text-xs tracking-widest uppercase block">
-                  Foundation
+                Global Circle - USA
                 </span>
               </div>
             </Link>
