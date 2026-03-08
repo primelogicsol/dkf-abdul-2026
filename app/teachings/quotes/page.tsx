@@ -2,11 +2,11 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import PremiumHeader from "../components/PremiumHeader";
-import PremiumFooter from "../components/PremiumFooter";
-import TeachingHero from "../components/TeachingHero";
-import QuoteCard from "../components/QuoteCard";
-import QuoteBlock from "../components/QuoteBlock";
+import PremiumHeader from "../../components/PremiumHeader";
+import PremiumFooter from "../../components/PremiumFooter";
+import TeachingHero from "../../components/TeachingHero";
+import QuoteCard from "../../components/QuoteCard";
+import QuoteBlock from "../../components/QuoteBlock";
 
 interface Quote {
   id: number;
