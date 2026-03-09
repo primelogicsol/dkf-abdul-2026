@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import PremiumHeader from "../../components/PremiumHeader";
 import PremiumFooter from "../../components/PremiumFooter";
@@ -9,9 +9,10 @@ import QuoteCard from "../../components/QuoteCard";
 import QuoteBlock from "../../components/QuoteBlock";
 
 interface Quote {
-  id: number;
+  id: string;
   text: string;
   category: string;
+  is_featured: boolean;
 }
 
 const CATEGORIES = [
@@ -24,117 +25,41 @@ const CATEGORIES = [
   "Peace and Reflection",
 ];
 
-const QUOTES: Quote[] = [
-  {
-    id: 1,
-    text: "The heart becomes clear when it stops arguing with truth.",
-    category: "Self Awareness",
-  },
-  {
-    id: 2,
-    text: "Peace begins when the mind becomes honest with itself.",
-    category: "Peace and Reflection",
-  },
-  {
-    id: 3,
-    text: "Faith grows quietly where compassion becomes natural.",
-    category: "Compassion",
-  },
-  {
-    id: 4,
-    text: "Discipline is not punishment; it is the protection of the soul.",
-    category: "Inner Discipline",
-  },
-  {
-    id: 5,
-    text: "The world changes slowly, but the heart can change in a single moment.",
-    category: "Self Awareness",
-  },
-  {
-    id: 6,
-    text: "Human beings search across the world for meaning, yet the doorway is always within their own awareness.",
-    category: "Self Awareness",
-  },
-  {
-    id: 7,
-    text: "Compassion is not an act of will but a quality of understanding.",
-    category: "Compassion",
-  },
-  {
-    id: 8,
-    text: "True discipline arises from love of the goal, not fear of failure.",
-    category: "Inner Discipline",
-  },
-  {
-    id: 9,
-    text: "Ethical conduct is not following rules but living from clarity.",
-    category: "Ethical Conduct",
-  },
-  {
-    id: 10,
-    text: "We are not separate beings seeking connection; we are connection expressing as separate beings.",
-    category: "Human Unity",
-  },
-  {
-    id: 11,
-    text: "In silence, the mind finds its natural rhythm and the heart its native language.",
-    category: "Peace and Reflection",
-  },
-  {
-    id: 12,
-    text: "Awareness is the mirror in which truth recognizes itself.",
-    category: "Self Awareness",
-  },
-  {
-    id: 13,
-    text: "To be ethical is to act from understanding rather than from impulse.",
-    category: "Ethical Conduct",
-  },
-  {
-    id: 14,
-    text: "Unity is not something to achieve; it is something to recognize.",
-    category: "Human Unity",
-  },
-  {
-    id: 15,
-    text: "Compassion begins where judgment ends.",
-    category: "Compassion",
-  },
-  {
-    id: 16,
-    text: "The quiet mind hears what the busy mind cannot imagine.",
-    category: "Peace and Reflection",
-  },
-  {
-    id: 17,
-    text: "Self-observation is the first act of freedom.",
-    category: "Self Awareness",
-  },
-  {
-    id: 18,
-    text: "Consistency in small things creates the capacity for greatness in all things.",
-    category: "Inner Discipline",
-  },
-];
-
 export default function QuotesPage() {
+  const [quotes, setQuotes] = useState<Quote[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
+  useEffect(() => {
+    const fetchQuotes = async () => {
+      try {
+        const response = await fetch("/api/admin/quotes?is_active=true");
+        if (response.ok) {
+          const data = await response.json();
+          setQuotes(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch quotes:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchQuotes();
+  }, []);
+
   const filteredQuotes = useMemo(() => {
-    return QUOTES.filter((quote) => {
+    return quotes.filter((quote) => {
       const matchesCategory = selectedCategory === "All" || quote.category === selectedCategory;
       const matchesSearch = searchQuery === "" || 
         quote.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
         quote.category.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery, quotes]);
 
-  const featuredQuote = {
-    text: "Human beings search across the world for meaning, yet the doorway is always within their own awareness.",
-    attribution: "Dr. Kumar",
-  };
+  const featuredQuote = quotes.find((q) => q.is_featured) || quotes[0];
 
   return (
     <div className="bg-[#1C2340] min-h-screen">
@@ -155,24 +80,34 @@ export default function QuotesPage() {
       />
 
       {/* Featured Quote Section */}
-      <section className="section-spacing bg-[#151A30] relative">
-        <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
-              Featured Reflection
-            </h2>
-            <div className="gold-divider long mx-auto mb-6" />
-          </motion.div>
+      {isLoading ? (
+        <section className="section-spacing bg-[#151A30] relative">
+          <div className="container-premium">
+            <div className="flex items-center justify-center py-20">
+              <div className="w-16 h-16 border-4 border-[#C5A85C]/20 border-t-[#C5A85C] rounded-full animate-spin" />
+            </div>
+          </div>
+        </section>
+      ) : featuredQuote && (
+        <section className="section-spacing bg-[#151A30] relative">
+          <div className="container-premium">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-12"
+            >
+              <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+                Featured Reflection
+              </h2>
+              <div className="gold-divider long mx-auto mb-6" />
+            </motion.div>
 
-          <QuoteBlock quote={featuredQuote.text} attribution={featuredQuote.attribution} />
-        </div>
-      </section>
+            <QuoteBlock quote={featuredQuote.text} attribution="Dr. Kumar" />
+          </div>
+        </section>
+      )}
 
       {/* Category Filter & Search Section */}
       <section className="section-spacing bg-[#1C2340] relative">
@@ -238,6 +173,12 @@ export default function QuotesPage() {
         <div className="absolute inset-0 pattern-subtle opacity-20" />
 
         <div className="container-premium relative z-10">
+          {isLoading ? (
+            <div className="flex items-center justify-center py-20">
+              <div className="w-16 h-16 border-4 border-[#C5A85C]/20 border-t-[#C5A85C] rounded-full animate-spin" />
+            </div>
+          ) : (
+            <>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -275,6 +216,8 @@ export default function QuotesPage() {
                 No teachings found matching your search. Try a different category or keyword.
               </p>
             </motion.div>
+          )}
+            </>
           )}
         </div>
       </section>

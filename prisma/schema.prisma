@@ -323,6 +323,27 @@ model Task {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// TABLE 16: quotes
+// Dr. Kumar quotes for the Teachings section
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Quote {
+  id           String   @id @default(uuid())
+  text         String
+  category     String
+  is_featured  Boolean  @default(false)
+  display_order Int     @default(0)
+  is_active    Boolean  @default(true)
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  @@index([category])
+  @@index([is_active])
+  @@index([is_featured])
+  @@index([display_order])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // TABLE 15: notifications
 // User notifications for tasks and updates
 // ─────────────────────────────────────────────────────────────────────────────

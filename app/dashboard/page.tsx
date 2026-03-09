@@ -12,6 +12,7 @@ export default function DashboardPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<{ id: string; email: string; full_name: string } | null>(null);
+  const [hasProgram, setHasProgram] = useState(false);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -21,14 +22,24 @@ export default function DashboardPage() {
         if (localSession) {
           try {
             const userData = JSON.parse(localSession);
+            console.log('[Dashboard] User from localStorage:', userData);
             setUser(userData);
+
+            // Check if user has a program using their unique ID
+            const programResponse = await fetch(`/api/user-programs?user_id=${userData.id}`);
+            if (programResponse.ok) {
+              const programs = await programResponse.json();
+              console.log('[Dashboard] User programs:', programs);
+              setHasProgram(programs.length > 0);
+            }
+
             setIsLoading(false);
             return;
           } catch {
             localStorage.removeItem("user_session");
           }
         }
-        
+
         // If no local session, try server session
         const response = await fetch("/api/auth/session");
         if (!response.ok) {
@@ -36,9 +47,21 @@ export default function DashboardPage() {
           return;
         }
         const userData = await response.json();
+        console.log('[Dashboard] User from server:', userData);
         setUser(userData);
+        
+        // Store in localStorage for future requests
         localStorage.setItem("user_session", JSON.stringify(userData));
-      } catch {
+
+        // Check if user has a program using their unique ID
+        const programResponse = await fetch(`/api/user-programs?user_id=${userData.id}`);
+        if (programResponse.ok) {
+          const programs = await programResponse.json();
+          console.log('[Dashboard] User programs (server):', programs);
+          setHasProgram(programs.length > 0);
+        }
+      } catch (error) {
+        console.error('[Dashboard] Auth check error:', error);
         router.push("/");
       } finally {
         setIsLoading(false);
@@ -66,11 +89,12 @@ export default function DashboardPage() {
     <div className="bg-[#1C2340] min-h-screen">
       <div className="flex items-center justify-between px-8 py-4 bg-[#1C2340] border-b border-[#C5A85C]/20">
         <div>
-          <h1 className="text-2xl font-serif text-white">My Dashboard</h1>
-          <p className="text-[#AAB3CF] text-sm">Welcome back, {user?.full_name}</p>
+          {/* <h1 className="text-2xl font-serif text-white">My Dashboard</h1>
+          <p className="text-[#AAB3CF] text-sm">Welcome back, {user?.full_name}</p> */}
+          
         </div>
         <div className="flex items-center gap-4">
-          {user && <NotificationBell userId={user.id} />}
+          {hasProgram && user && <NotificationBell userId={user.id} />}
           <Link href="/" className="text-[#AAB3CF] hover:text-white text-sm">
             View Site →
           </Link>
@@ -182,51 +206,53 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Contributions Section */}
-          <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-8">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h2 className="font-serif text-2xl text-white mb-2">My Contributions</h2>
-                <p className="text-[#AAB3CF] text-sm">Track and submit your monthly activities</p>
+          {/* Contributions Section - Only show if user has a program */}
+          {hasProgram && (
+            <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-8">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="font-serif text-2xl text-white mb-2">My Contributions</h2>
+                  <p className="text-[#AAB3CF] text-sm">Track and submit your monthly activities</p>
+                </div>
+                <Link
+                  href="/dashboard/contribute"
+                  className="px-6 py-3 bg-[#C5A85C] text-[#1C2340] rounded-lg hover:bg-[#D4BE90] transition-all font-medium"
+                >
+                  Submit Contribution
+                </Link>
               </div>
-              <Link
-                href="/dashboard/contribute"
-                className="px-6 py-3 bg-[#C5A85C] text-[#1C2340] rounded-lg hover:bg-[#D4BE90] transition-all font-medium"
-              >
-                Submit Contribution
-              </Link>
-            </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              <Link
-                href="/dashboard/contributions"
-                className="bg-[#1C2340] border border-white/10 rounded-xl p-6 hover:border-[#C5A85C]/40 transition-all group"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-[#C5A85C]/10 rounded-full flex items-center justify-center group-hover:bg-[#C5A85C]/20 transition-all">
-                    <svg className="w-5 h-5 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link
+                  href="/dashboard/contributions"
+                  className="bg-[#1C2340] border border-white/10 rounded-xl p-6 hover:border-[#C5A85C]/40 transition-all group"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-[#C5A85C]/10 rounded-full flex items-center justify-center group-hover:bg-[#C5A85C]/20 transition-all">
+                      <svg className="w-5 h-5 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
+                    <h3 className="font-serif text-lg text-white">View All Contributions</h3>
                   </div>
-                  <h3 className="font-serif text-lg text-white">View All Contributions</h3>
-                </div>
-                <p className="text-[#AAB3CF] text-sm">See your submission history and status</p>
-              </Link>
-              <Link
-                href="/activity"
-                className="bg-[#1C2340] border border-white/10 rounded-xl p-6 hover:border-[#C5A85C]/40 transition-all group"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple-500/10 rounded-full flex items-center justify-center group-hover:bg-purple-500/20 transition-all">
-                    <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
+                  <p className="text-[#AAB3CF] text-sm">See your submission history and status</p>
+                </Link>
+                <Link
+                  href="/activity"
+                  className="bg-[#1C2340] border border-white/10 rounded-xl p-6 hover:border-[#C5A85C]/40 transition-all group"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-purple-500/10 rounded-full flex items-center justify-center group-hover:bg-purple-500/20 transition-all">
+                      <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <h3 className="font-serif text-lg text-white">My Activities</h3>
                   </div>
-                  <h3 className="font-serif text-lg text-white">My Activities</h3>
-                </div>
-                <p className="text-[#AAB3CF] text-sm">View your program activities and engagement</p>
-              </Link>
+                  <p className="text-[#AAB3CF] text-sm">View your program activities and engagement</p>
+                </Link>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 

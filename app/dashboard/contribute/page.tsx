@@ -51,17 +51,21 @@ export default function ContributePage() {
     const checkSession = async () => {
       const session = localStorage.getItem("user_session");
       if (!session) {
+        console.log('[Contribute] No session found, redirecting');
         router.push('/auth/login');
         return;
       }
 
       const userData = JSON.parse(session);
+      console.log('[Contribute] User from session:', userData);
       setUser(userData);
 
       try {
         const response = await fetch(`/api/user-programs?user_id=${userData.id}`);
+        console.log('[Contribute] User programs response status:', response.status);
         if (response.ok) {
           const programs = await response.json();
+          console.log('[Contribute] User programs:', programs);
           if (programs.length > 0) {
             setUserProgram(programs[0]);
           } else {
@@ -70,7 +74,7 @@ export default function ContributePage() {
           }
         }
       } catch (error) {
-        console.error('Failed to check enrollment:', error);
+        console.error('[Contribute] Failed to check enrollment:', error);
       } finally {
         setIsLoading(false);
       }
@@ -213,14 +217,17 @@ export default function ContributePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#1C2340]">
+    <div className="min-h-screen my-6 bg-[#1C2340]">
       {/* Header */}
-      <header className="h-20 bg-[#1C2340] border-b border-[#C5A85C]/20 flex items-center justify-between px-8">
-        <div>
-          <h1 className="text-white font-serif text-2xl">Submit Contribution</h1>
-          <p className="text-[#AAB3CF] text-sm">{userProgram ? programNames[userProgram.program_type] : ''}</p>
+      <header className="h-24 bg-[#1C2340] border-b border-[#C5A85C]/20 flex items-center justify-between px-8">
+        <div className="flex justify-center w-full">
+          <div>
+          <h1 className="text-white font-serif text-2xl">{userProgram ? programNames[userProgram.program_type] : ''}</h1>
+          <p className="text-[#AAB3CF] text-sm">Submit Contribution</p>
+          </div>
+          
         </div>
-        <Link href="/dashboard" className="text-[#AAB3CF] hover:text-white transition-colors text-sm">
+        <Link href="/dashboard" className="text-[#AAB3CF] w-48 hover:text-white transition-colors text-sm">
           ← Back to Dashboard
         </Link>
       </header>

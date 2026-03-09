@@ -1,14 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
-// GET /api/user-programs - Get all user programs (for admin)
+// GET /api/user-programs - Get user programs
+// Query params: ?user_id=xxx (optional, filters by specific user)
 export async function GET(request: NextRequest) {
   try {
-    // Get all active user programs
+    const searchParams = request.nextUrl.searchParams;
+    const userId = searchParams.get('user_id');
+
+    // Build where clause
+    const whereClause: any = {
+      is_active: true,
+    };
+
+    // Filter by user_id if provided
+    if (userId) {
+      whereClause.user_id = userId;
+    }
+
     const userPrograms = await prisma.userProgram.findMany({
-      where: {
-        is_active: true,
-      },
+      where: whereClause,
       include: {
         user: {
           select: {
