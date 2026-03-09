@@ -465,11 +465,30 @@ export default function EngagePage() {
   // Check authentication and submission status
   useEffect(() => {
     const checkAuthAndSubmission = async () => {
-      // Always validate with server first
+      // First check localStorage for existing session
+      const localSession = localStorage.getItem("user_session");
+      
+      if (localSession) {
+        try {
+          const userData = JSON.parse(localSession);
+          console.log('[Form] Found session in localStorage:', userData);
+          setUser(userData);
+          // User is authenticated from localStorage, check submission status
+          await checkSubmissionStatus(userData.id, userData.email);
+          setIsLoading(false);
+          setIsCheckingSubmission(false);
+          return;
+        } catch (error) {
+          console.error('[Form] Failed to parse localStorage session:', error);
+          localStorage.removeItem("user_session");
+        }
+      }
+
+      // No localStorage session - validate with server
       try {
-        console.log('[Form] Validating session with server...');
+        console.log('[Form] No localStorage session, validating with server...');
         const response = await fetch('/api/auth/session');
-        
+
         if (!response.ok) {
           // Not authenticated - show auth modal
           console.log('[Form] Not authenticated, showing auth modal');
@@ -484,7 +503,7 @@ export default function EngagePage() {
 
         const userData = await response.json();
         console.log('[Form] Validated user:', userData);
-        
+
         // Update localStorage with validated user
         localStorage.setItem("user_session", JSON.stringify(userData));
         setUser(userData);
