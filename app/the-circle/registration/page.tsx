@@ -117,9 +117,27 @@ export default function RegistrationPage() {
   // Check authentication and submission status
   useEffect(() => {
     const checkAuthAndSubmission = async () => {
-      // Always validate with server first
+      // First check localStorage for existing session
+      const localSession = localStorage.getItem("user_session");
+      
+      if (localSession) {
+        try {
+          const userData = JSON.parse(localSession);
+          console.log('[Circle Registration] Found session in localStorage:', userData);
+          setUser(userData);
+          // User is authenticated from localStorage, check submission status
+          await checkSubmissionStatus(userData.id, userData.email);
+          setIsLoading(false);
+          return;
+        } catch (error) {
+          console.error('[Circle Registration] Failed to parse localStorage session:', error);
+          localStorage.removeItem("user_session");
+        }
+      }
+
+      // No localStorage session - validate with server
       try {
-        console.log('[Circle Registration] Validating session with server...');
+        console.log('[Circle Registration] No localStorage session, validating with server...');
         const response = await fetch('/api/auth/session');
 
         if (!response.ok) {
@@ -193,6 +211,23 @@ export default function RegistrationPage() {
     setIsAuthModalOpen(false);
     // Force revalidation after modal closes
     setTimeout(async () => {
+      // First check localStorage
+      const localSession = localStorage.getItem("user_session");
+      if (localSession) {
+        try {
+          const userData = JSON.parse(localSession);
+          console.log('[Circle Registration] Found session in localStorage after auth:', userData);
+          setUser(userData);
+          await checkSubmissionStatus(userData.id, userData.email);
+          setIsLoading(false);
+          return;
+        } catch (error) {
+          console.error('[Circle Registration] Failed to parse localStorage session:', error);
+          localStorage.removeItem("user_session");
+        }
+      }
+
+      // No localStorage - validate with server
       try {
         console.log('[Circle Registration] Revalidating session after auth...');
         const response = await fetch('/api/auth/session');
