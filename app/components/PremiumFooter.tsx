@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 interface FooterLink {
@@ -50,9 +51,10 @@ export default function PremiumFooter() {
           {/* Column 1 - Foundation Identity */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 border border-[#C5A85C]/40 flex items-center justify-center">
+              {/* <div className="w-10 h-10 border border-[#C5A85C]/40 flex items-center justify-center">
                 <span className="text-[#C5A85C] font-serif text-xl font-bold">D</span>
-              </div>
+              </div> */}
+              <Image alt="LOGO" height={50} width={50} src="/dkf_logo_21.png" className="pt-2" />
               <div>
                 <span className="text-white font-serif text-base block">
                   Dr. Ghulam Mohammad Kumar

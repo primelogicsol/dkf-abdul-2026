@@ -1,49 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
-// GET /api/contributions/top - Get top contributors by program
+// GET /api/contributions/top - Get top contributions by program
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const programType = searchParams.get('program_type');
     const limit = parseInt(searchParams.get('limit') || '3');
 
-    // Get current month start and end
-    const now = new Date();
-    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-
-    const where: any = {
-      status: 'approved',
-      submitted_at: {
-        gte: startOfMonth,
-        lte: endOfMonth,
-      },
-    };
-
-    if (programType) {
-      where.program_type = programType;
+    if (!programType) {
+      return NextResponse.json(
+        { error: 'program_type is required' },
+        { status: 400 }
+      );
     }
 
-    const topContributors = await prisma.contribution.groupBy({
-      by: ['user_id', 'user_name', 'user_email'],
-      where,
-      _count: {
-        id: true,
+    // Fetch approved contributions for this program
+    const contributions = await prisma.contribution.findMany({
+      where: {
+        program_type: programType,
+        status: 'approved',
       },
       orderBy: {
-        _count: {
-          id: 'desc',
-        },
+        submitted_at: 'desc',
       },
       take: limit,
     });
 
-    return NextResponse.json(topContributors);
+    return NextResponse.json(contributions);
   } catch (error) {
-    console.error('Failed to fetch top contributors:', error);
+    console.error('Failed to fetch top contributions:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch top contributors' },
+      { error: 'Failed to fetch contributions' },
       { status: 500 }
     );
   }

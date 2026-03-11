@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
 import OtpForm from "./OtpForm";
+import Image from "next/image";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -91,9 +92,10 @@ export default function AuthModal({ isOpen, onClose, initialTab = "signin" }: Au
                 </button>
 
                 <div className="text-center">
-                  <div className="w-12 h-12 border border-[#C5A85C]/40 flex items-center justify-center mx-auto mb-3">
+                  {/* <div className="w-12 h-12 border border-[#C5A85C]/40 flex items-center justify-center mx-auto mb-3">
                     <span className="text-[#C5A85C] font-serif text-xl font-bold">D</span>
-                  </div>
+                  </div> */}
+                  <Image alt="LOGO" height={50} width={50} src="/dkf_logo_21.png" className="pt-2" />
                   <h2 className="font-serif text-2xl text-white">
                     {activeTab === "signin" && "Welcome Back"}
                     {activeTab === "signup" && "Create Account"}

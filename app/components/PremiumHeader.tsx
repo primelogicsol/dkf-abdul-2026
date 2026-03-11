@@ -147,7 +147,7 @@ export default function PremiumHeader() {
                 <span className="text-[#C5A85C] font-serif text-2xl font-bold">D</span>
                 
               </div> */}
-              <Image alt="LOGO" height={50} width={50} src="/dkf_logo_21.png" />
+              <Image alt="LOGO" height={50} width={50} src="/dkf_logo_21.png" className="pt-2" />
               <div className="hidden md:block">
                 <span className="text-white font-serif text-lg tracking-wide block">
                 Dr. Kumar Foundation
@@ -292,7 +292,7 @@ export default function PremiumHeader() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full right-40 mt-2 pt-2 z-50"
+                        className="absolute top-full  mt-2 pt-2 z-50"
                       >
                         <div className="bg-[#1C2340]/98 backdrop-blur-md border border-[#C5A85C]/20 rounded-lg shadow-xl min-w-[200px] overflow-hidden">
                           {/* User Info */}

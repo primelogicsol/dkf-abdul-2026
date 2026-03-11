@@ -10,6 +10,7 @@ import FrameworkCard from "../../components/FrameworkCard";
 import ImpactDiagram from "../../components/ImpactDiagram";
 import ImpactMetric from "../../components/ImpactMetric";
 import PlatformPartnership from "../../components/PlatformPartnership";
+import TopContributorsGrid from "../../components/TopContributorsGrid";
 
 interface Video {
   id?: string;
@@ -19,10 +20,65 @@ interface Video {
   views?: string;
 }
 
+interface Contribution {
+  id: string;
+  title: string;
+  activity_date: string;
+  venue_city: string;
+  venue_country: string;
+  participant_count: number;
+  task_conducted: string;
+  results: string;
+  user_name: string;
+  submitted_at: string;
+}
+
+interface User {
+  id: string;
+  email: string;
+  full_name: string;
+  avatar_url?: string;
+}
+
+interface TopContributor {
+  user: User;
+  contribution_count: number;
+  latest_contribution: Contribution;
+  collaboration_info?: {
+    fullName?: string;
+    professionalBackground?: string;
+    specialization?: string;
+    yearsExperience?: string;
+    country?: string;
+    email?: string;
+    proposedContribution?: string;
+  };
+}
+
 export default function SufiMusicPage() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [isLoadingVideos, setIsLoadingVideos] = useState(true);
   const [showAllVideos, setShowAllVideos] = useState(false);
+  const [topContributors, setTopContributors] = useState<TopContributor[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchContributors = async () => {
+      try {
+        const response = await fetch('/api/contributions/top-contributors?program_type=sufi-music&limit=3');
+        if (response.ok) {
+          const data = await response.json();
+          setTopContributors(data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch contributors:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchContributors();
+  }, []);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -326,89 +382,101 @@ export default function SufiMusicPage() {
             </div>
           ) : videos.length > 0 ? (
             <>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                {displayedVideos.map((video, index) => (
-                  <Link
-                  key={video.id || index}
-                  href={
-                    video.id
-                      ? `https://www.youtube.com/watch?v=${video.id}`
-                      : "#"
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <motion.div
+              {/* Video Grid with Conditional Scroll */}
+              <div className={`${showAllVideos ? 'relative' : ''}`}>
+                <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 ${
+                  showAllVideos 
+                    ? 'max-h-[900px] overflow-y-auto scrollbar-thin scrollbar-thumb-[#C5A85C] scrollbar-track-[#232B52] scrollbar-thumb-rounded-full pr-4' 
+                    : ''
+                }`}>
+                  {displayedVideos.map((video, index) => (
+                    <Link
                     key={video.id || index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl overflow-hidden group hover:border-[#C5A85C]/30 transition-all duration-300"
+                    href={
+                      video.id
+                        ? `https://www.youtube.com/watch?v=${video.id}`
+                        : "#"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
                   >
-                    {/* Thumbnail */}
-                    <div className="relative aspect-video overflow-hidden">
-                      <img
-                        src={video.thumbnail || 'https://via.placeholder.com/640x360/1C2340/C5A85C?text=Video+Thumbnail'}
-                        alt={video.title || 'Video thumbnail'}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      {/* Play Button Overlay */}
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-16 h-16 bg-[#C5A85C]/90 rounded-full flex items-center justify-center">
-                          <svg className="w-8 h-8 text-[#1C2340] ml-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
+                    <motion.div
+                      key={video.id || index}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl overflow-hidden group hover:border-[#C5A85C]/30 transition-all duration-300"
+                    >
+                      {/* Thumbnail */}
+                      <div className="relative aspect-video overflow-hidden">
+                        <img
+                          src={video.thumbnail || 'https://via.placeholder.com/640x360/1C2340/C5A85C?text=Video+Thumbnail'}
+                          alt={video.title || 'Video thumbnail'}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        {/* Play Button Overlay */}
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="w-16 h-16 bg-[#C5A85C]/90 rounded-full flex items-center justify-center">
+                            <svg className="w-8 h-8 text-[#1C2340] ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </div>
                         </div>
+                        {/* Duration Badge */}
+                        {video.duration && (
+                          <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
+                            {video.duration}
+                          </div>
+                        )}
                       </div>
-                      {/* Duration Badge */}
-                      {video.duration && (
-                        <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-1 rounded">
-                          {video.duration}
-                        </div>
-                      )}
-                    </div>
 
-                    {/* Video Info */}
-                    <div className="p-6">
-                      <h3 className="font-serif text-lg text-white mb-3 line-clamp-2">
-                        {video.title || 'Untitled Video'}
-                      </h3>
-                      {video.views && (
-                        <div className="flex items-center gap-2 text-[#AAB3CF] text-sm">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                          </svg>
-                          <span>{video.views} views</span>
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                </Link>
-                  
-                ))}
+                      {/* Video Info */}
+                      <div className="p-6">
+                        <h3 className="font-serif text-lg text-white mb-3 line-clamp-2">
+                          {video.title || 'Untitled Video'}
+                        </h3>
+                        {video.views && (
+                          <div className="flex items-center gap-2 text-[#AAB3CF] text-sm">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                            <span>{video.views} views</span>
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  </Link>
+
+                  ))}
+                </div>
+
+                {/* Fade effect at bottom when scrolling */}
+                {showAllVideos && (
+                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#151A30] to-transparent pointer-events-none" />
+                )}
               </div>
 
               {/* See More Button */}
               {videos.length > 3 && (
-                <div className="text-center">
+                <div className="text-center mt-12">
                   <button
                     onClick={() => setShowAllVideos(!showAllVideos)}
-                    className="inline-flex items-center gap-2 px-8 py-4 border border-[#C5A85C]/40 text-[#C5A85C] font-medium rounded-lg transition-all duration-300 hover:bg-[#C5A85C]/10 hover:border-[#C5A85C]"
+                    className="inline-flex items-center gap-2 px-8 py-4 border border-[#C5A85C]/40 text-[#C5A85C] font-medium rounded-lg transition-all duration-300 hover:bg-[#C5A85C]/10 hover:border-[#C5A85C] group"
                   >
                     {showAllVideos ? (
                       <>
-                        Show Less
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                        <span>Show Less</span>
+                        <svg className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 15l7-7 7 7" />
                         </svg>
                       </>
                     ) : (
                       <>
-                        See More Videos
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span>See More Videos</span>
+                        <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
                         </svg>
                       </>
@@ -424,6 +492,39 @@ export default function SufiMusicPage() {
               </svg>
               <p className="text-[#AAB3CF]">No videos available at this time.</p>
             </div>
+          )}
+        </div>
+      </section>
+
+      {/* Top Contributors */}
+      <section className="section-spacing bg-[#151A30] relative">
+        <div className="container-premium">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+              Top Contributors
+            </h2>
+            <div className="gold-divider long mx-auto mb-6" />
+            <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
+              Recognizing our most active community members preserving and sharing devotional musical traditions.
+            </p>
+          </motion.div>
+
+          {isLoading ? (
+            <div className="flex justify-center py-20">
+              <div className="w-16 h-16 border-4 border-[#C5A85C]/20 border-t-[#C5A85C] rounded-full animate-spin" />
+            </div>
+          ) : (
+            <TopContributorsGrid
+              contributors={topContributors}
+              programName="Sufi Music"
+              isLoading={isLoading}
+            />
           )}
         </div>
       </section>

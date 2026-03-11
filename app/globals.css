@@ -360,6 +360,18 @@ p {
   display: none;
 }
 
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Selection */
 ::selection {
   background: rgba(197, 168, 92, 0.3);

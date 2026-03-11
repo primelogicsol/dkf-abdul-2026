@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import PremiumHeader from "../../components/PremiumHeader";
@@ -9,8 +10,64 @@ import FrameworkCard from "../../components/FrameworkCard";
 import ImpactDiagram from "../../components/ImpactDiagram";
 import ImpactMetric from "../../components/ImpactMetric";
 import PlatformPartnership from "../../components/PlatformPartnership";
+import TopContributorsGrid from "../../components/TopContributorsGrid";
+
+interface Contribution {
+  id: string;
+  title: string;
+  activity_date: string;
+  venue_city: string;
+  venue_country: string;
+  participant_count: number;
+  task_conducted: string;
+  results: string;
+  user_name: string;
+  submitted_at: string;
+}
+
+interface User {
+  id: string;
+  email: string;
+  full_name: string;
+  avatar_url?: string;
+}
+
+interface TopContributor {
+  user: User;
+  contribution_count: number;
+  latest_contribution: Contribution;
+  collaboration_info?: {
+    fullName?: string;
+    professionalBackground?: string;
+    specialization?: string;
+    yearsExperience?: string;
+    country?: string;
+    email?: string;
+    proposedContribution?: string;
+  };
+}
 
 export default function SufiEcommercePage() {
+  const [topContributors, setTopContributors] = useState<TopContributor[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchContributors = async () => {
+      try {
+        const response = await fetch('/api/contributions/top-contributors?program_type=sufi-ecommerce&limit=3');
+        if (response.ok) {
+          const data = await response.json();
+          setTopContributors(data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch contributors:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchContributors();
+  }, []);
   const frameworkItems = [
     {
       icon: (
@@ -265,6 +322,39 @@ export default function SufiEcommercePage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Top Contributors */}
+      <section className="section-spacing bg-[#151A30] relative">
+        <div className="container-premium">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+              Top Contributors
+            </h2>
+            <div className="gold-divider long mx-auto mb-6" />
+            <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
+              Recognizing our most active community members supporting ethical commerce and heritage artisans.
+            </p>
+          </motion.div>
+
+          {isLoading ? (
+            <div className="flex justify-center py-20">
+              <div className="w-16 h-16 border-4 border-[#C5A85C]/20 border-t-[#C5A85C] rounded-full animate-spin" />
+            </div>
+          ) : (
+            <TopContributorsGrid
+              contributors={topContributors}
+              programName="Sufi Ecommerce"
+              isLoading={isLoading}
+            />
+          )}
         </div>
       </section>
 

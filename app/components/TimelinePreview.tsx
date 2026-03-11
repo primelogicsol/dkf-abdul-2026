@@ -42,7 +42,7 @@ export default function TimelinePreview() {
       {/* Subtle Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1C2340] via-[#1C2340]/95 to-[#151A30]" />
 
-      <div className="container-premium relative z-10">
+      <div className="container-premium relative  z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Vertical Timeline Line */}
           <motion.div
@@ -53,10 +53,10 @@ export default function TimelinePreview() {
             className="hidden lg:block relative"
           >
             {/* Vertical Gold Line */}
-            <div className="absolute left-[19px] top-4 bottom-0 w-[1px] bg-gradient-to-b from-[#C5A85C]/50 via-[#C5A85C]/30 to-transparent" />
+            <div className="absolute left-[390px] top-4 bottom-0 w-[2px] h-full bg-gradient-to-b from-[#C5A85C]/50 via-[#C5A85C]/30 to-transparent" />
             
             {/* Decorative Elements */}
-            <div className="space-y-36">
+            <div className="space-y-40 pl-[371px] pt-4 ">
               <div className="w-10 h-10 border border-[#C5A85C]/20 rounded-full flex items-center justify-center">
                 <div className="w-2 h-2 bg-[#C5A85C]/40 rounded-full" />
               </div>

@@ -93,10 +93,13 @@ export default function UserContributionsPage() {
   return (
     <div className="min-h-screen bg-[#1C2340]">
       {/* Header */}
-      <header className="h-20 bg-[#1C2340] border-b border-[#C5A85C]/20 flex items-center justify-between px-8">
-        <div>
+      <header className="h-28 bg-[#1C2340] border-b border-[#C5A85C]/20 flex items-center justify-between px-8">
+        <div className="flex justify-center">
+          <div className="space-y-2">
           <h1 className="text-white font-serif text-2xl">My Contributions</h1>
           <p className="text-[#AAB3CF] text-sm">Track your monthly activities</p>
+          </div>
+          
         </div>
         <div className="flex items-center gap-4">
           <Link href="/dashboard" className="text-[#AAB3CF] hover:text-white transition-colors text-sm">

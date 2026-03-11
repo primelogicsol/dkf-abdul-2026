@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import PremiumHeader from "../components/PremiumHeader";
@@ -10,27 +10,48 @@ import MemberCard from "../components/MemberCard";
 import MemberMetricCard from "../components/MemberMetricCard";
 
 interface Member {
-  id: number;
-  name: string;
+  id: string;
+  full_name: string;
   country: string;
+  city?: string;
   profession: string;
-  yearConnected: number;
+  year_connected: number;
+  photo_url?: string;
 }
 
-// Sample data jjj
-const sampleMembers: Member[] = [
-  { id: 1, name: "Ahmed Hassan", country: "Egypt", profession: "Physician", yearConnected: 2018 },
-  { id: 2, name: "Sarah Mitchell", country: "United Kingdom", profession: "Educator", yearConnected: 2019 },
-  { id: 3, name: "Marcus Weber", country: "Germany", profession: "Engineer", yearConnected: 2017 },
-  { id: 4, name: "Fatima Al-Rashid", country: "UAE", profession: "Architect", yearConnected: 2020 },
-  { id: 5, name: "James Chen", country: "Singapore", profession: "Researcher", yearConnected: 2019 },
-  { id: 6, name: "Elena Popescu", country: "Romania", profession: "Psychologist", yearConnected: 2021 },
-  { id: 7, name: "David Okonkwo", country: "Nigeria", profession: "Legal Advisor", yearConnected: 2018 },
-  { id: 8, name: "Priya Sharma", country: "India", profession: "Social Worker", yearConnected: 2020 },
-];
+interface MembersResponse {
+  data: Member[];
+  pagination: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+}
 
 export default function TheCirclePage() {
-  const [members, setMembers] = useState<Member[]>(sampleMembers);
+  const [members, setMembers] = useState<Member[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [totalCount, setTotalCount] = useState(0);
+
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const response = await fetch('/api/members?page=1&limit=4&status=published');
+        if (response.ok) {
+          const data: MembersResponse = await response.json();
+          setMembers(data.data);
+          setTotalCount(data.pagination.total);
+        }
+      } catch (error) {
+        console.error('Failed to fetch members:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchMembers();
+  }, []);
 
   return (
     <div className="bg-[#1C2340] min-h-screen">
@@ -148,6 +169,9 @@ export default function TheCirclePage() {
                 Members Directory
               </h2>
               <div className="gold-divider" />
+              <p className="text-[#AAB3CF] text-sm mt-2">
+                {totalCount > 0 ? `${totalCount} published members` : 'No members yet'}
+              </p>
             </div>
             <Link
               href="/the-circle/members-directory"
@@ -171,19 +195,33 @@ export default function TheCirclePage() {
           </motion.div>
 
           {/* Members Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {members.slice(0, 4).map((member, index) => (
-              <MemberCard
-                key={member.id}
-                id={member.id.toString()}
-                name={member.name}
-                country={member.country}
-                profession={member.profession}
-                yearConnected={member.yearConnected}
-                delay={0.1 * (index + 1)}
-              />
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="flex justify-center py-20">
+              <div className="w-16 h-16 border-4 border-[#C5A85C]/20 border-t-[#C5A85C] rounded-full animate-spin" />
+            </div>
+          ) : members.length > 0 ? (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {members.slice(0, 4).map((member, index) => (
+                <MemberCard
+                  key={member.id}
+                  id={member.id}
+                  name={member.full_name}
+                  country={member.country}
+                  profession={member.profession}
+                  yearConnected={member.year_connected}
+                  delay={0.1 * (index + 1)}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-20 bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl">
+              <svg className="w-16 h-16 text-[#C5A85C]/20 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              <p className="text-[#AAB3CF] text-lg">No published members yet</p>
+              <p className="text-[#6B7299] text-sm mt-2">Members will appear here once approved</p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -204,7 +242,7 @@ export default function TheCirclePage() {
             </h2>
             <div className="gold-divider long mx-auto mb-8" />
 
-            <ul className="space-y-4 text-[#AAB3CF]">
+            <ul className="space-y-4 pl-[20%]  text-[#AAB3CF]">
               {[
                 "Maintain clarity of language in all documentation",
                 "Avoid exaggeration or mystical claims",

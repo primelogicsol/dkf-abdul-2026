@@ -12,9 +12,9 @@ export default function ParticipationGuidelinesPage() {
           <Link href="/the-circle" className="text-[#C9CCD6] hover:text-white transition-colors text-sm mb-6 inline-block">
             ← Back to The Circle
           </Link>
-          <h1 className="text-4xl md:text-5xl font-serif text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">
             Participation Guidelines
-          </h1>
+          </h2>
           <div className="w-24 h-[1px] bg-[#C5A85C]" />
         </div>
       </section>
@@ -30,7 +30,7 @@ export default function ParticipationGuidelinesPage() {
           <div className="space-y-8">
             {/* Guideline 1 */}
             <div className="border-l-2 border-[#C5A85C]/30 pl-6">
-              <h2 className="text-white font-serif text-xl mb-3">Maintain Clarity of Language</h2>
+              <h3 className="text-white font-serif text-xl mb-3">Maintain Clarity of Language</h3>
               <p className="text-[#C9CCD6] leading-relaxed">
                 Use precise, grounded language in all documentation. Avoid vague spiritual 
                 terminology, mystical claims, or language that suggests extraordinary states. 
@@ -40,7 +40,7 @@ export default function ParticipationGuidelinesPage() {
 
             {/* Guideline 2 */}
             <div className="border-l-2 border-[#C5A85C]/30 pl-6">
-              <h2 className="text-white font-serif text-xl mb-3">Avoid Exaggeration</h2>
+              <h3 className="text-white font-serif text-xl mb-3">Avoid Exaggeration</h3>
               <p className="text-[#C9CCD6] leading-relaxed">
                 Do not embellish experiences or claim transformations that cannot be 
                 substantiated. The Circle documents genuine engagement, not idealized 
@@ -50,7 +50,7 @@ export default function ParticipationGuidelinesPage() {
 
             {/* Guideline 3 */}
             <div className="border-l-2 border-[#C5A85C]/30 pl-6">
-              <h2 className="text-white font-serif text-xl mb-3">No Hierarchical Claims</h2>
+              <h3 className="text-white font-serif text-xl mb-3">No Hierarchical Claims</h3>
               <p className="text-[#C9CCD6] leading-relaxed">
                 The Circle is not hierarchical. No member holds status over another. 
                 Do not reference levels, ranks, achievements, or positions within any 
@@ -60,7 +60,7 @@ export default function ParticipationGuidelinesPage() {
 
             {/* Guideline 4 */}
             <div className="border-l-2 border-[#C5A85C]/30 pl-6">
-              <h2 className="text-white font-serif text-xl mb-3">Respect Structured Documentation</h2>
+              <h3 className="text-white font-serif text-xl mb-3">Respect Structured Documentation</h3>
               <p className="text-[#C9CCD6] leading-relaxed">
                 All member records follow the same structure: First Encounter, Resonated 
                 Quality, Life Changes, and Continuing Engagement. Adhere to this format 
@@ -70,7 +70,7 @@ export default function ParticipationGuidelinesPage() {
 
             {/* Guideline 5 */}
             <div className="border-l-2 border-[#C5A85C]/30 pl-6">
-              <h2 className="text-white font-serif text-xl mb-3">Subject to Moderation</h2>
+              <h3 className="text-white font-serif text-xl mb-3">Subject to Moderation</h3>
               <p className="text-[#C9CCD6] leading-relaxed">
                 All submissions undergo review before publication. The Foundation reserves 
                 the right to request revisions or decline publication if content does not 
@@ -80,7 +80,7 @@ export default function ParticipationGuidelinesPage() {
 
             {/* Guideline 6 */}
             <div className="border-l-2 border-[#C5A85C]/30 pl-6">
-              <h2 className="text-white font-serif text-xl mb-3">No Promotional Content</h2>
+              <h3 className="text-white font-serif text-xl mb-3">No Promotional Content</h3>
               <p className="text-[#C9CCD6] leading-relaxed">
                 Do not use your member record to promote personal projects, organizations, 
                 services, or products. The Circle is for documentation of engagement, not 
@@ -90,7 +90,7 @@ export default function ParticipationGuidelinesPage() {
 
             {/* Guideline 7 */}
             <div className="border-l-2 border-[#C5A85C]/30 pl-6">
-              <h2 className="text-white font-serif text-xl mb-3">Accuracy and Truthfulness</h2>
+              <h3 className="text-white font-serif text-xl mb-3">Accuracy and Truthfulness</h3>
               <p className="text-[#C9CCD6] leading-relaxed">
                 Provide accurate information regarding your background, profession, location, 
                 and year of connection. False or misleading information will result in removal 

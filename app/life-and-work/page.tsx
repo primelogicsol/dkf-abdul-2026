@@ -146,10 +146,10 @@ export default function HisLifePage() {
               className="hidden lg:block relative"
             >
               {/* Vertical Timeline Line - aligned with card dots */}
-              <div className="absolute left-[19px] top-[14.75rem] bottom-0 w-[1px] bg-gradient-to-b from-[#C5A85C]/50 via-[#C5A85C]/30 to-transparent" />
+              <div className="absolute left-[340px] top-[14.75rem] bottom-0 w-[2px] h-full bg-gradient-to-b from-[#C5A85C]/50 via-[#C5A85C]/30 to-transparent" />
 
               {/* Timeline Dots - Aligned with each period card dot */}
-              <div className="space-y-[275px] pt-[13.75rem]">
+              <div className="space-y-[275px] pl-[321px] pt-[12.75rem]">
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
@@ -245,10 +245,10 @@ export default function HisLifePage() {
               className="hidden lg:block relative"
             >
               {/* Vertical Timeline Line - aligned with card dots */}
-              <div className="absolute left-[19px] top-[14.75rem] bottom-0 w-[1px] bg-gradient-to-b from-[#C5A85C]/50 via-[#C5A85C]/30 to-transparent" />
+              <div className="absolute left-[340px] top-[14.75rem] bottom-0 w-[2px] h-full bg-gradient-to-b from-[#C5A85C]/50 via-[#C5A85C]/30 to-transparent" />
 
               {/* Timeline Dots - Aligned with each period card dot */}
-              <div className="space-y-[270px] pt-[13.75rem]">
+              <div className="space-y-[270px] pl-[321px] pt-[12.75rem]">
                 {[1, 2 ].map((i) => (
                   <div
                     key={i}
@@ -320,10 +320,10 @@ export default function HisLifePage() {
               className="hidden lg:block relative"
             >
               {/* Vertical Timeline Line - aligned with card dots */}
-              <div className="absolute left-[19px] top-[17.75rem] bottom-0 w-[1px] bg-gradient-to-b from-[#C5A85C]/50 via-[#C5A85C]/30 to-transparent" />
+              <div className="absolute left-[340px] top-[17.75rem] bottom-0 w-[2px] bg-gradient-to-b h-full from-[#C5A85C]/50  via-[#C5A85C]/30  to-transparent" />
 
               {/* Timeline Dots - Aligned with each period card dot */}
-              <div className="space-y-[270px] pt-[16.75rem]">
+              <div className="space-y-[270px] pl-[321px] pt-[16.75rem]">
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
