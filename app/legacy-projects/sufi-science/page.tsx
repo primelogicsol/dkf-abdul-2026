@@ -395,11 +395,11 @@ export default function SufiSciencePage() {
         ]}
         primaryButton={{
           text: "Visit Sufi Science Center",
-          href: "https://sufiscience.org",
+          href: "https://sufisciencecenter.info",
         }}
         secondaryButton={{
           text: "Explore Research Programs",
-          href: "https://sufiscience.org",
+          href: "https://sufisciencecenter.info/exploringkashmirisufism",
         }}
         delay={0.2}
       />
