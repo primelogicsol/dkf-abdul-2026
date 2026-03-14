@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavItem {
   label: string;
@@ -22,7 +22,24 @@ interface AdminLayoutProps {
 
 export default function AdminLayout({ children, userRole, userName, userEmail }: AdminLayoutProps) {
   const pathname = usePathname();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  // Detect mobile and handle resize
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      if (!mobile) {
+        setIsSidebarOpen(false);
+      }
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const navItems: NavItem[] = [
     {
@@ -182,68 +199,103 @@ export default function AdminLayout({ children, userRole, userName, userEmail }:
     return item.roles.includes(userRole);
   });
 
+  const closeSidebar = () => {
+    if (isMobile) {
+      setIsSidebarOpen(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#161B33]">
+      {/* Mobile Overlay */}
+      <AnimatePresence>
+        {isSidebarOpen && isMobile && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsSidebarOpen(false)}
+            className="fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-sm"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full bg-[#161B33] border-r border-[#C5A85C]/20 transition-all duration-300 z-40 ${
-          isSidebarOpen ? "w-64" : "w-20"
+        className={`fixed top-0 left-0 h-full bg-[#161B33] border-r border-[#C5A85C]/20 transition-all duration-300 z-50 ${
+          isMobile 
+            ? isSidebarOpen ? "w-72 translate-x-0" : "w-72 -translate-x-full"
+            : isCollapsed ? "w-20" : "w-64"
         }`}
       >
-        {/* Logo */}
-        <div className="h-20 flex items-center justify-between px-6 border-b border-[#C5A85C]/20">
-          {isSidebarOpen && (
-            <span className="text-[#C5A85C] font-serif text-lg font-bold">
-              Admin
-            </span>
-          )}
+        {/* Logo Section */}
+        <div className="h-16 lg:h-20 flex items-center justify-between px-4 lg:px-6 border-b border-[#C5A85C]/20">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 lg:w-10 lg:h-10 border border-[#C5A85C]/40 rounded-lg flex items-center justify-center flex-shrink-0">
+              <span className="text-[#C5A85C] font-serif text-lg lg:text-xl font-bold">D</span>
+            </div>
+            {(!isCollapsed || isMobile) && (
+              <span className="text-[#C5A85C] font-serif text-base lg:text-lg font-bold truncate">
+                Admin
+              </span>
+            )}
+          </div>
           <button
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="text-[#AAB3CF] hover:text-white transition-colors"
+            onClick={() => isMobile ? setIsSidebarOpen(false) : setIsCollapsed(!isCollapsed)}
+            className="text-[#AAB3CF] hover:text-white transition-colors p-1 lg:p-2 rounded-lg hover:bg-white/5"
+            aria-label={isMobile ? "Close menu" : isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            {isMobile ? (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
         </div>
 
         {/* Navigation */}
-        <nav className="p-4 space-y-1">
+        <nav className="p-3 lg:p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-140px)] lg:max-h-[calc(100vh-180px)]">
           {filteredNavItems.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
+                onClick={closeSidebar}
+                className={`flex items-center gap-3 px-3 lg:px-4 py-2.5 lg:py-3 rounded-lg transition-all duration-200 group ${
                   isActive
                     ? "bg-[#C5A85C]/10 text-[#C5A85C] border-l-2 border-[#C5A85C]"
                     : "text-[#AAB3CF] hover:text-white hover:bg-white/5"
-                } ${!isSidebarOpen && "justify-center"}`}
+                } ${isCollapsed && !isMobile && "justify-center px-2"}`}
+                title={isCollapsed && !isMobile ? item.label : undefined}
               >
-                <span className={isActive ? "text-[#C5A85C]" : "text-[#AAB3CF] group-hover:text-white"}>
+                <span className={`${isActive ? "text-[#C5A85C]" : "text-[#AAB3CF] group-hover:text-white"} flex-shrink-0`}>
                   {item.icon}
                 </span>
-                {isSidebarOpen && (
-                  <span className="text-sm font-medium">{item.label}</span>
+                {(!isCollapsed || isMobile) && (
+                  <span className="text-xs lg:text-sm font-medium truncate">{item.label}</span>
                 )}
               </Link>
             );
           })}
         </nav>
 
-        {/* User Info */}
-        {isSidebarOpen && (
-          <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-[#C5A85C]/20">
+        {/* User Info - Only show when expanded or on mobile */}
+        {(!isCollapsed || isMobile) && (
+          <div className="absolute bottom-0 left-0 right-0 p-3 lg:p-4 border-t border-[#C5A85C]/20 bg-[#161B33]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#C5A85C]/20 flex items-center justify-center">
-                <span className="text-[#C5A85C] font-serif text-sm font-bold">
+              <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-[#C5A85C]/20 flex items-center justify-center flex-shrink-0">
+                <span className="text-[#C5A85C] font-serif text-xs lg:text-sm font-bold">
                   {userName.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2)}
                 </span>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-white text-sm font-medium truncate">{userName}</p>
-                <p className="text-[#AAB3CF] text-xs truncate capitalize">{userRole.replace("_", " ")}</p>
+                <p className="text-white text-xs lg:text-sm font-medium truncate">{userName}</p>
+                <p className="text-[#AAB3CF] text-[10px] lg:text-xs truncate capitalize">{userRole.replace("_", " ")}</p>
               </div>
             </div>
           </div>
@@ -251,24 +303,41 @@ export default function AdminLayout({ children, userRole, userName, userEmail }:
       </aside>
 
       {/* Main Content */}
-      <main className={`transition-all duration-300 ${isSidebarOpen ? "ml-64" : "ml-20"}`}>
+      <main className={`transition-all duration-300 ${
+        isMobile ? "ml-0" : isCollapsed ? "ml-20" : "ml-64"
+      }`}>
         {/* Top Bar */}
-        <header className="h-20 bg-[#1C2340] border-b border-[#C5A85C]/20 flex items-center justify-between px-8">
-          <div>
-            <h1 className="text-white font-serif text-2xl">
-              {navItems.find(item => item.href === pathname)?.label || "Dashboard"}
-            </h1>
+        <header className="sticky top-0 z-30 h-16 lg:h-20 bg-[#1C2340]/95 backdrop-blur-sm border-b border-[#C5A85C]/20 flex items-center justify-between px-4 lg:px-8">
+          <div className="flex items-center gap-3 lg:gap-4">
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsSidebarOpen(true)}
+              className="lg:hidden text-[#AAB3CF] hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5"
+              aria-label="Open menu"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            
+            {/* Page Title */}
+            <div>
+              <h1 className="text-white font-serif text-lg lg:text-2xl truncate max-w-[200px] sm:max-w-none">
+                {navItems.find(item => item.href === pathname)?.label || "Dashboard"}
+              </h1>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
+          
+          <div className="flex items-center gap-2 lg:gap-4">
             <Link
               href="/"
-              className="text-[#AAB3CF] hover:text-white transition-colors text-sm"
+              className="hidden sm:inline-flex text-[#AAB3CF] hover:text-white transition-colors text-xs lg:text-sm"
             >
               View Site →
             </Link>
             <Link
               href="/api/auth/logout"
-              className="text-[#AAB3CF] hover:text-red-400 transition-colors text-sm"
+              className="text-[#AAB3CF] hover:text-red-400 transition-colors text-xs lg:text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5"
             >
               Logout
             </Link>
@@ -276,7 +345,7 @@ export default function AdminLayout({ children, userRole, userName, userEmail }:
         </header>
 
         {/* Page Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 lg:p-8">
           {children}
         </div>
       </main>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import AdminLayout from "../components/AdminLayout";
 
 interface EngagementRequest {
@@ -135,85 +135,61 @@ export default function AdminEngagementPage() {
   };
 
   const formatProgramName = (programType: string) => {
-    return programType
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
+    return programType.split("-").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
   };
 
   return (
     <AdminLayout userRole={user.role} userName={user.full_name} userEmail={user.email}>
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 lg:mb-8">
         <div>
-          <h2 className="text-2xl font-serif text-white mb-2">Engagement Requests</h2>
-          <p className="text-[#AAB3CF]">Review and manage program engagement submissions</p>
+          <h2 className="text-xl sm:text-2xl font-serif text-white mb-2">Engagement Requests</h2>
+          <p className="text-[#AAB3CF] text-sm sm:text-base">Review and manage program engagement submissions</p>
         </div>
-        <div className="flex items-center gap-4">
-          <select
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="bg-[#232B52] border border-[#C5A85C]/20 text-white px-4 py-2 rounded-lg focus:outline-none focus:border-[#C5A85C]/60"
-          >
-            <option value="all">All Requests</option>
-            <option value="pending">Pending</option>
-            <option value="approved">Approved</option>
-            <option value="rejected">Rejected</option>
-            <option value="reviewed">Reviewed</option>
-          </select>
-        </div>
+        <select
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          className="bg-[#232B52] border border-[#C5A85C]/20 text-white px-4 py-2.5 rounded-lg focus:outline-none focus:border-[#C5A85C]/60 text-sm sm:w-auto w-full"
+        >
+          <option value="all">All Requests</option>
+          <option value="pending">Pending</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+          <option value="reviewed">Reviewed</option>
+        </select>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-4 mb-8">
-        <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-xl p-4">
-          <div className="text-3xl font-serif text-white mb-1">
-            {requests.filter((r) => r.status === "pending").length}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 lg:mb-8">
+        {[
+          { label: "Pending", value: requests.filter((r) => r.status === "pending").length },
+          { label: "Approved", value: requests.filter((r) => r.status === "approved").length },
+          { label: "Rejected", value: requests.filter((r) => r.status === "rejected").length },
+          { label: "Total", value: requests.length },
+        ].map((stat) => (
+          <div key={stat.label} className="bg-[#232B52] border border-[#C5A85C]/15 rounded-xl p-4">
+            <div className="text-2xl sm:text-3xl font-serif text-white mb-1">{stat.value}</div>
+            <div className="text-[#AAB3CF] text-xs sm:text-sm">{stat.label}</div>
           </div>
-          <div className="text-[#AAB3CF] text-sm">Pending</div>
-        </div>
-        <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-xl p-4">
-          <div className="text-3xl font-serif text-[#C5A85C] mb-1">
-            {requests.filter((r) => r.status === "approved").length}
-          </div>
-          <div className="text-[#AAB3CF] text-sm">Approved</div>
-        </div>
-        <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-xl p-4">
-          <div className="text-3xl font-serif text-white mb-1">
-            {requests.filter((r) => r.status === "rejected").length}
-          </div>
-          <div className="text-[#AAB3CF] text-sm">Rejected</div>
-        </div>
-        <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-xl p-4">
-          <div className="text-3xl font-serif text-white mb-1">
-            {requests.length}
-          </div>
-          <div className="text-[#AAB3CF] text-sm">Total</div>
-        </div>
+        ))}
       </div>
 
-      {/* Requests Table */}
-      <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl overflow-hidden">
+      {/* Desktop Table */}
+      <div className="hidden md:block bg-[#232B52] border border-[#C5A85C]/15 rounded-xl lg:rounded-2xl overflow-hidden">
         {isLoading ? (
           <div className="p-8 text-center text-[#AAB3CF]">Loading engagement requests...</div>
         ) : filteredRequests.length === 0 ? (
-          <div className="text-center py-12">
-            <svg className="w-16 h-16 text-[#C5A85C]/20 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <p className="text-[#AAB3CF]">No engagement requests found</p>
-          </div>
+          <div className="text-center py-12 text-[#AAB3CF]">No engagement requests found</div>
         ) : (
           <table className="w-full">
             <thead>
               <tr className="bg-[#1C2340] border-b border-[#C5A85C]/20">
-                <th className="text-left text-[#C5A85C] text-sm font-medium px-6 py-4">Name</th>
-                <th className="text-left text-[#C5A85C] text-sm font-medium px-6 py-4">Program</th>
-                <th className="text-left text-[#C5A85C] text-sm font-medium px-6 py-4">Type</th>
-                <th className="text-left text-[#C5A85C] text-sm font-medium px-6 py-4">Country</th>
-                <th className="text-left text-[#C5A85C] text-sm font-medium px-6 py-4">Date</th>
-                <th className="text-left text-[#C5A85C] text-sm font-medium px-6 py-4">Status</th>
-                <th className="text-left text-[#C5A85C] text-sm font-medium px-6 py-4">Actions</th>
+                <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Name</th>
+                <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Program</th>
+                <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Type</th>
+                <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Country</th>
+                <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Status</th>
+                <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#C5A85C]/10">
@@ -227,16 +203,9 @@ export default function AdminEngagementPage() {
                         <div className="text-[#AAB3CF] text-sm">{payload.email || "N/A"}</div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-[#AAB3CF] text-sm">
-                      {formatProgramName(request.program_type)}
-                    </td>
-                    <td className="px-6 py-4 text-[#AAB3CF] text-sm capitalize">
-                      {request.form_type}
-                    </td>
+                    <td className="px-6 py-4 text-[#AAB3CF] text-sm">{formatProgramName(request.program_type)}</td>
+                    <td className="px-6 py-4 text-[#AAB3CF] text-sm capitalize">{request.form_type}</td>
                     <td className="px-6 py-4 text-[#AAB3CF] text-sm">{payload.country || "N/A"}</td>
-                    <td className="px-6 py-4 text-[#AAB3CF] text-sm">
-                      {new Date(request.created_at).toLocaleDateString()}
-                    </td>
                     <td className="px-6 py-4">
                       <span className={`text-xs px-3 py-1 rounded-full ${statusColors[request.status]}`}>
                         {request.status.charAt(0).toUpperCase() + request.status.slice(1)}
@@ -245,9 +214,9 @@ export default function AdminEngagementPage() {
                     <td className="px-6 py-4">
                       <button
                         onClick={() => setSelectedRequest(request)}
-                        className="text-[#C5A85C] hover:text-white text-sm transition-colors"
+                        className="text-[#C5A85C] hover:text-white text-sm transition-colors font-medium"
                       >
-                        View Details →
+                        View Details
                       </button>
                     </td>
                   </tr>
@@ -258,132 +227,152 @@ export default function AdminEngagementPage() {
         )}
       </div>
 
+      {/* Mobile Cards */}
+      <div className="md:hidden space-y-3">
+        {isLoading ? (
+          <div className="text-center text-[#AAB3CF] py-12">Loading...</div>
+        ) : filteredRequests.length === 0 ? (
+          <div className="text-center text-[#AAB3CF] py-12">No requests found</div>
+        ) : (
+          filteredRequests.map((request) => {
+            const payload = getPayload(request.payload);
+            return (
+              <div
+                key={request.id}
+                className="bg-[#232B52] border border-[#C5A85C]/15 rounded-xl p-4"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex-1 min-w-0">
+                    <div className="text-white font-medium truncate">{payload.fullName || "N/A"}</div>
+                    <div className="text-[#AAB3CF] text-sm truncate">{payload.email || "N/A"}</div>
+                  </div>
+                  <span className={`text-xs px-2.5 py-1 rounded-full ${statusColors[request.status]}`}>
+                    {request.status}
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2 text-[#AAB3CF] text-xs mb-3">
+                  <span>{formatProgramName(request.program_type)}</span>
+                  <span>•</span>
+                  <span>{payload.country || "N/A"}</span>
+                </div>
+                <button
+                  onClick={() => setSelectedRequest(request)}
+                  className="w-full py-2.5 text-sm border border-[#C5A85C]/40 text-[#C5A85C] hover:bg-[#C5A85C]/10 transition-colors rounded-lg font-medium"
+                >
+                  View Details
+                </button>
+              </div>
+            );
+          })
+        )}
+      </div>
+
       {/* Detail Modal */}
-      {selectedRequest && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <AnimatePresence>
+        {selectedRequest && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-[#232B52] border border-[#C5A85C]/20 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedRequest(null)}
           >
-            <div className="p-6 border-b border-[#C5A85C]/10 flex items-center justify-between">
-              <h3 className="font-serif text-xl text-white">Request Details</h3>
-              <button
-                onClick={() => setSelectedRequest(null)}
-                className="text-[#AAB3CF] hover:text-white"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            <div className="p-6 space-y-4">
-              {(() => {
-                const payload = getPayload(selectedRequest.payload);
-                return (
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="bg-[#232B52] border border-[#C5A85C]/20 rounded-xl lg:rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-4 sm:p-6 border-b border-[#C5A85C]/10 flex items-center justify-between sticky top-0 bg-[#232B52] z-10">
+                <h3 className="font-serif text-lg sm:text-xl text-white">Request Details</h3>
+                <button onClick={() => setSelectedRequest(null)} className="text-[#AAB3CF] hover:text-white p-2">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div className="p-4 sm:p-6 space-y-4">
+                {(() => {
+                  const payload = getPayload(selectedRequest.payload);
+                  return (
+                    <>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">Full Name</label>
+                          <p className="text-white mt-1">{payload.fullName || "N/A"}</p>
+                        </div>
+                        <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">Email</label>
+                          <p className="text-white mt-1">{payload.email || "N/A"}</p>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">Program</label>
+                          <p className="text-white mt-1">{formatProgramName(selectedRequest.program_type)}</p>
+                        </div>
+                        <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">Form Type</label>
+                          <p className="text-white mt-1 capitalize">{selectedRequest.form_type}</p>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">Country</label>
+                          <p className="text-white mt-1">{payload.country || "N/A"}</p>
+                        </div>
+                        <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">Submitted</label>
+                          <p className="text-white mt-1">{new Date(selectedRequest.created_at).toLocaleDateString()}</p>
+                        </div>
+                      </div>
+                      {payload.professionalBackground && (
+                        <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">Professional Background</label>
+                          <p className="text-white mt-1">{payload.professionalBackground}</p>
+                        </div>
+                      )}
+                      {payload.proposedContribution && (
+                        <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">Proposed Contribution</label>
+                          <p className="text-white mt-1">{payload.proposedContribution}</p>
+                        </div>
+                      )}
+                    </>
+                  );
+                })()}
+              </div>
+              <div className="p-4 sm:p-6 border-t border-[#C5A85C]/10 flex flex-col sm:flex-row gap-3 justify-end sticky bottom-0 bg-[#232B52]">
+                {selectedRequest.status === "pending" && (
                   <>
-                    <div>
-                      <label className="text-[#AAB3CF] text-sm">Full Name</label>
-                      <p className="text-white">{payload.fullName || "N/A"}</p>
-                    </div>
-                    <div>
-                      <label className="text-[#AAB3CF] text-sm">Email</label>
-                      <p className="text-white">{payload.email || "N/A"}</p>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="text-[#AAB3CF] text-sm">Program</label>
-                        <p className="text-white">{formatProgramName(selectedRequest.program_type)}</p>
-                      </div>
-                      <div>
-                        <label className="text-[#AAB3CF] text-sm">Form Type</label>
-                        <p className="text-white capitalize">{selectedRequest.form_type}</p>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="text-[#AAB3CF] text-sm">Country</label>
-                        <p className="text-white">{payload.country || "N/A"}</p>
-                      </div>
-                      <div>
-                        <label className="text-[#AAB3CF] text-sm">Submitted</label>
-                        <p className="text-white">{new Date(selectedRequest.created_at).toLocaleString()}</p>
-                      </div>
-                    </div>
-                    {selectedRequest.status !== "pending" && (
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="text-[#AAB3CF] text-sm">Reviewed At</label>
-                          <p className="text-white">
-                            {selectedRequest.reviewed_at
-                              ? new Date(selectedRequest.reviewed_at).toLocaleString()
-                              : "N/A"}
-                          </p>
-                        </div>
-                        <div>
-                          <label className="text-[#AAB3CF] text-sm">Status</label>
-                          <p className="text-white capitalize">{selectedRequest.status}</p>
-                        </div>
-                      </div>
-                    )}
-                    {/* Display additional fields based on form type */}
-                    {payload.professionalBackground && (
-                      <div>
-                        <label className="text-[#AAB3CF] text-sm">Professional Background</label>
-                        <p className="text-white">{payload.professionalBackground}</p>
-                      </div>
-                    )}
-                    {payload.proposedContribution && (
-                      <div>
-                        <label className="text-[#AAB3CF] text-sm">Proposed Contribution</label>
-                        <p className="text-white">{payload.proposedContribution}</p>
-                      </div>
-                    )}
-                    {payload.proposedSupport && (
-                      <div>
-                        <label className="text-[#AAB3CF] text-sm">Proposed Support</label>
-                        <p className="text-white">{payload.proposedSupport}</p>
-                      </div>
-                    )}
-                    {payload.inquiry && (
-                      <div>
-                        <label className="text-[#AAB3CF] text-sm">Inquiry</label>
-                        <p className="text-white">{payload.inquiry}</p>
-                      </div>
-                    )}
+                    <button
+                      onClick={() => handleReject(selectedRequest.id)}
+                      disabled={actionLoading === selectedRequest.id}
+                      className="px-4 sm:px-6 py-2.5 sm:py-2 border border-red-500/40 text-red-400 rounded-lg hover:bg-red-500/10 transition-all disabled:opacity-50 text-sm sm:text-base"
+                    >
+                      {actionLoading === selectedRequest.id ? "Processing..." : "Reject"}
+                    </button>
+                    <button
+                      onClick={() => handleApprove(selectedRequest.id)}
+                      disabled={actionLoading === selectedRequest.id}
+                      className="px-4 sm:px-6 py-2.5 sm:py-2 bg-[#C5A85C] text-[#1C2340] rounded-lg hover:bg-[#D4BE90] transition-all disabled:opacity-50 text-sm sm:text-base"
+                    >
+                      {actionLoading === selectedRequest.id ? "Processing..." : "Approve"}
+                    </button>
                   </>
-                );
-              })()}
-            </div>
-            <div className="p-6 border-t border-[#C5A85C]/10 flex items-center justify-end gap-4">
-              {selectedRequest.status === "pending" && (
-                <>
-                  <button
-                    onClick={() => handleReject(selectedRequest.id)}
-                    disabled={actionLoading === selectedRequest.id}
-                    className="px-6 py-2 border border-red-500/40 text-red-400 rounded-lg hover:bg-red-500/10 transition-all disabled:opacity-50"
-                  >
-                    {actionLoading === selectedRequest.id ? "Processing..." : "Reject"}
-                  </button>
-                  <button
-                    onClick={() => handleApprove(selectedRequest.id)}
-                    disabled={actionLoading === selectedRequest.id}
-                    className="px-6 py-2 bg-[#C5A85C] text-[#1C2340] rounded-lg hover:bg-[#D4BE90] transition-all disabled:opacity-50"
-                  >
-                    {actionLoading === selectedRequest.id ? "Processing..." : "Approve"}
-                  </button>
-                </>
-              )}
-              <button
-                onClick={() => handleDelete(selectedRequest.id)}
-                className="px-6 py-2 text-[#AAB3CF] hover:text-red-400 transition-all"
-              >
-                Delete
-              </button>
-            </div>
+                )}
+                <button
+                  onClick={() => handleDelete(selectedRequest.id)}
+                  className="px-4 sm:px-6 py-2.5 sm:py-2 text-[#AAB3CF] hover:text-red-400 transition-all text-sm sm:text-base"
+                >
+                  Delete
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </AdminLayout>
   );
 }
