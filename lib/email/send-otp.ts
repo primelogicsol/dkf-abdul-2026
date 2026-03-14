@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY ||"apikey-1234567890abcdef1234567890abcdef");
 
 /**
  * Generate a 6-digit OTP
