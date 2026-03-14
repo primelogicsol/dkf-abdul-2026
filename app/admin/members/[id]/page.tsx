@@ -88,7 +88,7 @@ export default function EditMemberPage() {
     }
   };
 
-  const handleChange = (field: keyof Member, value: any) => {
+  const handleChange = (field: keyof Member, value: string | number | boolean | null) => {
     setFormData({ ...formData, [field]: value });
   };
 

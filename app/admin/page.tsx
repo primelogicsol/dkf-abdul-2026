@@ -101,7 +101,7 @@ export default function AdminDashboard() {
           Welcome back, {user.full_name}
         </h2>
         <p className="text-[#AAB3CF] text-sm sm:text-base">
-          Here's what's happening with the foundation today.
+          Here&apos;s what&apos;s happening with the foundation today.
         </p>
       </div>
 

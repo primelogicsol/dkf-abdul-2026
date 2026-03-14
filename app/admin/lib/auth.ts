@@ -125,7 +125,7 @@ export async function logAction({
   action: string;
   entityType: string;
   entityId: string;
-  changes?: Record<string, any>;
+  changes?: Record<string, unknown>;
 }) {
   const session = await checkAdminSession();
   

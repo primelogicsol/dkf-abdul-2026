@@ -38,7 +38,7 @@ const programNames: Record<string, string> = {
 export async function submitEngagement(
   program: string,
   formType: string,
-  formData: Record<string, any>
+  formData: Record<string, unknown>
 ): Promise<SubmitEngagementResult> {
   try {
     // Validate based on program type and form type
@@ -117,7 +117,7 @@ export async function submitEngagement(
     // Remove file data from payload (handle separately if needed)
     // Using type assertion since validatedData is a union type
     const cleanData = Object.fromEntries(
-      Object.entries(validatedData as Record<string, any>).filter(
+      Object.entries(validatedData as Record<string, unknown>).filter(
         ([key]) => !['proposalFile', 'sampleFile', 'researchPaper'].includes(key)
       )
     );
@@ -133,8 +133,8 @@ export async function submitEngagement(
     });
 
     // Send confirmation email if user email is available
-    const userEmail = (cleanData as any).email;
-    const userName = (cleanData as any).fullName || (cleanData as any).name || 'Valued Contributor';
+    const userEmail = (cleanData as Record<string, unknown>).email as string;
+    const userName = ((cleanData as Record<string, unknown>).fullName || (cleanData as Record<string, unknown>).name || 'Valued Contributor') as string;
     const programName = programNames[program] || program;
 
     if (userEmail) {

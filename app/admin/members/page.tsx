@@ -383,7 +383,7 @@ export default function AdminMembersPage() {
                         <label className="block text-[#C9CCD6] text-xs uppercase mb-2">Status</label>
                         <select
                           value={editedData.visibility_status ?? selectedMember.visibility_status}
-                          onChange={(e) => setEditedData({ ...editedData, visibility_status: e.target.value as any })}
+                          onChange={(e) => setEditedData({ ...editedData, visibility_status: e.target.value as 'draft' | 'published' | 'archived' })}
                           className="w-full bg-[#1C2340] border border-white/20 px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#C5A85C] rounded-lg"
                         >
                           <option value="draft">Draft</option>
