@@ -12,6 +12,7 @@ import PremiumFooter from "./components/PremiumFooter";
 
 export default function Home() {
   return (
+    // one main div with background color and min height to cover the screen
     <div className="bg-[#1C2340] min-h-screen">
       <PremiumHeader />
       <main>

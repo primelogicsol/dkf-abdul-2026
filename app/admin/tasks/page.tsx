@@ -152,7 +152,7 @@ export default function AdminTasksPage() {
       </div>
 
       {/* Create Task Form */}
-      <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-xl lg:rounded-2xl p-4 lg:p-6 mb-6 lg:mb-8">
+      <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-xl lg:rounded-2xl p-4 px-4 lg:p-6 mb-6 lg:mb-8">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
