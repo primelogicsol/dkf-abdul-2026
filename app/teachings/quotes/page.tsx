@@ -144,25 +144,33 @@ export default function QuotesPage() {
               </div>
             </div>
 
-            {/* Category Pills */}
-            <div className="flex flex-wrap justify-center gap-3">
-              {CATEGORIES.map((category, index) => (
-                <motion.button
-                  key={category}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                    selectedCategory === category
-                      ? "bg-[#C5A85C] text-[#1C2340] shadow-[0_0_30px_rgba(197,168,92,0.2)]"
-                      : "bg-[#232B52] text-[#AAB3CF] border border-[#C5A85C]/15 hover:border-[#C5A85C]/30 hover:text-white"
-                  }`}
+            {/* Category Filter Dropdown */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <label htmlFor="category-filter" className="text-[#AAB3CF] text-sm font-medium whitespace-nowrap">
+                Filter by Theme:
+              </label>
+              <div className="relative w-full sm:w-auto">
+                <select
+                  id="category-filter"
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full sm:w-64 bg-[#232B52] border border-[#C5A85C]/20 rounded-lg py-3 px-4 pr-10 text-white focus:outline-none focus:border-[#C5A85C]/40 transition-colors appearance-none cursor-pointer hover:border-[#C5A85C]/40"
                 >
-                  {category}
-                </motion.button>
-              ))}
+                  {CATEGORIES.map((category) => (
+                    <option key={category} value={category}>
+                      {category === "All" ? "All Themes" : category}
+                    </option>
+                  ))}
+                </select>
+                <svg
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#C5A85C]/60 pointer-events-none"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
             </div>
           </motion.div>
         </div>

@@ -57,10 +57,10 @@ export default function PremiumFooter() {
               <Image alt="LOGO" height={50} width={50} src="/dkf_logo_21.png" className="pt-2" />
               <div>
                 <span className="text-white font-serif text-base block">
-                  Dr. Ghulam Mohammad Kumar
+                  Dr.  Kumar
                 </span>
                 <span className="text-[#6B7299] text-xs uppercase tracking-widest block">
-                Foundation - United States
+                Foundation - USA
                 </span>
               </div>
             </Link>
@@ -161,18 +161,33 @@ export default function PremiumFooter() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <p className="text-[#6B7299] text-sm">
-              © {currentYear} Dr. Ghulam Mohammad Kumar Foundation. All rights reserved.
+              © {currentYear} Dr.Kumar Foundation. All rights reserved.
             </p>
 
             {/* Legal Links */}
-            <div className="flex flex-wrap gap-6">
-              {legalLinks.map((link) => (
+            <div className="flex flex-wrap gap-4 md:gap-6">
+              {legalLinks.map((link, index) => (
                 <Link
                   key={link.label}
                   href={link.href}
                   className="text-[#6B7299] text-sm hover:text-[#C5A85C] transition-colors"
                 >
-                  {link.label}
+                  {index === 0 ? (
+                    <>
+                      <span className="hidden md:inline">{link.label}</span>
+                      <span className="md:hidden">Privacy</span>
+                    </>
+                  ) : index === 1 ? (
+                    <>
+                      <span className="hidden md:inline">{link.label}</span>
+                      <span className="md:hidden">Terms</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="hidden md:inline">{link.label}</span>
+                      <span className="md:hidden">Cookie</span>
+                    </>
+                  )}
                 </Link>
               ))}
             </div>
