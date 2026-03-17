@@ -242,11 +242,11 @@ export default function QuotesPage() {
                   </div>
 
                   {/* Navigation Arrows - Right Side */}
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-20">
+                  <div className="absolute right-0 -top-8 -translate-y-1/2 flex  gap-2 z-20">
                     {/* Previous Arrow */}
                     <button
                       onClick={prevSlide}
-                      className="w-12 h-12 bg-[#C5A85C]/90 hover:bg-[#C5A85C] text-[#1C2340] rounded-full flex items-center justify-center shadow-lg hover:shadow-[#C5A85C]/30 transition-all duration-300 group"
+                      className="w-12 h-12 bg-[#C5A85C]/90 rotate-270 hover:bg-[#C5A85C] text-[#1C2340] rounded-full flex items-center justify-center shadow-lg hover:shadow-[#C5A85C]/30 transition-all duration-300 group"
                       aria-label="Previous slide"
                     >
                       <svg className="w-6 h-6 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -260,7 +260,7 @@ export default function QuotesPage() {
                       className="w-12 h-12 bg-[#C5A85C]/90 hover:bg-[#C5A85C] text-[#1C2340] rounded-full flex items-center justify-center shadow-lg hover:shadow-[#C5A85C]/30 transition-all duration-300 group"
                       aria-label="Next slide"
                     >
-                      <svg className="w-6 h-6 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 rotate-270 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
