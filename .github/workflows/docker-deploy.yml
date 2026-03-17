@@ -44,7 +44,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             echo "🚀 Starting deployment..."
-            cd /home/opc/dr-kumar-foundation
+            cd /var/www/app
             echo "${{ env.DOCKERHUB_TOKEN }}" | docker login -u ${{ env.DOCKERHUB_USERNAME }} --password-stdin
             docker pull ${{ env.IMAGE_NAME }}:latest
             docker compose down
