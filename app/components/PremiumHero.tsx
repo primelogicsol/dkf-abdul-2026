@@ -86,9 +86,9 @@ export default function PremiumHero() {
               transition={{ duration: 1, delay: 0.5 }}
               className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white leading-tight mb-6"
             >
-              Preserving Spiritual Legacy
+              Enter the Living Legacy of Dr. Kumar
               <br />
-              <span className="gradient-gold">Through Structured Knowledge</span>
+              {/* <span className="gradient-gold">Through Structured Knowledge</span> */}
             </motion.h1>
 
             {/* Subheading */}
@@ -98,7 +98,7 @@ export default function PremiumHero() {
               transition={{ duration: 1, delay: 0.8 }}
               className="text-[#AAB3CF] text-base md:text-lg lg:text-xl leading-relaxed mb-8"
             >
-              The DrKumar Foundation is now live as a digital archive of teachings, reflection and shared participation rooted in the life and legacy of Dr.Ghulam Mohammad Kumar
+              Step into the world of Dr. Kumar through teachings, reflections, life moments, and a growing circle committed to spiritual depth, service, and human unity.
             </motion.p>
 
             {/* CTA Buttons */}
