@@ -366,6 +366,112 @@ export default function EnvironmentalProgramsPage() {
         </div>
       </section>
 
+      {/* Environmental Stewardship Platform Section */}
+      <section className="section-spacing bg-[#151A30] relative">
+        <div className="container-premium">
+          {/* Gold Divider Above Section */}
+          <motion.div
+            initial={{ opacity: 0, width: 0 }}
+            whileInView={{ opacity: 1, width: "12rem" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="gold-divider long mx-auto mb-12"
+          />
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left: Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <h2 className="font-serif text-3xl md:text-4xl text-white mb-3">
+                Environmental Stewardship Platform
+              </h2>
+
+              <p className="text-[#C5A85C] text-lg mb-6 font-medium">
+                A dedicated environmental platform is being developed to strengthen the Environmental & Water Protection Programs through ecological action, conservation planning, water protection, and community-led sustainability efforts.
+              </p>
+
+              <div className="space-y-4 text-[#AAB3CF] leading-relaxed">
+                <p>
+                  While Dr. Kumar Foundation USA provides the ethical vision and institutional grounding, the Environmental Stewardship Platform serves as the applied environment where environmental initiatives, education pathways, and conservation frameworks can be coordinated and expanded.
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-4 mt-10">
+                <Link
+                  href="/environment/stewardship-programs"
+                  className="group inline-flex items-center px-8 py-4 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1"
+                >
+                  <span>Explore Stewardship Programs</span>
+                  <svg
+                    className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </Link>
+
+                <Link
+                  href="/environment/conservation-framework"
+                  className="px-8 py-4 border border-[#C5A85C]/40 text-[#C5A85C] font-medium rounded-lg transition-all duration-300 hover:bg-[#C5A85C]/10 hover:border-[#C5A85C]"
+                >
+                  View Conservation Framework
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right: Visual Element */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative"
+            >
+              <div className="bg-[#232B52] border border-[#C5A85C]/20 rounded-2xl p-8 relative overflow-hidden">
+                {/* Decorative Corner Elements */}
+                <div className="absolute top-0 left-0 w-24 h-24 border-t border-l border-[#C5A85C]/30 rounded-tl-2xl" />
+                <div className="absolute bottom-0 right-0 w-24 h-24 border-b border-r border-[#C5A85C]/30 rounded-br-2xl" />
+
+                {/* Platform Icon */}
+                <div className="relative z-10 flex flex-col items-center justify-center h-full">
+                  <div className="w-24 h-24 mb-6 rounded-full bg-[#C5A85C]/10 border border-[#C5A85C]/30 flex items-center justify-center">
+                    <svg className="w-12 h-12 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                  </div>
+
+                  <h3 className="font-serif text-xl text-white mb-2 text-center">
+                    Specialized Platform
+                  </h3>
+                  <p className="text-[#AAB3CF] text-sm text-center leading-relaxed">
+                    Supporting ecological care, resource responsibility, and long-term stewardship through structured engagement.
+                  </p>
+
+                  {/* Connection Line */}
+                  <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A85C]/30 to-transparent my-6" />
+
+                  <p className="text-[#C5A85C] text-xs uppercase tracking-widest text-center">
+                    Part of Dr. Kumar Foundation Legacy Ecosystem
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Call to Engage */}
       <section className="py-24 bg-[#151A30] relative">
         <div className="absolute inset-0 bg-gradient-to-b from-[#1C2340] to-[#151A30]" />
@@ -451,6 +557,136 @@ export default function EnvironmentalProgramsPage() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Pre-Launch Introduction Section */}
+      <section className="section-spacing bg-[#1C2340] relative">
+        <div className="container-premium">
+          {/* Gold Divider Above Section */}
+          <motion.div
+            initial={{ opacity: 0, width: 0 }}
+            whileInView={{ opacity: 1, width: "12rem" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="gold-divider long mx-auto mb-12"
+          />
+
+          {/* Section Intro */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <p className="text-[#C5A85C] text-xs uppercase tracking-widest mb-3">
+              Pre-Launch Introduction
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+              Introducing the Environmental Stewardship Platform USA
+            </h2>
+            <p className="text-[#AAB3CF] max-w-3xl mx-auto leading-relaxed">
+              The Environmental Stewardship Platform USA is an upcoming initiative within the wider environmental vision of Dr. Kumar Foundation USA, offering an early look at its purpose, direction, and role in supporting responsible ecological action and sustainability.
+            </p>
+          </motion.div>
+
+          {/* Pre-Launch Video */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="mb-16"
+          >
+            <div className="w-full">
+              <div className="relative">
+                {/* Video Container - 16:9 Aspect Ratio */}
+                <div className="relative w-full pb-[56.25%] bg-[#232B52] rounded-xl overflow-hidden border border-[#C5A85C]/15">
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/PLACEHOLDER"
+                    title="Environmental Stewardship Platform USA Pre-Launch Video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+              <div className="text-center mt-6">
+                <Link
+                  href="#"
+                  className="inline-flex items-center px-8 py-4 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <span>Watch the Pre-Launch Video</span>
+                </Link>
+                <p className="text-[#AAB3CF] text-sm leading-relaxed mt-4">
+                  An early introduction to the vision and future direction of this environmental platform.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Website Objective */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h3 className="font-serif text-xl text-white mb-8 text-center">
+              What the Environmental Stewardship Platform USA Is Being Built To Do
+            </h3>
+
+            {/* Objective Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Water Preservation",
+                  description: "Supporting protection of water resources through community-led action and conservation.",
+                },
+                {
+                  title: "Ecological Education",
+                  description: "Building learning pathways around sustainability, stewardship, and environmental responsibility.",
+                },
+                {
+                  title: "Community Mobilization",
+                  description: "Enabling local participation in organized conservation efforts.",
+                },
+                {
+                  title: "Sustainable Practice",
+                  description: "Promoting responsible resource use, waste reduction, and long-term balance.",
+                },
+                {
+                  title: "Restoration Initiatives",
+                  description: "Encouraging renewal efforts, tree-based care, and local environmental improvement.",
+                },
+                {
+                  title: "Stewardship Networks",
+                  description: "Connecting communities, supporters, and institutions committed to long-term sustainability.",
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 + index * 0.05 }}
+                  className="bg-[#232B52] border border-[#C5A85C]/15 rounded-xl p-6"
+                >
+                  <h4 className="font-serif text-[#C5A85C] text-base mb-3">
+                    {item.title}
+                  </h4>
+                  <p className="text-[#AAB3CF] text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
