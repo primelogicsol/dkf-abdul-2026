@@ -65,7 +65,7 @@ export default function PremiumHeader() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authInitialTab, setAuthInitialTab] = useState<"signin" | "signup">("signin");
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | undefined>(undefined);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [notifications, setNotifications] = useState(0);
 
@@ -84,8 +84,7 @@ export default function PremiumHeader() {
       const localSession = localStorage.getItem("user_session");
       if (localSession) {
         try {
-          const userData = JSON.parse(localSession);
-          setUser(userData);
+          const userData = JSON.parse(localSession); if (userData && userData.id) { setUser(userData); }
           return;
         } catch {
           localStorage.removeItem("user_session");
@@ -95,11 +94,8 @@ export default function PremiumHeader() {
       // Then check server session
       try {
         const response = await fetch("/api/auth/session");
-        if (response.ok) {
-          const userData = await response.json();
-          setUser(userData);
-          localStorage.setItem("user_session", JSON.stringify(userData));
-        }
+        if (response.ok) { const userData = await response.json(); if (userData && userData.id) { setUser(userData);
+          localStorage.setItem("user_session", JSON.stringify(userData)); } }
       } catch {
         // Not logged in
       }
@@ -110,8 +106,7 @@ export default function PremiumHeader() {
   const handleAvatarClick = () => {
     if (user) {
       setIsUserMenuOpen(!isUserMenuOpen);
-    } else {
-      setAuthInitialTab("signin");
+    } else { setAuthInitialTab("signin");
       setIsAuthModalOpen(true);
     }
   };
@@ -124,7 +119,7 @@ export default function PremiumHeader() {
     } finally {
       // Clear localStorage
       localStorage.removeItem("user_session");
-      setUser(null);
+      setUser(undefined);
       // Force reload to clear all component states
       window.location.reload();
     }
@@ -251,18 +246,18 @@ export default function PremiumHeader() {
                       {user?.avatar_url ? (
                         <img
                           src={user.avatar_url}
-                          alt={user.full_name}
+                          alt={user?.full_name || "User"}
                           className="w-full h-full object-cover"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
                           <span className="text-[#C5A85C] font-serif text-sm font-bold">
-                            {user.full_name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2)}
+                            {user?.full_name?.split(" ")?.map(n => n[0])?.join("")?.toUpperCase()?.slice(0, 2)}
                           </span>
                         </div>
                       )}
                     </button>
-                    <span className="text-[#F1F3F8] text-sm font-medium">{user.full_name}</span>
+                    <span className="text-[#F1F3F8] text-sm font-medium">{user?.full_name || "User"}</span>
                   </div>
 
                   {/* Mobile/Tablet Avatar Only */}
@@ -273,13 +268,13 @@ export default function PremiumHeader() {
                     {user?.avatar_url ? (
                       <img
                         src={user.avatar_url}
-                        alt={user.full_name}
+                        alt={user?.full_name || "User"}
                         className="w-full h-full object-cover"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
                         <span className="text-[#C5A85C] font-serif text-sm font-bold">
-                          {user.full_name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2)}
+                          {user?.full_name?.split(" ")?.map(n => n[0])?.join("")?.toUpperCase()?.slice(0, 2)}
                         </span>
                       </div>
                     )}
