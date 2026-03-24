@@ -144,9 +144,9 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
       </section>
 
       {/* Content Sections */}
-      <section className="section-spacing bg-[#1C2340]">
-        <div className="container-premium max-w-4xl">
-          <div className="space-y-16">
+      <section className="section-spacing   bg-[#1C2340]">
+        <div className="container-premium  max-w-4xl">
+          <div className="space-y-16  grid grid-cols-2">
             {/* First Encounter */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -154,7 +154,7 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-serif text-2xl text-white mb-4">First Encounter</h2>
+              <h3 className="font-serif text-2xl text-white mb-4">First Encounter</h3>
               <div className="w-24 h-[1px] bg-[#C5A85C] mb-6" />
               <p className="text-[#AAB3CF] leading-relaxed">{member.first_encounter}</p>
             </motion.div>
@@ -166,7 +166,7 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              <h2 className="font-serif text-2xl text-white mb-4">Resonated Quality</h2>
+              <h3 className="font-serif text-2xl text-white mb-4">Resonated Quality</h3>
               <div className="w-24 h-[1px] bg-[#C5A85C] mb-6" />
               <p className="text-[#AAB3CF] leading-relaxed">{member.resonated_quality.replace(/_/g, ' ')}</p>
             </motion.div>
@@ -178,7 +178,7 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="font-serif text-2xl text-white mb-4">Life Changes</h2>
+              <h3 className="font-serif text-2xl text-white mb-4">Life Changes</h3>
               <div className="w-24 h-[1px] bg-[#C5A85C] mb-6" />
               <p className="text-[#AAB3CF] leading-relaxed">{member.life_changes}</p>
             </motion.div>
@@ -190,7 +190,7 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <h2 className="font-serif text-2xl text-white mb-4">Continuing Engagement</h2>
+              <h3 className="font-serif text-2xl text-white mb-4">Continuing Engagement</h3>
               <div className="w-24 h-[1px] bg-[#C5A85C] mb-6" />
               <p className="text-[#AAB3CF] leading-relaxed">{member.continuing_engagement}</p>
             </motion.div>
