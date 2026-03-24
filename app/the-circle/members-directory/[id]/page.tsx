@@ -102,7 +102,7 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
       <PremiumHeader />
 
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[30vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#1C2340] via-[#1C2340] to-[#151A30]" />
 
         <motion.div
@@ -144,54 +144,54 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
       </section>
 
       {/* Content Sections */}
-      <section className="section-spacing   bg-[#1C2340]">
+      <section className="section-spacing flex justify-center bg-[#151A30]  ">
         <div className="container-premium  max-w-4xl">
-          <div className="space-y-16  grid grid-cols-2">
+          <div className="space-y-4   ">
             {/* First Encounter */}
-            <motion.div
+            <motion.div className="flex gap-2 "
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h3 className="font-serif text-2xl text-white mb-4">First Encounter</h3>
-              <div className="w-24 h-[1px] bg-[#C5A85C] mb-6" />
+              <h4 className="font-serif  text-white ">First Encounter</h4>
+              <span className="text-[#C5A85C]">|</span>
               <p className="text-[#AAB3CF] leading-relaxed">{member.first_encounter}</p>
             </motion.div>
 
             {/* Resonated Quality */}
-            <motion.div
+            <motion.div className="flex gap-2 "
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              <h3 className="font-serif text-2xl text-white mb-4">Resonated Quality</h3>
-              <div className="w-24 h-[1px] bg-[#C5A85C] mb-6" />
+              <h4 className="font-serif l text-white ">Resonated Quality</h4>
+              <span className="text-[#C5A85C]">|</span>
               <p className="text-[#AAB3CF] leading-relaxed">{member.resonated_quality.replace(/_/g, ' ')}</p>
             </motion.div>
 
             {/* Life Changes */}
-            <motion.div
+            <motion.div className="flex gap-2 "
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h3 className="font-serif text-2xl text-white mb-4">Life Changes</h3>
-              <div className="w-24 h-[1px] bg-[#C5A85C] mb-6" />
+              <h4 className="font-serif  text-white ">Life Changes</h4>
+              <span className="text-[#C5A85C]">|</span>
               <p className="text-[#AAB3CF] leading-relaxed">{member.life_changes}</p>
             </motion.div>
 
             {/* Continuing Engagement */}
-            <motion.div
+            <motion.div className="flex gap-2 "
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <h3 className="font-serif text-2xl text-white mb-4">Continuing Engagement</h3>
-              <div className="w-24 h-[1px] bg-[#C5A85C] mb-6" />
+              <h4 className="font-serif  text-white ">Continuing Engagement</h4>
+              <span className="text-[#C5A85C]">|</span>
               <p className="text-[#AAB3CF] leading-relaxed">{member.continuing_engagement}</p>
             </motion.div>
           </div>

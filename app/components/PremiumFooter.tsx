@@ -67,9 +67,7 @@ export default function PremiumFooter() {
             </Link>
 
             <p className="text-[#AAB3CF] text-sm leading-relaxed mb-6 max-w-sm">
-              A structured institutional framework established to document
-              continuity, preserve disciplined orientation, and support
-              responsible participation across regions.
+            Dr. Kumar Foundation USA preserves a living spiritual and institutional mission through disciplined documentation, ethical stewardship, research, and structured participation.
             </p>
 
             {/* Contact Info */}
@@ -163,10 +161,9 @@ export default function PremiumFooter() {
       <div className="border-t border-[#C5A85C]/10">
         <div className="container-premium py-12">
           <div className="text-center mb-8">
-            <h4 className="text-white font-serif text-xl mb-2">Associate Platforms</h4>
-            <p className="text-[#AAB3CF] text-sm">
-              Visit external websites connected to the Dr. Kumar Foundation ecosystem
-            </p>
+            <h4 className="text-white font-serif text-xl mb-2">Dr. Kumar's Connected Platforms</h4>
+            
+            
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
