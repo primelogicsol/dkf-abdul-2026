@@ -147,8 +147,20 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
       <section className="section-spacing flex justify-center bg-[#151A30]  ">
         <div className="container-premium  max-w-4xl">
           <div className="space-y-4   ">
+
+
+          <motion.div className="flex justify-center gap-2 "
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              <h4 className="font-serif l text-white ">Resonated Quality</h4>
+              <span className="text-[#C5A85C]">|</span>
+              <p className="text-[#AAB3CF] leading-relaxed">{member.resonated_quality.replace(/_/g, ' ')}</p>
+            </motion.div>
             {/* First Encounter */}
-            <motion.div className="flex gap-2 "
+            <motion.div className="flex justify-center gap-2 "
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -160,19 +172,10 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
             </motion.div>
 
             {/* Resonated Quality */}
-            <motion.div className="flex gap-2 "
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-            >
-              <h4 className="font-serif l text-white ">Resonated Quality</h4>
-              <span className="text-[#C5A85C]">|</span>
-              <p className="text-[#AAB3CF] leading-relaxed">{member.resonated_quality.replace(/_/g, ' ')}</p>
-            </motion.div>
+            
 
             {/* Life Changes */}
-            <motion.div className="flex gap-2 "
+            <motion.div className="flex justify-center gap-2 "
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -184,7 +187,7 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
             </motion.div>
 
             {/* Continuing Engagement */}
-            <motion.div className="flex gap-2 "
+            <motion.div className="flex justify-center gap-2 "
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
