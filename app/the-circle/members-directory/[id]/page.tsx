@@ -12,6 +12,7 @@ interface Member {
   id: string;
   full_name: string;
   country: string;
+  city?: string;
   profession: string;
   year_connected: number;
   first_encounter: string;
@@ -134,7 +135,7 @@ export default function MemberProfilePage({ params }: { params: Promise<{ id: st
             transition={{ duration: 1, delay: 0.7 }}
             className="text-[#AAB3CF] text-lg flex flex-wrap justify-center gap-2"
           >
-            <span>{member.country}</span>
+            <span>{member.country}{member.city ? "," + member.city : ""}</span>
             <span className="text-[#C5A85C]">|</span>
             <span>{member.profession}</span>
             <span className="text-[#C5A85C]">|</span>
