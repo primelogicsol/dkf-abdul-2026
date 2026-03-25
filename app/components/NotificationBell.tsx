@@ -24,12 +24,12 @@ export default function NotificationBell({ userId }: NotificationBellProps) {
 
   useEffect(() => {
     if (!userId) return;
-    
+
     // Fetch once on mount
     fetchNotifications();
-    
-    // Poll every 60 seconds
-    const interval = setInterval(fetchNotifications, 60000);
+
+    // Poll every 30 seconds for real-time updates
+    const interval = setInterval(fetchNotifications, 30000);
     return () => clearInterval(interval);
   }, [userId]);
 
@@ -91,12 +91,40 @@ export default function NotificationBell({ userId }: NotificationBellProps) {
     return `${Math.floor(diffInSeconds / 86400)}d ago`;
   };
 
+  const getNotificationIcon = (type: string) => {
+    switch (type) {
+      case 'task':
+        return (
+          <div className="w-8 h-8 bg-[#C5A85C]/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg className="w-4 h-4 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          </div>
+        );
+      case 'contribution':
+        return (
+          <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        );
+      default:
+        return (
+          <div className="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+          </div>
+        );
+    }
+  };
+
   return (
     <div className="relative flex-shrink-0" style={{ zIndex: 1000 }}>
       {/* Bell Icon */}
       <button
         onClick={() => {
-          console.log('Bell clicked, isOpen:', isOpen);
           setIsOpen(prev => !prev);
         }}
         className="relative p-2 text-[#AAB3CF] hover:text-white transition-colors cursor-pointer flex-shrink-0"
@@ -121,7 +149,7 @@ export default function NotificationBell({ userId }: NotificationBellProps) {
             onClick={() => setIsOpen(false)}
           />
           <div
-            className="absolute right-0 top-full mt-2 w-80 lg:w-96 bg-[#232B52] border border-[#C5A85C]/20 rounded-2xl shadow-2xl max-h-[500px] flex flex-col overflow-hidden lg:z-[1001] z-[1000]"
+            className="absolute right-0 top-full mt-2 w-80 lg:w-[420px] bg-[#232B52] border border-[#C5A85C]/20 rounded-2xl shadow-2xl max-h-[500px] flex flex-col overflow-hidden lg:z-[1001] z-[1000]"
           >
             {/* Header */}
             <div className="p-4 border-b border-[#C5A85C]/20 flex items-center justify-between bg-[#232B52]">
@@ -156,19 +184,27 @@ export default function NotificationBell({ userId }: NotificationBellProps) {
                     }`}
                   >
                     <div className="flex items-start gap-3">
-                      <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
-                        !notification.is_read ? 'bg-[#C5A85C]' : 'bg-transparent'
-                      }`} />
-                      <div className="flex-1">
-                        <h4 className="text-white text-sm font-medium mb-1">
+                      {getNotificationIcon(notification.type)}
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-white text-sm font-medium mb-1 line-clamp-2">
                           {notification.title}
                         </h4>
-                        <p className="text-[#AAB3CF] text-xs mb-2">
+                        <p className="text-[#AAB3CF] text-xs mb-2 line-clamp-2">
                           {notification.message}
                         </p>
-                        <p className="text-[#6B7299] text-xs">
-                          {getTimeAgo(notification.created_at)}
-                        </p>
+                        <div className="flex items-center gap-2 text-xs text-[#6B7299]">
+                          <span>
+                            {getTimeAgo(notification.created_at)}
+                          </span>
+                          {notification.type === 'task' && notification.message.includes('Due:') && (
+                            <>
+                              <span>•</span>
+                              <span className="text-amber-400">
+                                {notification.message.split('Due:')[1]?.trim()}
+                              </span>
+                            </>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </Link>

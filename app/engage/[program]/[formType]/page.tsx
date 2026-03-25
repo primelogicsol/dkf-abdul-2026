@@ -86,6 +86,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
             { type: 'input', name: 'specialization', label: 'Area of Specialization', placeholder: 'e.g., Clinical Psychology, Counseling', icon: getTargetIcon() },
             { type: 'input', name: 'yearsExperience', label: 'Years of Experience', placeholder: '10', inputType: 'number', icon: getTimeIcon() },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'professional@example.com', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -116,6 +118,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
             { type: 'input', name: 'fieldOfExpertise', label: 'Field of Expertise', placeholder: 'e.g., Environmental Science, Ecology', icon: getBookIcon() },
             { type: 'input', name: 'fieldExperienceYears', label: 'Field Experience (Years)', placeholder: '10', inputType: 'number', icon: getTimeIcon() },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'researcher@institution.edu', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -141,6 +145,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
             { type: 'input', name: 'fullName', label: 'Full Name', placeholder: 'Your name', icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'organization', label: 'Organization', placeholder: 'Your organization or institution', icon: getBuildingIcon(), fullWidth: true },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'your@organization.org', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -178,6 +184,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
               { value: 'other', label: 'Other' },
             ], icon: getMusicIcon(), fullWidth: true },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'artist@example.com', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -209,6 +217,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
               { value: 'individual', label: 'Individual Crafter' },
             ], icon: getBuildingIcon(), fullWidth: true },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'business@example.com', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -242,6 +252,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
             { type: 'textarea', name: 'academicBackground', label: 'Academic Background', placeholder: 'Describe your academic background and qualifications', rows: 3, fullWidth: true },
             { type: 'input', name: 'areaOfResearch', label: 'Area of Research', placeholder: 'e.g., Consciousness Studies, Environmental Ethics', icon: getTargetIcon() },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'researcher@university.edu', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -268,6 +280,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
             { type: 'input', name: 'institution', label: 'Religious/Civic Institution', placeholder: 'University, Church, Mosque, Temple, or Organization', icon: getBuildingIcon(), fullWidth: true },
             { type: 'input', name: 'role', label: 'Role/Position', placeholder: 'e.g., Director, Imam, Pastor, Rabbi, Professor', icon: getUserIcon() },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'professional@institution.org', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -293,6 +307,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
           fields: [
             { type: 'input', name: 'fullName', label: 'Full Name', placeholder: 'Your name', icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'your@email.com', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -322,6 +338,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
           fields: [
             { type: 'input', name: 'fullName', label: 'Full Name', placeholder: 'Your name', icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'your@email.com', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -352,6 +370,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
           fields: [
             { type: 'input', name: 'fullName', label: 'Full Name', placeholder: 'Your name', icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'your@email.com', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -385,6 +405,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
             { type: 'input', name: 'fullName', label: 'Full Name', placeholder: 'Your name', icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'organization', label: 'Organization (Optional)', placeholder: 'Your organization', icon: getBuildingIcon(), fullWidth: true },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'your@email.com', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -409,6 +431,8 @@ const formConfigs: Record<string, Record<string, FormConfig>> = {
             { type: 'input', name: 'fullName', label: 'Full Name', placeholder: 'Your name', icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'organization', label: 'Organization (Optional)', placeholder: 'Your organization', icon: getBuildingIcon(), fullWidth: true },
             { type: 'input', name: 'country', label: 'Country', placeholder: 'Your country', icon: getGlobeIcon() },
+            { type: 'input', name: 'city', label: 'City', placeholder: 'Your city', icon: getGlobeIcon(), fullWidth: true },
+            { type: 'select', name: 'gender', label: 'Gender', options: [{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }], icon: getUserIcon(), fullWidth: true },
             { type: 'input', name: 'email', label: 'Email Address', placeholder: 'your@email.com', inputType: 'email', icon: getEmailIcon(), fullWidth: true, hideForAuth: true },
           ],
         },
@@ -467,7 +491,7 @@ export default function EngagePage() {
     const checkAuthAndSubmission = async () => {
       // First check localStorage for existing session
       const localSession = localStorage.getItem("user_session");
-      
+
       if (localSession) {
         try {
           const userData = JSON.parse(localSession);
@@ -484,43 +508,11 @@ export default function EngagePage() {
         }
       }
 
-      // No localStorage session - validate with server
-      try {
-        console.log('[Form] No localStorage session, validating with server...');
-        const response = await fetch('/api/auth/session');
-
-        if (!response.ok) {
-          // Not authenticated - show auth modal
-          console.log('[Form] Not authenticated, showing auth modal');
-          setTimeout(() => {
-            setAuthInitialTab("signin");
-            setIsAuthModalOpen(true);
-          }, 500);
-          setIsLoading(false);
-          setIsCheckingSubmission(false);
-          return;
-        }
-
-        const userData = await response.json();
-        console.log('[Form] Validated user:', userData);
-
-        // Update localStorage with validated user
-        localStorage.setItem("user_session", JSON.stringify(userData));
-        setUser(userData);
-
-        // Check submission status
-        await checkSubmissionStatus(userData.id, userData.email);
-      } catch (error) {
-        console.error('[Form] Session validation error:', error);
-        localStorage.removeItem("user_session");
-        setTimeout(() => {
-          setAuthInitialTab("signin");
-          setIsAuthModalOpen(true);
-        }, 500);
-      } finally {
-        setIsLoading(false);
-        setIsCheckingSubmission(false);
-      }
+      // No localStorage session - user is not authenticated
+      console.log('[Form] No localStorage session, user not authenticated');
+      setUser(null);
+      setIsLoading(false);
+      setIsCheckingSubmission(false);
     };
 
     checkAuthAndSubmission();
@@ -588,18 +580,18 @@ export default function EngagePage() {
     setIsAuthModalOpen(false);
     // Revalidate session after modal closes
     setTimeout(async () => {
-      try {
-        const response = await fetch('/api/auth/session');
-        if (response.ok) {
-          const userData = await response.json();
-          localStorage.setItem("user_session", JSON.stringify(userData));
+      const localSession = localStorage.getItem("user_session");
+      if (localSession) {
+        try {
+          const userData = JSON.parse(localSession);
           setUser(userData);
           if (userData.id && userData.email) {
-            checkSubmissionStatus(userData.id, userData.email);
+            await checkSubmissionStatus(userData.id, userData.email);
           }
+        } catch (error) {
+          console.error('[Form] Revalidation error:', error);
+          localStorage.removeItem("user_session");
         }
-      } catch (error) {
-        console.error('[Form] Revalidation error:', error);
       }
     }, 500);
   };
@@ -860,7 +852,10 @@ export default function EngagePage() {
                           return null;
                         }
 
-                        const isEmailDisabled = field.hideForAuth && user && field.name === 'email';
+                        // Disable fullName and email fields for authenticated users
+                        const isFullNameField = field.name === 'fullName';
+                        const isEmailField = field.name === 'email';
+                        const isAuthFieldDisabled = user && (isFullNameField || (field.hideForAuth && isEmailField));
 
                         return (
                           <div key={field.name} className={field.fullWidth ? 'md:col-span-2' : ''}>
@@ -873,15 +868,18 @@ export default function EngagePage() {
                                 <input
                                   type={field.inputType || 'text'}
                                   placeholder={field.placeholder}
-                                  disabled={!!isEmailDisabled}
+                                  disabled={!!isAuthFieldDisabled}
                                   {...register(field.name, {
                                     required: `${field.label} is required`,
                                     ...(field.name === 'email' && { pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' } }),
                                     ...(field.name === 'proposedContribution' && { minLength: { value: 50, message: 'Minimum 50 characters required' } }),
                                     ...(field.name === 'researchAbstract' && { minLength: { value: 150, message: 'Minimum 150 characters required' } }),
                                   })}
-                                  className={`w-full bg-[#1C2340] border border-white/20 px-4 py-3 text-white placeholder-[#AAB3CF]/50 focus:outline-none focus:border-[#C5A85C]/60 focus:ring-2 focus:ring-[#C5A85C]/20 rounded-lg transition-all ${errors[field.name] ? 'border-red-500/40' : ''} ${isEmailDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                  className={`w-full bg-[#1C2340] border border-white/20 px-4 py-3 text-white placeholder-[#AAB3CF]/50 focus:outline-none focus:border-[#C5A85C]/60 focus:ring-2 focus:ring-[#C5A85C]/20 rounded-lg transition-all ${errors[field.name] ? 'border-red-500/40' : ''} ${isAuthFieldDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
                                 />
+                                {isFullNameField && user && (
+                                  <p className="text-[#C5A85C] text-xs">Your name ({user.full_name}) is locked from your account</p>
+                                )}
                                 {field.hideForAuth && user && field.name === 'email' && (
                                   <p className="text-[#C5A85C] text-xs">Your email ({user.email}) will be automatically attached</p>
                                 )}

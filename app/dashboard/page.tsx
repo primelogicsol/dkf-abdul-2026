@@ -91,7 +91,7 @@ export default function DashboardPage() {
         <div className="flex-1">
           
         </div>
-        <div className="flex items-center absolute top-16 right-8 gap-2 lg:gap-4">
+        <div className="flex items-center absolute top-16 right-20 gap-2 lg:gap-4">
           {hasProgram && user && (
             <div className="relative">
               <NotificationBell userId={user.id} />

@@ -163,34 +163,59 @@ export default function TasksPage() {
                 <div key={task.id} className="p-6 hover:bg-[#1C2340]/50 transition-colors">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="font-serif text-lg text-white">{task.title}</h3>
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 bg-[#C5A85C]/20 rounded-full flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-serif text-lg text-white">{task.title}</h3>
+                        </div>
                         <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(task.status)}`}>
                           {task.status}
                         </span>
                       </div>
-                      <p className="text-[#AAB3CF] text-sm mb-3">{task.message}</p>
-                      <div className="flex items-center gap-4 text-xs text-[#6B7299]">
-                        <span className="flex items-center gap-1">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      
+                      {/* Task Description */}
+                      <div className="bg-[#1C2340]/50 border border-white/10 rounded-lg p-4 mb-4">
+                        <p className="text-[#AAB3CF] text-sm leading-relaxed">{task.message}</p>
+                      </div>
+                      
+                      {/* Task Meta Information */}
+                      <div className="flex flex-wrap items-center gap-4 text-xs text-[#6B7299]">
+                        <span className="flex items-center gap-1.5 px-3 py-1.5 bg-[#232B52] rounded-full">
+                          <svg className="w-4 h-4 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
-                          {new Date(task.created_at).toLocaleDateString()}
+                          Created: {new Date(task.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </span>
                         {task.due_date && (
-                          <span className="flex items-center gap-1">
+                          <span className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full ${
+                            new Date(task.due_date) < new Date() 
+                              ? 'bg-red-500/20 text-red-400' 
+                              : 'bg-amber-500/20 text-amber-400'
+                          }`}>
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            Due: {new Date(task.due_date).toLocaleDateString()}
+                            Due: {new Date(task.due_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                           </span>
                         )}
-                        <span className="flex items-center gap-1">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span className="flex items-center gap-1.5 px-3 py-1.5 bg-[#232B52] rounded-full">
+                          <svg className="w-4 h-4 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                           </svg>
                           {programNames[task.program_type]}
                         </span>
+                        {task.completed_at && (
+                          <span className="flex items-center gap-1.5 px-3 py-1.5 bg-green-500/20 text-green-400 rounded-full">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Completed: {new Date(task.completed_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </div>

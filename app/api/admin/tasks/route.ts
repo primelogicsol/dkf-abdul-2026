@@ -41,6 +41,9 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { user_program_id, user_id, user_name, user_email, program_type, title, message, due_date } = body;
 
+    // Format due date for notification
+    const dueDateStr = due_date ? new Date(due_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Not set';
+
     // Create task
     const task = await prisma.task.create({
       data: {
@@ -56,12 +59,12 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Create notification
+    // Create notification with detailed message
     await prisma.notification.create({
       data: {
         user_id,
-        title: 'New Task Assigned',
-        message: `You have been assigned a new task: ${title}`,
+        title: `New Task: ${title}`,
+        message: `${message} Due: ${dueDateStr}`,
         type: 'task',
         link: '/dashboard/tasks',
       },

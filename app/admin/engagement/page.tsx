@@ -187,7 +187,7 @@ export default function AdminEngagementPage() {
                 <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Name</th>
                 <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Program</th>
                 <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Type</th>
-                <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Country</th>
+                <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Location</th>
                 <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Status</th>
                 <th className="text-left text-[#C5A85C] text-xs uppercase tracking-wider font-semibold px-6 py-4">Actions</th>
               </tr>
@@ -195,6 +195,7 @@ export default function AdminEngagementPage() {
             <tbody className="divide-y divide-[#C5A85C]/10">
               {filteredRequests.map((request) => {
                 const payload = getPayload(request.payload);
+                const location = payload.city && payload.country ? `${payload.country}/${payload.city}` : (payload.country || "N/A");
                 return (
                   <tr key={request.id} className="hover:bg-[#1C2340]/50 transition-colors">
                     <td className="px-6 py-4">
@@ -205,7 +206,7 @@ export default function AdminEngagementPage() {
                     </td>
                     <td className="px-6 py-4 text-[#AAB3CF] text-sm">{formatProgramName(request.program_type)}</td>
                     <td className="px-6 py-4 text-[#AAB3CF] text-sm capitalize">{request.form_type}</td>
-                    <td className="px-6 py-4 text-[#AAB3CF] text-sm">{payload.country || "N/A"}</td>
+                    <td className="px-6 py-4 text-[#AAB3CF] text-sm">{location}</td>
                     <td className="px-6 py-4">
                       <span className={`text-xs px-3 py-1 rounded-full ${statusColors[request.status]}`}>
                         {request.status.charAt(0).toUpperCase() + request.status.slice(1)}
@@ -236,6 +237,7 @@ export default function AdminEngagementPage() {
         ) : (
           filteredRequests.map((request) => {
             const payload = getPayload(request.payload);
+            const location = payload.city && payload.country ? `${payload.country}/${payload.city}` : (payload.country || "N/A");
             return (
               <div
                 key={request.id}
@@ -253,7 +255,7 @@ export default function AdminEngagementPage() {
                 <div className="flex flex-wrap gap-2 text-[#AAB3CF] text-xs mb-3">
                   <span>{formatProgramName(request.program_type)}</span>
                   <span>•</span>
-                  <span>{payload.country || "N/A"}</span>
+                  <span>{location}</span>
                 </div>
                 <button
                   onClick={() => setSelectedRequest(request)}
@@ -307,7 +309,7 @@ export default function AdminEngagementPage() {
                           <p className="text-white mt-1">{payload.email || "N/A"}</p>
                         </div>
                       </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
                           <label className="text-[#AAB3CF] text-xs uppercase">Program</label>
                           <p className="text-white mt-1">{formatProgramName(selectedRequest.program_type)}</p>
@@ -316,16 +318,36 @@ export default function AdminEngagementPage() {
                           <label className="text-[#AAB3CF] text-xs uppercase">Form Type</label>
                           <p className="text-white mt-1 capitalize">{selectedRequest.form_type}</p>
                         </div>
+                        <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">Status</label>
+                          <p className="text-white mt-1 capitalize">{selectedRequest.status}</p>
+                        </div>
                       </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
                           <label className="text-[#AAB3CF] text-xs uppercase">Country</label>
                           <p className="text-white mt-1">{payload.country || "N/A"}</p>
                         </div>
                         <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">City</label>
+                          <p className="text-white mt-1">{payload.city || "N/A"}</p>
+                        </div>
+                        <div>
+                          <label className="text-[#AAB3CF] text-xs uppercase">Gender</label>
+                          <p className="text-white mt-1 capitalize">{payload.gender || "N/A"}</p>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
                           <label className="text-[#AAB3CF] text-xs uppercase">Submitted</label>
                           <p className="text-white mt-1">{new Date(selectedRequest.created_at).toLocaleDateString()}</p>
                         </div>
+                        {payload.reviewed_at && (
+                          <div>
+                            <label className="text-[#AAB3CF] text-xs uppercase">Reviewed At</label>
+                            <p className="text-white mt-1">{new Date(payload.reviewed_at).toLocaleDateString()}</p>
+                          </div>
+                        )}
                       </div>
                       {payload.professionalBackground && (
                         <div>
