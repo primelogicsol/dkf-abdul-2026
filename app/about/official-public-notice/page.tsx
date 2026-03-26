@@ -349,11 +349,7 @@ export default function OfficialPublicNoticePage() {
                 </a>
               </motion.div>
             </div>
-            <div className="bg-[#C5A85C]/10 border border-[#C5A85C]/20 rounded-xl p-6">
-              <p className="text-[#C5A85C] text-sm">
-                The current site publicly lists <strong>info@dkf.sufisciencecenter.info</strong> and frames outreach through structured engagement with the Foundation.
-              </p>
-            </div>
+            
           </motion.div>
         </div>
       </section>
