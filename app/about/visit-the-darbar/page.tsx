@@ -9,17 +9,29 @@ import { useState } from "react";
 export default function VisitTheDarbarPage() {
   const [copySuccess, setCopySuccess] = useState(false);
 
+  // const darbarLocation = {
+  //   name: "Dr. Kumar Faqeeri Darbar",
+  //   latitude: 34.2378,
+  //   longitude: 74.7900,
+  //   mappedReference: "Faqeer Dr. Ghulam Mohammad Kumar Saeb, Ganderbal, Jammu and Kashmir 191201",
+  //   plusCode: "6QQQ+FV8",
+  //   nearestLandmark: "Rehman Sahib Shrine, Banday Bagh, Ganderbal",
+  //   area: "Serch Banday Bagh",
+  //   region: "Ganderbal District, Jammu and Kashmir, India",
+  //   googleMapsUrl: "https://www.google.com/maps?q=34.2378,74.7900",
+  //   directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=34.2378,74.7900",
+  // };
   const darbarLocation = {
     name: "Dr. Kumar Faqeeri Darbar",
-    latitude: 34.2378,
-    longitude: 74.7900,
+    latitude: 34.239245,
+    longitude: 74.788959,
     mappedReference: "Faqeer Dr. Ghulam Mohammad Kumar Saeb, Ganderbal, Jammu and Kashmir 191201",
-    plusCode: "6QQQ+FV8",
+    plusCode: "6QRP+M9V",
     nearestLandmark: "Rehman Sahib Shrine, Banday Bagh, Ganderbal",
     area: "Serch Banday Bagh",
     region: "Ganderbal District, Jammu and Kashmir, India",
-    googleMapsUrl: "https://www.google.com/maps?q=34.2378,74.7900",
-    directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=34.2378,74.7900",
+    googleMapsUrl: "https://www.google.com/maps?q=34.239245,74.788959",
+    directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=34.239245,74.788959",
   };
 
   const handleShareLocation = async () => {
@@ -78,7 +90,7 @@ export default function VisitTheDarbarPage() {
       ),
       title: "Hospitality",
       value: "By arrangement",
-      description: "Available on selected days",
+      description: "Available on request On selected visit days",
     },
     {
       icon: (
@@ -88,7 +100,7 @@ export default function VisitTheDarbarPage() {
       ),
       title: "Short Stay",
       value: "Limited availability",
-      description: "Prior coordination required",
+      description: "Limited by arrangement Prior approval needed",
     },
     {
       icon: (
@@ -98,7 +110,7 @@ export default function VisitTheDarbarPage() {
       ),
       title: "Advance Confirmation",
       value: "Recommended",
-      description: "Before making travel plans",
+      description: "Strongly recommended Before travel planning",
     },
     {
       icon: (
@@ -108,7 +120,7 @@ export default function VisitTheDarbarPage() {
       ),
       title: "Google Navigation",
       value: "Available",
-      description: "Direct navigation on this page",
+      description: "Direct access enabled Use map on this page",
     },
   ];
 
@@ -245,7 +257,7 @@ export default function VisitTheDarbarPage() {
       {/* Quick Information Band */}
       <section className="section-spacing bg-[#151A30]">
         <div className="container-premium">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {quickInfoItems.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -474,9 +486,35 @@ export default function VisitTheDarbarPage() {
               <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-xl p-6">
                 <h3 className="text-[#C5A85C] text-sm uppercase tracking-wider mb-4">General Visitor Timings</h3>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center py-2 border-b border-white/10">
+                  <div className="py-2 ">
                     <span className="text-[#AAB3CF]">Days:</span>
-                    <span className="text-white font-medium">Monday, Wednesday, Friday, Sunday</span>
+                    {/* <span className="text-white font-medium">Monday, Wednesday, Friday, Sunday</span> */}
+                    <div className="space-y-2 text-white font-medium">
+                      <div className="flex items-center gap-2">
+                      <svg className="w-[20px] h-[20px] text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+                        <span>Monday</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                      <svg className="w-[20px] h-[20px] text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+                        <span>Wednesday</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                      <svg className="w-[20px] h-[20px] text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+                        <span>Friday</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                      <svg className="w-[20px] h-[20px] text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+                        <span>Sunday</span>
+                      </div>
+                    </div>
                   </div>
                   <div className="py-2">
                     <span className="text-[#AAB3CF] block mb-2">Hours:</span>
