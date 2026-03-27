@@ -58,6 +58,7 @@ export default function OfficialPublicNoticePage() {
     "Claims of influence or authority",
     "Promises of access, favor, or arrangement",
     "Urgency-based requests for money or transfer",
+    "Donation requests or payment collection using the Foundation’s name"
   ];
 
   const suspiciousItems = [
@@ -475,6 +476,7 @@ export default function OfficialPublicNoticePage() {
                 "Families and supporters",
                 "The dignity of Dr. Kumar's name",
                 "The integrity of the Foundation and its mission",
+                "Public protection from misrepresentation"
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -564,7 +566,7 @@ export default function OfficialPublicNoticePage() {
               <h2 className="font-serif text-xl text-white mb-4">Closing Notice</h2>
               <div className="gold-divider mx-auto mb-6" />
               <p className="text-[#AAB3CF] leading-relaxed mb-4">
-                We request all visitors, supporters, and members of the public to rely only on official website information and official Foundation communication channels.
+              The Foundation does not seek donations and does not authorize any fundraising, payment request, or financial collection in its name. It is a self-sustaining organization.
               </p>
               <p className="text-[#C5A85C] font-medium">
                 Thank you for helping preserve dignity, clarity, and authenticity.

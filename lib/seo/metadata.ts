@@ -91,10 +91,12 @@ export function generatePageSEO(config: PageSEOConfig): Metadata {
  */
 export const pageSEO = {
   home: {
-    title: 'Dr. Kumar Foundation USA | Spiritual Teachings & Cultural Legacy',
-    description: 'Dr. Kumar Foundation USA preserves a living spiritual and institutional mission through disciplined documentation, ethical stewardship, research, and structured participation.',
+    title: 'Dr. Kumar Foundation USA | Official Website',
+    description: "Official website of Dr. Kumar Foundation USA. The Foundation preserves Dr. Ghulam Mohammad Kumar's spiritual teachings through ethical stewardship, research, documentation, and structured participation.",
     keywords: [
+      'Dr. Kumar Foundation USA',
       'Dr. Kumar Foundation',
+      'Dr. Ghulam Mohammad Kumar',
       'spiritual teachings',
       'ethical stewardship',
       'cultural preservation',
@@ -105,14 +107,16 @@ export const pageSEO = {
     ],
   },
   about: {
-    title: 'About Dr. Kumar Foundation | Mission & Institutional Vision',
-    description: `Learn about Dr. Kumar Foundation USA's mission, governance, and institutional framework for spiritual stewardship and cultural preservation.`,
+    title: 'Dr. Kumar Foundation USA | Official Foundation Overview',
+    description: "Learn about Dr. Kumar Foundation USA's mission, governance, and institutional framework. The Foundation preserves Dr. Ghulam Mohammad Kumar's spiritual teachings through ethical stewardship.",
     keywords: [
-      'about Dr. Kumar Foundation',
+      'Dr. Kumar Foundation USA',
+      'Dr. Kumar Foundation',
       'foundation mission',
       'institutional vision',
       'governance',
       'spiritual organization',
+      'Dr. Ghulam Mohammad Kumar',
     ],
   },
   mission: {

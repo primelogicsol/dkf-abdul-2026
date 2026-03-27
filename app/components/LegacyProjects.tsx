@@ -102,43 +102,43 @@ export default function LegacyProjects() {
 // bg-gradient-to-br from-[#232B52] via-[#1C2340] to-[#151A30]
   const projects = [
     {
-      title: "Healing & Spiritual Care",
+      title: "Community Healing & Spiritual Restoration",
       description: "Supporting holistic wellness programs that integrate traditional wisdom with contemporary understanding of health and wellbeing.",
       imageGradient: "/programs/healing-image.jpeg",
       href: "/legacy-projects/healing",
     },
     {
-      title: "Environment & Water Care",
+      title: "Env. & Water Protection Programs",
       description: "Preserving natural resources through community-led conservation efforts and sustainable practices rooted in ethical responsibility.",
       imageGradient: "/programs/envirement-image.jpeg",
       href: "/legacy-projects/environment",
     },
     {
-      title: "Youth & Culture Programs",
+      title: "Youth & Cultural Engagement",
       description: "Nurturing the next generation through educational programs that emphasize ethical development and cultural continuity.",
       imageGradient: "/programs/youth-image.jpeg",
       href: "/legacy-projects/youth",
     },
     {
-      title: "Sufi Music & Sacred Media",
+      title: "Sufi Music & Spiritual Media",
       description: "Preservation and dissemination of devotional and philosophical musical traditions through responsible digital media production.",
       imageGradient: "/programs/sufimusic-image.jpeg",
       href: "/legacy-projects/sufi-music",
     },
     {
-      title: "Ethical Craft & Commerce",
+      title: "Sufi Commerce & Ethical Craft",
       description: "Structured economic pathways supporting heritage crafts through transparency, traceability, and digital integration.",
       imageGradient: "/programs/ecommerce-image.jpeg",
       href: "/legacy-projects/sufi-ecommerce",
     },
     {
-      title: "Sufi Science & Mind Study",
+      title: "Sufi Science & Consciousness Research",
       description: "Interdisciplinary exploration connecting spiritual philosophy with structured inquiry and analytical documentation.",
       imageGradient: "/programs/sufiscience-image.jpeg",
       href: "/legacy-projects/sufi-science",
     },
     {
-      title: "Interfaith Peace Forum",
+      title: "Interfaith Dialogue & Civilizational Engagement",
       description: "Fostering dialogue and understanding across religious traditions through shared spiritual principles and collaborative engagement.",
       imageGradient: "/programs/interfaith-image.jpeg",
       href: "/legacy-projects/interfaith-program",

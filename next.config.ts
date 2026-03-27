@@ -3,15 +3,20 @@ import type { NextConfig } from "next";
 const nextConfig : NextConfig  = {
   // Enable standalone output for Docker deployment
   output: 'standalone',
-  
+
+  // Skip TypeScript type checking during build (use separate type check)
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   // Enable experimental features if needed
   experimental: {
     // serverActions: {
     //   bodySizeLimit: '2mb',
     // },
   },
-  
-  
+
+
   // Image optimization configuration
   images: {
     remotePatterns: [
@@ -25,9 +30,9 @@ const nextConfig : NextConfig  = {
       },
     ],
   },
-  
+
   // Environment variables
-  
+
 };
 
 export default nextConfig;

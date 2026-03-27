@@ -90,19 +90,22 @@ interface ArticleSchema {
 
 /**
  * Generate Organization schema for Dr. Kumar Foundation
+ * Enhanced for entity disambiguation
  */
 export function generateOrganizationSchema(): OrganizationSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Dr. Kumar Foundation USA',
+    alternateName: 'Dr. Kumar Foundation',
     url: 'https://dkf.sufisciencecenter.info',
-    description: 'Dr. Kumar Foundation USA preserves a living spiritual and institutional mission through disciplined documentation, ethical stewardship, research, and structured participation.',
+    description: "Dr. Kumar Foundation USA is the official institutional expression of Dr. Ghulam Mohammad Kumar's continuing mission in knowledge, service, and ethical stewardship. The Foundation preserves spiritual teachings through disciplined documentation, research, and structured participation.",
     foundingDate: '2020',
     founders: [
       {
         '@type': 'Person',
         name: 'Dr. Ghulam Mohammad Kumar',
+        jobTitle: 'Founder',
       },
     ],
     address: {
@@ -122,18 +125,20 @@ export function generateOrganizationSchema(): OrganizationSchema {
 }
 
 /**
- * Generate WebSite schema
+ * Generate WebSite schema with site name clarity
  */
 export function generateWebSiteSchema(): WebSiteSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Dr. Kumar Foundation USA',
+    alternateName: 'Dr. Kumar Foundation',
     url: 'https://dkf.sufisciencecenter.info',
     description: 'Official website of Dr. Kumar Foundation USA - spiritual teachings, ethical stewardship, and cultural preservation.',
     publisher: {
       '@type': 'Organization',
       name: 'Dr. Kumar Foundation USA',
+      alternateName: 'Dr. Kumar Foundation',
     },
     potentialAction: {
       '@type': 'SearchAction',

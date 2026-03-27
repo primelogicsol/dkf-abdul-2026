@@ -86,7 +86,7 @@ export default function PremiumHero() {
               transition={{ duration: 1, delay: 0.5 }}
               className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white leading-tight mb-6"
             >
-              Dr. Kumar Foundation
+              Dr. Kumar Foundation USA
               <br />
               <span className="gradient-gold">A Living Spiritual and Institutional Mission</span>
             </motion.h1>
@@ -98,7 +98,7 @@ export default function PremiumHero() {
               transition={{ duration: 1, delay: 0.8 }}
               className="text-[#AAB3CF] text-base md:text-lg lg:text-xl leading-relaxed mb-8"
             >
-              Advancing the teachings, service, knowledge, and sacred responsibility inspired and guided by Dr. Kumar.
+              The official institutional expression of Dr. Ghulam Mohammad Kumar's continuing mission in knowledge, service, and ethical stewardship.
             </motion.p>
 
             {/* CTA Buttons */}
