@@ -592,7 +592,7 @@ export default function YouthEngagementPage() {
               Pre-Launch Introduction
             </p>
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
-              Introducing the Youth Development Platform USA
+            Youth & Cultural Engagement
             </h2>
             <p className="text-[#AAB3CF] max-w-3xl mx-auto leading-relaxed">
               The Youth Development Platform USA is an upcoming initiative within the wider youth engagement vision of Dr. Kumar Foundation USA, offering an early view of its purpose, direction, and role in supporting the next generation through mentorship, ethical development, and cultural rootedness.

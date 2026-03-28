@@ -583,7 +583,7 @@ export default function HealingInitiativesPage() {
               Pre-Launch Introduction
             </p>
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
-              Introducing the Healing Support Platform USA
+            Community Healing & Spiritual Restoration
             </h2>
             <p className="text-[#AAB3CF] max-w-3xl mx-auto leading-relaxed">
               The Healing Support Platform USA is an upcoming initiative within the wider healing vision of Dr. Kumar Foundation USA, offering an early view of its purpose, direction, and evolving role in supporting inner restoration, resilience, and compassionate community care.
