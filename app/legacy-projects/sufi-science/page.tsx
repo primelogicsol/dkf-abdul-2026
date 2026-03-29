@@ -386,7 +386,7 @@ export default function SufiSciencePage() {
 
       {/* Platform Partnership Section */}
       <PlatformPartnership
-        platformTitle="Sufi Science Center"
+        platformTitle="Sufi Science & Consciousness Research"
         platformSubtitle="Research and knowledge platform supporting the Sufi Science initiative."
         description={[
           "The Sufi Science initiative of the Dr. Kumar Foundation examines the relationship between spiritual insight, philosophical reflection, and contemporary knowledge systems. To support deeper research and interdisciplinary dialogue, the foundation collaborates with the Sufi Science Center, a specialized platform dedicated to scholarly exploration and intellectual engagement.",

@@ -386,7 +386,7 @@ export default function HealingInitiativesPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <h2 className="font-serif text-3xl md:text-4xl text-white mb-3">
-                Healing Support Platform
+              Community Healing & Spiritual Restoration
               </h2>
 
               <p className="text-[#C5A85C] text-lg mb-6 font-medium">

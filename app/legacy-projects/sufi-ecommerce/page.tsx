@@ -119,9 +119,10 @@ export default function SufiEcommercePage() {
       <ProjectHero
         title={
           <>
-            Sufi Commerce &
+            Purple Soul – DKC Collective  
+
             <br />
-            <span className="gradient-gold">Ethical Craft</span>
+            <span className="gradient-gold">Sufi Commerce & Ethical Craft</span>
           </>
         }
         subtitle="Structured economic pathways supporting heritage crafts through transparency, traceability, and digital integration."
@@ -384,7 +385,7 @@ export default function SufiEcommercePage() {
       </section>
 
       <PlatformPartnership
-        platformTitle="Purple Soul – DKC Collective"
+        platformTitle="Purple Soul  DKC Collective  Sufi Commerce & Ethical Craft"
         platformSubtitle="Ethical commerce platform supporting the Sufi Ecommerce initiative."
         description={[
           "The Sufi Ecommerce initiative of the Dr. Kumar Foundation explores ethical and spiritually informed models of cultural commerce. To implement this work at scale, the foundation collaborates with Purple Soul – DKC Collective, a specialized digital platform designed to connect spiritual values with responsible global trade.",
