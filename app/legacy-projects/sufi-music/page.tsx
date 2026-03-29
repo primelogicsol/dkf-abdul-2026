@@ -83,7 +83,7 @@ export default function SufiMusicPage() {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await fetch('https://api.sufipulse.com/youtube/videos');
+        const response = await fetch('/api/youtube/videos');
         if (response.ok) {
           const data = await response.json();
           setVideos(data.videos || data || []);

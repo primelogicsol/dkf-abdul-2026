@@ -124,22 +124,7 @@ export default function OfficialPublicNoticePage() {
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="section-spacing bg-[#1C2340]">
-        <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <p className="text-[#AAB3CF] text-left md:text-center lg:text-center xl:text-center text-lg leading-relaxed">
-              This notice has been issued for clarity, trust, and public protection. It explains the Foundation's position regarding donations, financial requests, and any claim of authority made in the name of Dr. Kumar, Dr. Kumar Faqeeri Darbar, the Foundation, or associated platforms.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      
 
       {/* Trust Summary Band */}
       <section className="section-spacing bg-[#151A30]">

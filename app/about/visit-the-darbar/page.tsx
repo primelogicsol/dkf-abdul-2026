@@ -237,22 +237,7 @@ export default function VisitTheDarbarPage() {
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="section-spacing bg-[#1C2340]">
-        <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <p className="text-[#AAB3CF] text-left md:text-center lg:text-center xl:text-center text-lg leading-relaxed">
-              Dr. Kumar Faqeeri Darbar is maintained as a place of dignity, reflection, spiritual presence, and respectful human encounter. This page provides official guidance for visitors regarding location, timings, visitor arrangements, hospitality, and practical coordination before planning a visit.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+     
 
       {/* Quick Information Band */}
       <section className="section-spacing bg-[#151A30]">
