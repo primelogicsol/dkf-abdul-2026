@@ -70,13 +70,13 @@ export default function PremiumHero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Side - Text Content */}
-          <div className="text-center lg:text-left">
+          <div className="sm:text-center  lg:text-left">
             {/* Animated Gold Line */}
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "6rem" }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent mx-auto lg:mx-0 mb-8"
+              className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent sm:mx-auto xl:mx-0 lg:mx-0 mb-8"
             />
 
             {/* Main Headline */}
@@ -110,7 +110,7 @@ export default function PremiumHero() {
             >
               <Link
                 href="/foundation"
-                className="group relative px-8 py-4 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1 w-full sm:w-auto"
+                className="group relative px-8 py-4 text-center bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1 w-full sm:w-auto"
               >
                 <span className="relative z-10">Explore the Mission</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#C5A85C] via-[#D4BE90] to-[#C5A85C] opacity-0 group-hover:opacity-100 transition-opacity duration-600" />

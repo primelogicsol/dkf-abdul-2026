@@ -193,12 +193,12 @@ export default function HealingInitiativesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Strategic Framework
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               Four interconnected domains of healing work, each supporting
               and reinforcing the others.
@@ -227,12 +227,12 @@ export default function HealingInitiativesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Impact Model
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:x-auto mb-6" />
           </motion.div>
 
           <ImpactDiagram
@@ -266,12 +266,12 @@ export default function HealingInitiativesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Implementation Structure
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -315,12 +315,12 @@ export default function HealingInitiativesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
             Top Contributors
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
             Recognizing our most active community members making a difference through healing engagement.
             </p>
@@ -348,12 +348,12 @@ export default function HealingInitiativesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Program Impact
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -480,12 +480,12 @@ export default function HealingInitiativesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="sm:text-center"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Participate in Responsible Community Service
             </h2>
-            <div className="gold-divider long mx-auto mb-8" />
+            <div className="gold-divider long sm:mx-auto mb-8" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed mb-12">
               Whether for collaboration, support, or inquiry, we welcome
               structured engagement aligned with our mission and values.
@@ -577,7 +577,7 @@ export default function HealingInitiativesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <p className="text-[#C5A85C] text-xs uppercase tracking-widest mb-3">
               Pre-Launch Introduction
@@ -612,7 +612,7 @@ export default function HealingInitiativesPage() {
                   />
                 </div>
               </div>
-              <div className="text-center mt-6">
+              <div className="sm:text-center mt-6">
                 <Link
                   href="#"
                   className="inline-flex items-center px-8 py-4 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1"
@@ -636,7 +636,7 @@ export default function HealingInitiativesPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="font-serif text-xl text-white mb-8 text-center">
+            <h3 className="font-serif text-xl text-white mb-8 sm:text-center">
               What the Healing Support Platform USA Is Being Built To Do
             </h3>
 

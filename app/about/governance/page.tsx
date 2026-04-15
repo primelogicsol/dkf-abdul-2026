@@ -76,12 +76,12 @@ export default function GovernancePage() {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#C5A85C]/10 rounded-full blur-[140px]"
         />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:text-center">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "8rem" }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent mx-auto mb-8"
+            className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent sm:mx-auto mb-8"
           />
 
           <motion.h1
@@ -141,12 +141,12 @@ export default function GovernancePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Organizational Structure
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               Clear roles and responsibilities ensuring effective governance
               and institutional continuity.
@@ -211,12 +211,12 @@ export default function GovernancePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Ethical Framework
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               Core principles guiding institutional conduct and decision-making.
             </p>
@@ -258,12 +258,12 @@ export default function GovernancePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Governance Model
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               Visual representation of institutional structure and flow of responsibility.
             </p>

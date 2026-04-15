@@ -97,12 +97,12 @@ export default function FoundationSnapshot() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="sm:text-center mb-16"
         >
           <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
             Dr. Kumar Foundation USA
           </h2>
-          <div className="gold-divider long mx-auto mb-6" />
+          <div className="gold-divider long sm:mx-auto mb-6" />
           <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
             Dr. Ghulam Mohammad Kumar is a living spiritual guide, and the Foundation is the institutional expression of his continuing mission in knowledge, service, and ethical stewardship.
           </p>

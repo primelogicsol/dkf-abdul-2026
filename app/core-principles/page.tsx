@@ -102,12 +102,12 @@ export default function CorePrinciplesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Core Principles
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               Six principles form the foundation of this work. They are not
               beliefs to adopt but qualities to be understood through direct
@@ -138,12 +138,12 @@ export default function CorePrinciplesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               The Path of Development
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               These principles unfold in sequence, each building upon the
               foundation of the previous.

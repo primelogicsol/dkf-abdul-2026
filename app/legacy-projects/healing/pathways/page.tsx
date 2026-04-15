@@ -83,18 +83,18 @@ export default function HealingPathwaysPage() {
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#151A30] to-[#1C2340]">
         <div className="absolute inset-0 pattern-subtle opacity-10" />
         
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-10 h-[1px] bg-[#C5A85C]/40" />
+              <div className="w-10 h-[2px] hidden sm:block bg-[#C5A85C]/40" />
               <span className="text-[#C5A85C] uppercase tracking-[0.2em] text-xs">
                 Healing Initiatives
               </span>
-              <div className="w-10 h-[1px] bg-[#C5A85C]/40" />
+              <div className="w-10 h-[2px] hidden sm:block bg-[#C5A85C]/40" />
             </div>
 
             <h1 className="font-serif text-4xl md:text-5xl text-white leading-tight mb-6">
@@ -118,10 +118,10 @@ export default function HealingPathwaysPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl text-white mb-4">Who It Serves</h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -163,12 +163,12 @@ export default function HealingPathwaysPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Healing Pathways
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto">
               Six structured approaches to healing, each designed to meet different needs while maintaining ethical grounding and compassionate care.
             </p>
@@ -217,10 +217,10 @@ export default function HealingPathwaysPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl text-white mb-4">How Support Is Accessed</h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="max-w-3xl mx-auto">
@@ -237,9 +237,9 @@ export default function HealingPathwaysPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="flex gap-4 items-start"
+                  className="sm:flex gap-4 items-start"
                 >
-                  <div className="w-10 h-10 bg-[#C5A85C]/20 rounded-full flex items-center justify-center text-[#C5A85C] font-serif font-bold flex-shrink-0">
+                  <div className="w-10 h-10 mb-2 sm:mb-0  bg-[#C5A85C]/20 rounded-full flex items-center justify-center text-[#C5A85C] font-serif font-bold flex-shrink-0">
                     {item.step}
                   </div>
                   <div>
@@ -261,29 +261,29 @@ export default function HealingPathwaysPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="sm:text-center"
           >
             <h2 className="font-serif text-3xl text-white mb-4">Begin Your Healing Journey</h2>
-            <div className="gold-divider long mx-auto mb-8" />
+            <div className="gold-divider long sm:mx-auto mb-8" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto mb-10">
               Whether you're seeking personal support, community healing, or want to refer someone in need, we're here to help.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/engage/healing-initiatives/collaboration"
-                className="px-8 py-4 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1"
+                className="px-6 py-4 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1"
               >
                 Collaborate
               </Link>
               <Link
                 href="/engage/healing-initiatives/support"
-                className="px-8 py-4 border border-[#C5A85C]/40 text-[#C5A85C] font-medium rounded-lg transition-all duration-300 hover:bg-[#C5A85C]/10 hover:border-[#C5A85C]"
+                className="px-6 py-4 border border-[#C5A85C]/40 text-[#C5A85C] font-medium rounded-lg transition-all duration-300 hover:bg-[#C5A85C]/10 hover:border-[#C5A85C]"
               >
                 Request Support
               </Link>
               <Link
                 href="/legacy-projects/healing"
-                className="px-8 py-4 border border-white/20 text-[#F1F3F8] font-medium rounded-lg transition-all duration-300 hover:bg-white/5 hover:border-white/40"
+                className="px-6 py-4 border border-white/20 text-[#F1F3F8] font-medium rounded-lg transition-all duration-300 hover:bg-white/5 hover:border-white/40"
               >
                 Back to Healing
               </Link>

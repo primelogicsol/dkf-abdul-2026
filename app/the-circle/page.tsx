@@ -316,12 +316,12 @@ export default function TheCirclePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="sm:text-center"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Submit for Inclusion
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed mb-12">
               Individuals seeking inclusion must submit structured documentation.
               All submissions undergo review prior to publication.

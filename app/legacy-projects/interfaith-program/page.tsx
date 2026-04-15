@@ -258,12 +258,12 @@ export default function InterfaithProgramPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl text-white mb-4">
               Strategic Framework
             </h2>
-            <div className="w-24 h-[1px] bg-[#C5A85C] mx-auto mb-6" />
+            <div className="w-24 h-[1px] bg-[#C5A85C] sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-3xl mx-auto">
               Four-pillar infrastructure supporting principled interfaith engagement
               and civilizational cooperation.
@@ -292,12 +292,12 @@ export default function InterfaithProgramPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl text-white mb-4">
               Impact Model
             </h2>
-            <div className="w-24 h-[1px] bg-[#C5A85C] mx-auto mb-6" />
+            <div className="w-24 h-[2px] bg-[#C5A85C] sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-3xl mx-auto">
               Structured pathway from theological foundation to community integration.
             </p>
@@ -315,12 +315,12 @@ export default function InterfaithProgramPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl text-white mb-4">
               Implementation Structure
             </h2>
-            <div className="w-24 h-[1px] bg-[#C5A85C] mx-auto mb-6" />
+            <div className="w-24 h-[2px] bg-[#C5A85C] sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-3xl mx-auto">
               Sequential methodology ensuring rigorous documentation and institutional impact.
             </p>
@@ -361,12 +361,12 @@ export default function InterfaithProgramPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Top Contributors
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               Recognizing our most active community members fostering interfaith dialogue and civilizational engagement.
             </p>
@@ -394,12 +394,12 @@ export default function InterfaithProgramPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl text-white mb-4">
               Impact Metrics
             </h2>
-            <div className="w-24 h-[1px] bg-[#C5A85C] mx-auto mb-6" />
+            <div className="w-24 h-[2px] bg-[#C5A85C] sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-3xl mx-auto">
               Quantifiable indicators of program reach and institutional engagement.
             </p>
@@ -542,12 +542,12 @@ export default function InterfaithProgramPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl text-white mb-4">
               Engage with This Program
             </h2>
-            <div className="w-24 h-[1px] bg-[#C5A85C] mx-auto mb-6" />
+            <div className="w-24 h-[2px] bg-[#C5A85C] sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto">
               Structured pathways for institutional collaboration, resource support,
               or programmatic inquiry.
@@ -644,7 +644,7 @@ export default function InterfaithProgramPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <p className="text-[#C5A85C] text-xs uppercase tracking-widest mb-3">
               Pre-Launch Introduction
@@ -679,7 +679,7 @@ export default function InterfaithProgramPage() {
                   />
                 </div>
               </div>
-              <div className="text-center mt-6">
+              <div className="sm:text-center mt-6">
                 <Link
                   href="#"
                   className="inline-flex items-center px-8 py-4 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1"
@@ -703,7 +703,7 @@ export default function InterfaithProgramPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="font-serif text-xl text-white mb-8 text-center">
+            <h3 className="font-serif text-xl text-white mb-8 sm:text-center">
               What Interfaith Dialogue Center USA Is Being Built To Do
             </h3>
 

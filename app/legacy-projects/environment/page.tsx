@@ -194,12 +194,12 @@ export default function EnvironmentalProgramsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Strategic Framework
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               Four interconnected domains of environmental work, each supporting
               sustainable outcomes.
@@ -228,12 +228,12 @@ export default function EnvironmentalProgramsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Impact Pathway
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <ImpactDiagram
@@ -267,12 +267,12 @@ export default function EnvironmentalProgramsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Implementation Structure
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -316,12 +316,12 @@ export default function EnvironmentalProgramsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
             Top Contributors
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
             Recognizing our most active community members making a difference through Environment engagement.
             </p>
@@ -349,12 +349,12 @@ export default function EnvironmentalProgramsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Program Impact
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -481,12 +481,12 @@ export default function EnvironmentalProgramsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="sm:text-center"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Support Environmental Stewardship
             </h2>
-            <div className="gold-divider long mx-auto mb-8" />
+            <div className="gold-divider long sm:mx-auto mb-8" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed mb-12">
               Join us in responsible environmental action through collaboration,
               support, or inquiry.

@@ -149,19 +149,22 @@ export default function QuotesArchivePage() {
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#151A30] to-[#1C2340]">
         <div className="absolute inset-0 pattern-subtle opacity-10" />
         
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-10 h-[1px] bg-[#C5A85C]/40" />
+            <div className="w-full flex mb-10 sm:mb-0 justify-center">
+              <div className="inline-flex items-center gap-3 mb-6">
+              <div className="w-10 h-[2px] bg-[#C5A85C]/40" />
               <span className="text-[#C5A85C] uppercase tracking-[0.2em] text-xs">
                 Wisdom Archive
               </span>
-              <div className="w-10 h-[1px] bg-[#C5A85C]/40" />
+              <div className="w-10 h-[2px] bg-[#C5A85C]/40" />
             </div>
+            </div>
+            
 
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6">
               Collection of
@@ -265,7 +268,7 @@ export default function QuotesArchivePage() {
       {/* Closing Section */}
       <section className="section-spacing bg-gradient-to-b from-[#1C2340] to-[#151A30]">
         <div className="container-premium">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto sm:text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -275,7 +278,7 @@ export default function QuotesArchivePage() {
               <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
                 A Living Wisdom
               </h2>
-              <div className="gold-divider long mx-auto mb-8" />
+              <div className="gold-divider long sm:mx-auto mb-8" />
 
               <p className="text-[#AAB3CF] leading-relaxed text-lg mb-8">
                 The words of Dr. Kumar are preserved not only as statements to read but as
@@ -284,12 +287,12 @@ export default function QuotesArchivePage() {
                 living.
               </p>
 
-              <div className="flex items-center justify-center gap-3">
-                <div className="w-12 h-[1px] bg-[#C5A85C]/40" />
+              <div className="flex items-center sm:justify-center gap-3">
+                <div className="w-12 h-[2px] hidden sm:block bg-[#C5A85C]/40" />
                 <span className="text-[#C5A85C] uppercase tracking-widest text-sm">
                   Contemplate · Reflect · Transform
                 </span>
-                <div className="w-12 h-[1px] bg-[#C5A85C]/40" />
+                <div className="w-12 h-[2px] hidden sm:block bg-[#C5A85C]/40" />
               </div>
             </motion.div>
           </div>

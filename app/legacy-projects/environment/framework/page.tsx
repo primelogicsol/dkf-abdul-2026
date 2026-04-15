@@ -27,12 +27,12 @@ export default function EnvironmentFrameworkPage() {
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#151A30] to-[#1C2340]">
         <div className="absolute inset-0 pattern-subtle opacity-10" />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-10 h-[1px] bg-[#C5A85C]/40" />
+              <div className="w-10 h-[2px] hidden sm:block bg-[#C5A85C]/40" />
               <span className="text-[#C5A85C] uppercase tracking-[0.2em] text-xs">Environmental Programs</span>
-              <div className="w-10 h-[1px] bg-[#C5A85C]/40" />
+              <div className="w-10 h-[2px] hidden sm:block bg-[#C5A85C]/40" />
             </div>
             <h1 className="font-serif text-4xl md:text-5xl text-white leading-tight mb-6">
               Conservation<br /><span className="gradient-gold">Framework</span>
@@ -69,9 +69,9 @@ export default function EnvironmentFrameworkPage() {
       {/* Four Pillars */}
       <section className="section-spacing bg-[#151A30]">
         <div className="container-premium">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-12">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="sm:text-center mb-12">
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">Four Core Pillars</h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {pillars.map((pillar, index) => (
@@ -87,15 +87,15 @@ export default function EnvironmentFrameworkPage() {
       {/* Action Flow */}
       <section className="section-spacing bg-[#1C2340]">
         <div className="container-premium">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-12">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="sm:text-center mb-12">
             <h2 className="font-serif text-3xl text-white mb-4">Action Flow</h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-4">
               {actionFlow.map((step, index) => (
-                <motion.div key={step.title} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="flex gap-6 items-start">
-                  <div className="w-12 h-12 bg-[#C5A85C]/20 rounded-full flex items-center justify-center text-[#C5A85C] font-serif font-bold flex-shrink-0">{index + 1}</div>
+                <motion.div key={step.title} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="sm:flex gap-6 items-start">
+                  <div className="w-12 h-12 bg-[#C5A85C]/20 rounded-full flex items-center justify-center text-[#C5A85C] font-serif font-bold mb-2 sm:mb-0 flex-shrink-0">{index + 1}</div>
                   <div className="flex-1 bg-[#232B52] border border-[#C5A85C]/10 rounded-xl p-5">
                     <h3 className="font-serif text-xl text-white mb-2">{step.title}</h3>
                     <p className="text-[#AAB3CF] leading-relaxed">{step.description}</p>
@@ -110,9 +110,9 @@ export default function EnvironmentFrameworkPage() {
       {/* Monitoring & Implementation */}
       <section className="section-spacing bg-[#151A30]">
         <div className="container-premium">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-12">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="sm:text-center mb-12">
             <h2 className="font-serif text-3xl text-white mb-4">Monitoring & Implementation</h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-6">
@@ -140,9 +140,9 @@ export default function EnvironmentFrameworkPage() {
       {/* CTA */}
       <section className="py-20 bg-[#1C2340]">
         <div className="container-premium">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="sm:text-center">
             <h2 className="font-serif text-3xl text-white mb-4">Explore Environmental Programs</h2>
-            <div className="gold-divider long mx-auto mb-8" />
+            <div className="gold-divider long sm:mx-auto mb-8" />
             <Link href="/legacy-projects/environment/programs" className="inline-flex px-8 py-4 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1">View Programs</Link>
           </motion.div>
         </div>

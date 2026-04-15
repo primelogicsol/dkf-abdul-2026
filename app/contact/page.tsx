@@ -56,12 +56,12 @@ export default function ContactPage() {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C5A85C]/10 rounded-full blur-[140px]"
         />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:text-center">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "8rem" }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent mx-auto mb-8"
+            className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent sm:mx-auto mb-8"
           />
 
           <motion.h1
@@ -93,10 +93,10 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-2xl text-white mb-4">General Enquiries</h2>
-            <div className="w-24 h-[1px] bg-[#C5A85C] mx-auto mb-6" />
+            <div className="w-24 h-[2px] bg-[#C5A85C] sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] leading-relaxed">
               Submit your inquiry through the structured form below.
               We respond to all enquiries within 5–7 business days.
@@ -349,10 +349,10 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-2xl text-white mb-4">Additional Contact Channels</h2>
-            <div className="w-24 h-[1px] bg-[#C5A85C] mx-auto mb-6" />
+            <div className="w-24 h-[1px] bg-[#C5A85C] sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">

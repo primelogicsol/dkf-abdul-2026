@@ -52,8 +52,8 @@ export default function GlobalPresence() {
           </>
         }
         subtitle="Participants are located across multiple regions through documented meetings and structured engagement. Geographic continuity is preserved through archival records."
-        ctaLink="#regions"
-        ctaText="Explore Regions"
+        ctaLink="#gatherings"
+        
       />
 
       {/* OVERVIEW */}
@@ -65,8 +65,8 @@ export default function GlobalPresence() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-serif text-3xl text-center md:text-4xl text-white mb-4">Overview</h2>
-            <div className="gold-divider long mx-auto mb-8" />
+            <h2 className="font-serif text-3xl sm:text-center md:text-4xl text-white mb-4">Overview</h2>
+            <div className="gold-divider long sm:mx-auto mb-8" />
             <p className="text-[#AAB3CF] leading-relaxed max-w-3xl mx-auto">
               Engagement is distributed. Individuals across regions have connected
               through documented participation and coordinated discussion. This
@@ -116,8 +116,8 @@ export default function GlobalPresence() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-serif text-3xl md:text-4xl text-center text-white mb-4">Gatherings</h2>
-            <div className="gold-divider long mx-auto mb-12" />
+            <h2 className="font-serif text-3xl md:text-4xl sm:text-center text-white mb-4">Gatherings</h2>
+            <div className="gold-divider long sm:mx-auto mb-12" />
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

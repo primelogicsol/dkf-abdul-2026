@@ -15,12 +15,12 @@ export default function EcosystemConnection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="sm:text-center mb-16"
         >
           <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
             Institutional Ecosystem
           </h2>
-          <div className="gold-divider long mx-auto mb-6" />
+          <div className="gold-divider long sm:mx-auto mb-6" />
           <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
             The Foundation operates within a network of complementary initiatives,
             each contributing to the preservation and dissemination of spiritual wisdom.
@@ -99,7 +99,7 @@ export default function EcosystemConnection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-16 text-center"
+            className="mt-16 sm:text-center"
           >
             <p className="text-[#AAB3CF] leading-relaxed max-w-2xl mx-auto">
               This interconnected structure allows for specialized focus while

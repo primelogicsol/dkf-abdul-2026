@@ -189,17 +189,20 @@ export default function VisitTheDarbarPage() {
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#151A30] to-[#1C2340]">
         <div className="absolute inset-0 pattern-subtle opacity-10" />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-10 h-[1px] bg-[#C5A85C]/40" />
-              <span className="text-[#C5A85C] uppercase tracking-[0.2em] text-xs">About the Foundation</span>
-              <div className="w-10 h-[1px] bg-[#C5A85C]/40" />
+            <div className="w-full flex mb-10 sm:mb-0 justify-center">
+              <div className="inline-flex  items-center gap-3 mb-6">
+              <div className="w-10 h-[2px] bg-[#C5A85C]/40" />
+              <span className="text-[#C5A85C] uppercase mx-auto tracking-[0.2em] text-xs">About the Foundation</span>
+              <div className="w-10 h-[2px] bg-[#C5A85C]/40" />
             </div>
+            </div>
+            
 
             <h1 className="font-serif text-4xl md:text-5xl text-white leading-tight mb-6">
               Visit Dr. Kumar<br />
@@ -210,7 +213,7 @@ export default function VisitTheDarbarPage() {
               Official visitor information for location, timings, hospitality, and stay arrangements
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center mt-8">
+            <div className="flex flex-wrap gap-4 sm:justify-center mt-8">
               <a
                 href={darbarLocation.directionsUrl}
                 target="_blank"
@@ -273,9 +276,9 @@ export default function VisitTheDarbarPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="text-center mb-12">
+            <div className="sm:text-center mb-12">
               <h2 className="font-serif text-3xl text-white mb-4">Location, Map & Navigation</h2>
-              <div className="gold-divider long mx-auto mb-6" />
+              <div className="gold-divider long sm:mx-auto mb-6" />
               <p className="text-[#AAB3CF] max-w-2xl mx-auto">
                 Direct route access to Dr. Kumar Faqeeri Darbar through Google navigation
               </p>
@@ -292,7 +295,7 @@ export default function VisitTheDarbarPage() {
               >
                 {/* Darbar Name Card */}
                 <div className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-6">
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="sm:flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 bg-[#C5A85C]/20 rounded-full flex items-center justify-center">
                       <svg className="w-6 h-6 text-[#C5A85C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -592,10 +595,10 @@ export default function VisitTheDarbarPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl text-white mb-4">Visitor Services</h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto">
               Depending on the day and current arrangements, visitors may come for one or more of the following purposes
             </p>
@@ -800,10 +803,10 @@ export default function VisitTheDarbarPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-4xl mx-auto sm:text-center"
           >
             <h2 className="font-serif text-2xl text-white mb-4">Official Contact for Visit Coordination</h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] leading-relaxed mb-8">
               For official information regarding visits to <strong className="text-white">Dr. Kumar Faqeeri Darbar</strong>, timings, hospitality, or accommodation, please contact:
             </p>
@@ -868,7 +871,7 @@ export default function VisitTheDarbarPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="sm:text-center"
           >
             <p className="text-[#AAB3CF] text-lg leading-relaxed mb-4">
               We welcome sincere visitors in a spirit of dignity, respect, and order.

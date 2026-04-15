@@ -77,18 +77,18 @@ export default function EnvironmentProgramsPage() {
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#151A30] to-[#1C2340]">
         <div className="absolute inset-0 pattern-subtle opacity-10" />
         
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-10 h-[1px] bg-[#C5A85C]/40" />
+              <div className="w-10 h-[2px] hidden sm:block bg-[#C5A85C]/40" />
               <span className="text-[#C5A85C] uppercase tracking-[0.2em] text-xs">
                 Environmental Programs
               </span>
-              <div className="w-10 h-[1px] bg-[#C5A85C]/40" />
+              <div className="w-10 h-[2px] hidden sm:block bg-[#C5A85C]/40" />
             </div>
 
             <h1 className="font-serif text-4xl md:text-5xl text-white leading-tight mb-6">
@@ -112,10 +112,10 @@ export default function EnvironmentProgramsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl text-white mb-4">Volunteer & Action Tracks</h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto">
               Multiple pathways for environmental engagement, from one-time participation to long-term stewardship commitment.
             </p>
@@ -167,12 +167,12 @@ export default function EnvironmentProgramsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Program Initiatives
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto">
               Six interconnected program areas addressing critical environmental challenges through community action and education.
             </p>
@@ -211,10 +211,10 @@ export default function EnvironmentProgramsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl text-white mb-4">Featured Initiatives</h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -283,10 +283,10 @@ export default function EnvironmentProgramsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="sm:text-center"
           >
             <h2 className="font-serif text-3xl text-white mb-4">Join Environmental Action</h2>
-            <div className="gold-divider long mx-auto mb-8" />
+            <div className="gold-divider long sm:mx-auto mb-8" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto mb-10">
               Whether you want to volunteer, lead local initiatives, or partner with us, there's a place for you in environmental stewardship.
             </p>

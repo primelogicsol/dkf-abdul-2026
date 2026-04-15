@@ -80,12 +80,12 @@ export default function EthicalConductPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Four Dimensions of Ethical Living
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               Ethical conduct extends from personal integrity to social
               responsibility, from compassionate action to institutional
@@ -115,12 +115,12 @@ export default function EthicalConductPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               The Foundation of Ethical Action
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="max-w-2xl mx-auto">

@@ -28,13 +28,13 @@ export default function TeachingHero({ title, subtitle, ctaLink, ctaText = "Expl
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:text-center">
         {/* Animated Gold Line */}
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: "8rem" }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent mx-auto mb-8"
+          className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent sm:mx-auto mb-8"
         />
 
         {/* Headline */}

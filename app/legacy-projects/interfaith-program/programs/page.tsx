@@ -20,9 +20,13 @@ export default function InterfaithProgramsPage() {
       <PremiumHeader />
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#151A30] to-[#1C2340]">
         <div className="absolute inset-0 pattern-subtle opacity-10" />
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <div className="inline-flex items-center gap-3 mb-6"><div className="w-10 h-[1px] bg-[#C5A85C]/40" /><span className="text-[#C5A85C] uppercase tracking-[0.2em] text-xs">Interfaith Program</span><div className="w-10 h-[1px] bg-[#C5A85C]/40" /></div>
+            <div className="inline-flex items-center gap-3 mb-6">
+              <div className="w-10 h-[2px] hidden sm:block bg-[#C5A85C]/40" />
+            <span className="text-[#C5A85C] uppercase tracking-[0.2em] text-xs">Interfaith Program</span>
+            <div className="w-10 h-[2px] hidden sm:block bg-[#C5A85C]/40" />
+            </div>
             <h1 className="font-serif text-4xl md:text-5xl text-white leading-tight mb-6">Interfaith<br /><span className="gradient-gold">Programs</span></h1>
             <p className="text-[#AAB3CF] text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">Structured platforms for principled interfaith exchange, theological scholarship, and civic cooperation.</p>
           </motion.div>
@@ -31,9 +35,9 @@ export default function InterfaithProgramsPage() {
 
       <section className="section-spacing bg-[#1C2340]">
         <div className="container-premium">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-12">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="sm:text-center mb-12">
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">Program Formats</h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {programs.map((program, index) => (
@@ -52,9 +56,9 @@ export default function InterfaithProgramsPage() {
 
       <section className="py-20 bg-[#151A30]">
         <div className="container-premium">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="sm:text-center">
             <h2 className="font-serif text-3xl text-white mb-4">Engage in Dialogue</h2>
-            <div className="gold-divider long mx-auto mb-8" />
+            <div className="gold-divider long sm:mx-auto mb-8" />
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/engage/interfaith-program/collaboration" className="px-8 py-4 bg-[#C5A85C] text-[#1C2340] font-medium rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(197,168,92,0.3)] hover:-translate-y-1">Collaborate</Link>
               <Link href="/legacy-projects/interfaith-program" className="px-8 py-4 border border-white/20 text-[#F1F3F8] font-medium rounded-lg transition-all duration-300 hover:bg-white/5 hover:border-white/40">Back to Interfaith</Link>

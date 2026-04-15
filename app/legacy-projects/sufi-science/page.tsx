@@ -205,12 +205,12 @@ export default function SufiSciencePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Strategic Framework
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               Four interconnected domains of research and inquiry, each contributing
               to interdisciplinary understanding.
@@ -241,12 +241,12 @@ export default function SufiSciencePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Research Pathway
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <ImpactDiagram
@@ -280,12 +280,12 @@ export default function SufiSciencePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Implementation Structure
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -313,7 +313,7 @@ export default function SufiSciencePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-8 text-center"
+                className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl p-8 sm:text-center"
               >
                 <h3 className="font-serif text-xl text-[#C5A85C] mb-4">
                   {item.title}
@@ -333,12 +333,12 @@ export default function SufiSciencePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="sm:text-center mb-12"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Top Contributors
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               Recognizing our most active community members advancing interdisciplinary research and philosophical exploration.
             </p>
@@ -366,12 +366,12 @@ export default function SufiSciencePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Research Impact
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -413,12 +413,12 @@ export default function SufiSciencePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="sm:text-center"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Engage With This Program
             </h2>
-            <div className="gold-divider long mx-auto mb-8" />
+            <div className="gold-divider long sm:mx-auto mb-8" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed mb-12">
               Whether for collaboration, support, or inquiry, we welcome
               structured engagement aligned with our mission and values.
@@ -510,7 +510,7 @@ export default function SufiSciencePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <p className="text-[#C5A85C] text-xs uppercase tracking-widest mb-3">
               Pre-Launch Introduction
@@ -532,10 +532,10 @@ export default function SufiSciencePage() {
             className="mb-16"
           >
             <div className="w-full  ">
-              <h3 className="font-serif text-xl text-white mb-2 text-center">
+              <h3 className="font-serif text-xl text-white mb-2 sm:text-center">
                 Watch the Pre-Launch Video
               </h3>
-              <p className="text-[#AAB3CF] text-sm leading-relaxed mb-6 text-center">
+              <p className="text-[#AAB3CF] text-sm leading-relaxed mb-6 sm:text-center">
                 An early introduction to the vision, spirit, and future direction of Sufi Science Center USA.
               </p>
               <div className="relative  w-full">
@@ -562,13 +562,13 @@ export default function SufiSciencePage() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="w-full">
-              <h3 className="font-serif text-xl text-white mb-4 text-center">
+              <h3 className="font-serif text-xl text-white mb-4 sm:text-center">
                 What Sufi Science Center USA Is Being Built To Do
               </h3>
-              <p className="text-[#AAB3CF] leading-relaxed mb-3 text-center max-w-4xl mx-auto">
+              <p className="text-[#AAB3CF] leading-relaxed mb-3 sm:text-center max-w-4xl mx-auto">
                 Sufi Science Center USA is being developed as a future-facing platform for consciousness research, contemplative knowledge systems, inner development, scholarly dialogue, and meaningful public engagement. Rooted in the wider vision of Dr. Kumar Foundation USA, it represents an upgraded and expanded phase of inquiry designed to deepen engagement with spiritual wisdom, knowledge systems, interdisciplinary reflection, and human transformation in a serious and contemporary way.
               </p>
-              <p className="text-[#C5A85C]! text-sm italic leading-relaxed mb-10 text-center">
+              <p className="text-[#C5A85C]! text-sm italic leading-relaxed mb-10 sm:text-center">
                 This emerging platform marks a more advanced and structured level of inquiry within the wider Sufi Science vision.
               </p>
 

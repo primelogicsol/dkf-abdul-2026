@@ -73,14 +73,14 @@ export default function HisLifePage() {
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div className="relative z-10 max-w-5xl mx-auto px-6 lg:text-left text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 lg:text-left sm:text-center">
           {/* Animated Gold Line */}
           
           <motion.div
               initial={{ width: 0 }}
               animate={{ width: "6rem" }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent mx-auto lg:mx-0 mb-8"
+              className="h-[2px] bg-gradient-to-r from-transparent via-[#C5A85C] to-transparent sm:mx-auto xl:mx-0 lg:mx-0 mb-8"
             />
           
           {/* Headline */}
@@ -452,12 +452,12 @@ export default function HisLifePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="sm:text-center mb-16"
           >
             <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
               Institutional Establishment
             </h2>
-            <div className="gold-divider long mx-auto mb-6" />
+            <div className="gold-divider long sm:mx-auto mb-6" />
             <p className="text-[#AAB3CF] max-w-2xl mx-auto leading-relaxed">
               The formation of structured frameworks to preserve continuity and
               support responsible participation across generations.
