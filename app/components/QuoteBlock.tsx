@@ -41,7 +41,7 @@ export default function QuoteBlock({ quote, attribution }: QuoteBlockProps) {
             {/* Attribution */}
             {attribution && (
               <div className="flex items-center gap-3">
-                <div className="w-10 h-[1px] bg-[#C5A85C]/50" />
+                <div className="w-10 h-[1px] hidden sm:block bg-[#C5A85C]/50" />
                 <span className="text-[#C5A85C] uppercase tracking-[0.15em] text-xs font-medium">
                   {attribution}
                 </span>

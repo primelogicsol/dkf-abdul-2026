@@ -13,7 +13,7 @@ interface TeachingHeroProps {
 
 export default function TeachingHero({ title, subtitle, ctaLink, ctaText = "Explore Framework" }: TeachingHeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative py-24 sm:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1C2340] via-[#1C2340] to-[#151A30]" />
 

@@ -399,7 +399,7 @@ export default function SufiSciencePage() {
         }}
         secondaryButton={{
           text: "Explore Research Programs",
-          href: "https://sufisciencecenter.info/exploringkashmirisufism",
+          href: "https://sufisciencecenter.info/knowledge-systems/science-sufism",
         }}
         delay={0.2}
       />

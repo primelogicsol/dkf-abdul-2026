@@ -261,8 +261,8 @@ export default function FoundationOverviewPage() {
                   </blockquote>
 
                   <div className="flex items-center gap-4">
-                    <div className="gold-divider" />
-                    <span className="text-[#C5A85C] uppercase tracking-widest text-sm">
+                    <div className="gold-divider hidden sm:block " />
+                    <span className="text-[#C5A85C] uppercase  tracking-widest text-sm">
                       Founding Principle
                     </span>
                   </div>
