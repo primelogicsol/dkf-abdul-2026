@@ -147,6 +147,130 @@ export default function FoundationOverviewPage() {
         </div>
       </section>
 
+      {/* Founder / Bani Section */}
+      <section className="section-spacing bg-[#151A30] relative overflow-hidden">
+        <div className="absolute inset-0 pattern-subtle opacity-20" />
+
+        <div className="container-premium relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <AnimatedSection animation="slide-left">
+              <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
+                Dr. Gulam Mohammad Kumar
+              </h2>
+              <div className="gold-divider mb-8" />
+
+              <div className="space-y-6 text-[#AAB3CF] leading-relaxed">
+                <p>
+                  <span className="text-[#C5A85C] font-medium">Founder / Bani</span> — Dr. Kumar
+                  Foundation USA is rooted in the spiritual and humanitarian vision of Dr. Gulam
+                  Mohammad Kumar, recognized as the Founder / Bani.
+                </p>
+                <p>
+                  His life and teachings shaped the Foundation's purpose: to serve humanity with
+                  compassion, preserve sacred wisdom, encourage inner refinement, and strengthen
+                  responsibility toward community, creation, and the Divine.
+                </p>
+                <p>
+                  The Foundation carries forward this vision through service, healing, education,
+                  spiritual literacy, and ethical engagement.
+                </p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection animation="slide-right" delay={0.2}>
+              <div className="relative">
+                <div className="bg-[#232B52] border border-[#C5A85C]/20 rounded-2xl p-10 relative">
+                  <div className="absolute top-0 left-0 w-24 h-24 border-t border-l border-[#C5A85C]/30 rounded-tl-2xl" />
+                  <div className="absolute bottom-0 right-0 w-24 h-24 border-b border-r border-[#C5A85C]/30 rounded-br-2xl" />
+
+                  <div className="relative z-10">
+                    <div className="text-[#C5A85C] text-sm uppercase tracking-widest mb-4">
+                      Vision Statement
+                    </div>
+
+                    <blockquote className="font-serif text-xl text-white leading-relaxed mb-8">
+                      "To serve humanity with compassion, preserve sacred wisdom, encourage inner
+                      refinement, and strengthen responsibility toward community, creation, and the
+                      Divine."
+                    </blockquote>
+
+                    <div className="flex items-center gap-4">
+                      <div className="gold-divider hidden sm:block" />
+                      <span className="text-[#C5A85C] uppercase tracking-widest text-sm">
+                        Founding Purpose
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Representative Stewardship Section */}
+      <section className="section-spacing bg-[#1C2340] relative">
+        <div className="container-premium">
+          <AnimatedSection className="sm:text-center mb-16">
+            <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
+              Representative Stewardship
+            </h2>
+            <div className="gold-divider long sm:mx-auto mb-6" />
+          </AnimatedSection>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            
+
+            <AnimatedSection animation="slide-right" delay={0.2}>
+              <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
+                Dr. Zarf-e-Noori
+              </h2>
+              <div className="gold-divider mb-8" />
+
+              <div className="space-y-6 text-[#AAB3CF] leading-relaxed">
+                <p>
+                  <span className="text-[#C5A85C] font-medium">Representative Stewardship</span>{" "}
+                  — The continuing mission of Dr. Kumar Foundation USA is carried forward under
+                  the representative stewardship of Dr. Zarf-e-Noori.
+                </p>
+                <p>
+                  This stewardship preserves the Founder / Bani's vision while guiding its public
+                  expression through community service, educational initiatives, spiritual
+                  guidance, cultural preservation, and responsible institutional continuity.
+                </p>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection animation="slide-left">
+              <div className="relative">
+                <div className="bg-[#232B52] border border-[#C5A85C]/20 rounded-2xl p-10 relative">
+                  <div className="absolute top-0 left-0 w-24 h-24 border-t border-l border-[#C5A85C]/30 rounded-tl-2xl" />
+                  <div className="absolute bottom-0 right-0 w-24 h-24 border-b border-r border-[#C5A85C]/30 rounded-br-2xl" />
+
+                  <div className="relative z-10">
+                    <div className="text-[#C5A85C] text-sm uppercase tracking-widest mb-4">
+                      Stewardship
+                    </div>
+
+                    <blockquote className="font-serif text-xl text-white leading-relaxed mb-8">
+                      "Preserving the Founder's vision while guiding its public expression through
+                      community service, educational initiatives, spiritual guidance, cultural
+                      preservation, and responsible institutional continuity."
+                    </blockquote>
+
+                    <div className="flex items-center gap-4">
+                      <div className="gold-divider hidden sm:block" />
+                      <span className="text-[#C5A85C] uppercase tracking-widest text-sm">
+                        Dr. Zarf-e-Noori
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
       <section className="section-spacing bg-[#151A30] relative overflow-hidden">
         <div className="absolute inset-0 pattern-subtle opacity-20" />
 
