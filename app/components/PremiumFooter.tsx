@@ -284,7 +284,7 @@ export default function PremiumFooter() {
 
             {/* Interfaith Program*/}
             <a
-              href="#"
+              href="https://ifpb.sufisciencecenter.info/"
               target="_blank"
               rel="noopener noreferrer"
               className="group  border border-[#C5A85C]/15 rounded-xl p-6 hover:border-[#C5A85C]/40 transition-all duration-300 hover:-translate-y-1"
