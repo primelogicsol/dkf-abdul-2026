@@ -223,7 +223,7 @@ export default function PremiumFooter() {
             
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full mx-auto">
             {/* Sufi Science Center USA */}
             <a
               href="https://sufisciencecenter.info"
@@ -279,6 +279,25 @@ export default function PremiumFooter() {
               
               <p className="text-[#AAB3CF] text-sm">
                 Ethical commerce platform supporting artisans, heritage crafts, and sustainable economic practices.
+              </p>
+            </a>
+
+            {/* Interfaith Program*/}
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group  border border-[#C5A85C]/15 rounded-xl p-6 hover:border-[#C5A85C]/40 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <Image alt="LOGO" height={100} width={500} src="/interfaith-logo.png" className="pb-1 w-12 h-12" />
+                <h5 className="text-white font-serif text-base mb-2 group-hover:text-[#C5A85C] transition-colors">
+                Interfaith Peace Bridge
+              </h5>
+              </div>
+              
+              <p className="text-[#AAB3CF] text-sm">
+                A global platform promoting peace, dialogue, and international cooperation.
               </p>
             </a>
           </div>
