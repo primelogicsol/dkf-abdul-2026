@@ -407,10 +407,10 @@ export default function SufiMusicPage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl overflow-hidden group hover:border-[#C5A85C]/30 transition-all duration-300"
+                      className="bg-[#232B52] border border-[#C5A85C]/15 rounded-2xl  overflow-hidden group hover:border-[#C5A85C]/30 transition-all duration-300"
                     >
                       {/* Thumbnail */}
-                      <div className="relative aspect-video overflow-hidden">
+                      <div className="relative aspect-video  overflow-hidden">
                         <img
                           src={video.thumbnail || 'https://via.placeholder.com/640x360/1C2340/C5A85C?text=Video+Thumbnail'}
                           alt={video.title || 'Video thumbnail'}
@@ -433,7 +433,7 @@ export default function SufiMusicPage() {
                       </div>
 
                       {/* Video Info */}
-                      <div className="p-6">
+                      <div className="p-6 h-40">
                         <h4 className="font-serif text-lg text-white mb-3 line-clamp-2">
                           {video.title || 'Untitled Video'}
                         </h4>
